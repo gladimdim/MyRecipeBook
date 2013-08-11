@@ -1,0 +1,484 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F2FEE14817B80762007771CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14717B80762007771CF /* Foundation.framework */; };
+		F2FEE14A17B80762007771CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14917B80762007771CF /* CoreGraphics.framework */; };
+		F2FEE14C17B80762007771CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14B17B80762007771CF /* UIKit.framework */; };
+		F2FEE15217B80762007771CF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2FEE15017B80762007771CF /* InfoPlist.strings */; };
+		F2FEE15417B80762007771CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FEE15317B80762007771CF /* main.m */; };
+		F2FEE15817B80762007771CF /* RBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FEE15717B80762007771CF /* RBAppDelegate.m */; };
+		F2FEE15B17B80762007771CF /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2FEE15917B80762007771CF /* Main_iPhone.storyboard */; };
+		F2FEE15E17B80762007771CF /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2FEE15C17B80762007771CF /* Main_iPad.storyboard */; };
+		F2FEE16117B80762007771CF /* RBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FEE16017B80762007771CF /* RBViewController.m */; };
+		F2FEE16317B80762007771CF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2FEE16217B80762007771CF /* Images.xcassets */; };
+		F2FEE16A17B80762007771CF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE16917B80762007771CF /* XCTest.framework */; };
+		F2FEE16B17B80762007771CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14717B80762007771CF /* Foundation.framework */; };
+		F2FEE16C17B80762007771CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14B17B80762007771CF /* UIKit.framework */; };
+		F2FEE17417B80762007771CF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2FEE17217B80762007771CF /* InfoPlist.strings */; };
+		F2FEE17617B80762007771CF /* My_Recipe_BookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FEE17517B80762007771CF /* My_Recipe_BookTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F2FEE16D17B80762007771CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2FEE13C17B80762007771CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2FEE14317B80762007771CF;
+			remoteInfo = "My Recipe Book";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F2FEE14417B80762007771CF /* My Recipe Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Recipe Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2FEE14717B80762007771CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F2FEE14917B80762007771CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F2FEE14B17B80762007771CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F2FEE14F17B80762007771CF /* My Recipe Book-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "My Recipe Book-Info.plist"; sourceTree = "<group>"; };
+		F2FEE15117B80762007771CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2FEE15317B80762007771CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F2FEE15517B80762007771CF /* My Recipe Book-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "My Recipe Book-Prefix.pch"; sourceTree = "<group>"; };
+		F2FEE15617B80762007771CF /* RBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBAppDelegate.h; sourceTree = "<group>"; };
+		F2FEE15717B80762007771CF /* RBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBAppDelegate.m; sourceTree = "<group>"; };
+		F2FEE15A17B80762007771CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		F2FEE15D17B80762007771CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		F2FEE15F17B80762007771CF /* RBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBViewController.h; sourceTree = "<group>"; };
+		F2FEE16017B80762007771CF /* RBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBViewController.m; sourceTree = "<group>"; };
+		F2FEE16217B80762007771CF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F2FEE16817B80762007771CF /* My Recipe BookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My Recipe BookTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2FEE16917B80762007771CF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F2FEE17117B80762007771CF /* My Recipe BookTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "My Recipe BookTests-Info.plist"; sourceTree = "<group>"; };
+		F2FEE17317B80762007771CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2FEE17517B80762007771CF /* My_Recipe_BookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = My_Recipe_BookTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2FEE14117B80762007771CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2FEE14A17B80762007771CF /* CoreGraphics.framework in Frameworks */,
+				F2FEE14C17B80762007771CF /* UIKit.framework in Frameworks */,
+				F2FEE14817B80762007771CF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2FEE16517B80762007771CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2FEE16A17B80762007771CF /* XCTest.framework in Frameworks */,
+				F2FEE16C17B80762007771CF /* UIKit.framework in Frameworks */,
+				F2FEE16B17B80762007771CF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F2FEE13B17B80762007771CF = {
+			isa = PBXGroup;
+			children = (
+				F2FEE14D17B80762007771CF /* My Recipe Book */,
+				F2FEE16F17B80762007771CF /* My Recipe BookTests */,
+				F2FEE14617B80762007771CF /* Frameworks */,
+				F2FEE14517B80762007771CF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F2FEE14517B80762007771CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2FEE14417B80762007771CF /* My Recipe Book.app */,
+				F2FEE16817B80762007771CF /* My Recipe BookTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2FEE14617B80762007771CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2FEE14717B80762007771CF /* Foundation.framework */,
+				F2FEE14917B80762007771CF /* CoreGraphics.framework */,
+				F2FEE14B17B80762007771CF /* UIKit.framework */,
+				F2FEE16917B80762007771CF /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2FEE14D17B80762007771CF /* My Recipe Book */ = {
+			isa = PBXGroup;
+			children = (
+				F2FEE15617B80762007771CF /* RBAppDelegate.h */,
+				F2FEE15717B80762007771CF /* RBAppDelegate.m */,
+				F2FEE15917B80762007771CF /* Main_iPhone.storyboard */,
+				F2FEE15C17B80762007771CF /* Main_iPad.storyboard */,
+				F2FEE15F17B80762007771CF /* RBViewController.h */,
+				F2FEE16017B80762007771CF /* RBViewController.m */,
+				F2FEE16217B80762007771CF /* Images.xcassets */,
+				F2FEE14E17B80762007771CF /* Supporting Files */,
+			);
+			path = "My Recipe Book";
+			sourceTree = "<group>";
+		};
+		F2FEE14E17B80762007771CF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2FEE14F17B80762007771CF /* My Recipe Book-Info.plist */,
+				F2FEE15017B80762007771CF /* InfoPlist.strings */,
+				F2FEE15317B80762007771CF /* main.m */,
+				F2FEE15517B80762007771CF /* My Recipe Book-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2FEE16F17B80762007771CF /* My Recipe BookTests */ = {
+			isa = PBXGroup;
+			children = (
+				F2FEE17517B80762007771CF /* My_Recipe_BookTests.m */,
+				F2FEE17017B80762007771CF /* Supporting Files */,
+			);
+			path = "My Recipe BookTests";
+			sourceTree = "<group>";
+		};
+		F2FEE17017B80762007771CF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2FEE17117B80762007771CF /* My Recipe BookTests-Info.plist */,
+				F2FEE17217B80762007771CF /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2FEE14317B80762007771CF /* My Recipe Book */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2FEE17917B80762007771CF /* Build configuration list for PBXNativeTarget "My Recipe Book" */;
+			buildPhases = (
+				F2FEE14017B80762007771CF /* Sources */,
+				F2FEE14117B80762007771CF /* Frameworks */,
+				F2FEE14217B80762007771CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "My Recipe Book";
+			productName = "My Recipe Book";
+			productReference = F2FEE14417B80762007771CF /* My Recipe Book.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F2FEE16717B80762007771CF /* My Recipe BookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2FEE17C17B80762007771CF /* Build configuration list for PBXNativeTarget "My Recipe BookTests" */;
+			buildPhases = (
+				F2FEE16417B80762007771CF /* Sources */,
+				F2FEE16517B80762007771CF /* Frameworks */,
+				F2FEE16617B80762007771CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F2FEE16E17B80762007771CF /* PBXTargetDependency */,
+			);
+			name = "My Recipe BookTests";
+			productName = "My Recipe BookTests";
+			productReference = F2FEE16817B80762007771CF /* My Recipe BookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2FEE13C17B80762007771CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = RB;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Dmytro Gladkyi";
+				TargetAttributes = {
+					F2FEE16717B80762007771CF = {
+						TestTargetID = F2FEE14317B80762007771CF;
+					};
+				};
+			};
+			buildConfigurationList = F2FEE13F17B80762007771CF /* Build configuration list for PBXProject "My Recipe Book" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F2FEE13B17B80762007771CF;
+			productRefGroup = F2FEE14517B80762007771CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2FEE14317B80762007771CF /* My Recipe Book */,
+				F2FEE16717B80762007771CF /* My Recipe BookTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2FEE14217B80762007771CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2FEE15E17B80762007771CF /* Main_iPad.storyboard in Resources */,
+				F2FEE16317B80762007771CF /* Images.xcassets in Resources */,
+				F2FEE15B17B80762007771CF /* Main_iPhone.storyboard in Resources */,
+				F2FEE15217B80762007771CF /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2FEE16617B80762007771CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2FEE17417B80762007771CF /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2FEE14017B80762007771CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2FEE15817B80762007771CF /* RBAppDelegate.m in Sources */,
+				F2FEE15417B80762007771CF /* main.m in Sources */,
+				F2FEE16117B80762007771CF /* RBViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2FEE16417B80762007771CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2FEE17617B80762007771CF /* My_Recipe_BookTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F2FEE16E17B80762007771CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2FEE14317B80762007771CF /* My Recipe Book */;
+			targetProxy = F2FEE16D17B80762007771CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F2FEE15017B80762007771CF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2FEE15117B80762007771CF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F2FEE15917B80762007771CF /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2FEE15A17B80762007771CF /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		F2FEE15C17B80762007771CF /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2FEE15D17B80762007771CF /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		F2FEE17217B80762007771CF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2FEE17317B80762007771CF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F2FEE17717B80762007771CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F2FEE17817B80762007771CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F2FEE17A17B80762007771CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "My Recipe Book/My Recipe Book-Prefix.pch";
+				INFOPLIST_FILE = "My Recipe Book/My Recipe Book-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F2FEE17B17B80762007771CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "My Recipe Book/My Recipe Book-Prefix.pch";
+				INFOPLIST_FILE = "My Recipe Book/My Recipe Book-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F2FEE17D17B80762007771CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/My Recipe Book.app/My Recipe Book";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "My Recipe Book/My Recipe Book-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "My Recipe BookTests/My Recipe BookTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F2FEE17E17B80762007771CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/My Recipe Book.app/My Recipe Book";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "My Recipe Book/My Recipe Book-Prefix.pch";
+				INFOPLIST_FILE = "My Recipe BookTests/My Recipe BookTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2FEE13F17B80762007771CF /* Build configuration list for PBXProject "My Recipe Book" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2FEE17717B80762007771CF /* Debug */,
+				F2FEE17817B80762007771CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2FEE17917B80762007771CF /* Build configuration list for PBXNativeTarget "My Recipe Book" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2FEE17A17B80762007771CF /* Debug */,
+				F2FEE17B17B80762007771CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F2FEE17C17B80762007771CF /* Build configuration list for PBXNativeTarget "My Recipe BookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2FEE17D17B80762007771CF /* Debug */,
+				F2FEE17E17B80762007771CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2FEE13C17B80762007771CF /* Project object */;
+}
