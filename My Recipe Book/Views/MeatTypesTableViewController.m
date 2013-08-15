@@ -1,18 +1,18 @@
 //
-//  FoodTypesTableViewController.m
+//  MeatTypesTableViewController.m
 //  My Recipe Book
 //
-//  Created by Dmytro Gladkyi on 8/11/13.
+//  Created by Dmytro Gladkyi on 8/14/13.
 //  Copyright (c) 2013 Dmytro Gladkyi. All rights reserved.
 //
 
-#import "FoodTypesTableViewController.h"
+#import "MeatTypesTableViewController.h"
 
-@interface FoodTypesTableViewController ()
+@interface MeatTypesTableViewController ()
 
 @end
 
-@implementation FoodTypesTableViewController
+@implementation MeatTypesTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -44,14 +44,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
+    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return 3;
 }
-
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -62,10 +65,12 @@
     
     return cell;
 }
-*/
-/*
+ */
 
-/*
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"showRecipesListFromMeat" sender:self];
+}
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -74,7 +79,5 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-
- */
 
 @end

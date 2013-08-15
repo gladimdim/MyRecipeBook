@@ -1,0 +1,24 @@
+
+/* Class = "IBUILabel"; text = "Fried"; ObjectID = "32V-Nm-wDB"; */
+"32V-Nm-wDB.text" = "Fried";
+
+/* Class = "IBUILabel"; text = "Soups"; ObjectID = "Ayf-S4-J67"; */
+"Ayf-S4-J67.text" = "Soups";
+
+/* Class = "IBUILabel"; text = "Steamed"; ObjectID = "GAN-cS-aPi"; */
+"GAN-cS-aPi.text" = "Steamed";
+
+/* Class = "IBUILabel"; text = "Deserts"; ObjectID = "NEj-2v-hV0"; */
+"NEj-2v-hV0.text" = "Deserts";
+
+/* Class = "IBUILabel"; text = "Recipes with meat"; ObjectID = "Vno-Pz-Xgf"; */
+"Vno-Pz-Xgf.text" = "Recipes with meat";
+
+/* Class = "IBUILabel"; text = "Boiled"; ObjectID = "XtY-oJ-GUA"; */
+"XtY-oJ-GUA.text" = "Boiled";
+
+/* Class = "IBUINavigationItem"; title = "Food Types"; ObjectID = "nsr-8H-94P"; */
+"nsr-8H-94P.title" = "Food Types";
+
+/* Class = "IBUILabel"; text = "Salads"; ObjectID = "vgH-k5-RTx"; */
+"vgH-k5-RTx.text" = "Salads";
