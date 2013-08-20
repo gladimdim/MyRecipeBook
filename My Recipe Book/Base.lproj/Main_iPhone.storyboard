@@ -175,44 +175,73 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Meat" id="tU9-Ni-DUE"/>
                     <connections>
-                        <segue destination="bl8-ql-5FT" kind="push" identifier="showRecipesListFromMeat" id="DMT-WD-ZFD"/>
+                        <segue destination="XfK-8B-Zus" kind="push" identifier="showRecipesListFromMeat" id="3mV-If-8jv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ge-7h-Xji" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="884" y="49"/>
         </scene>
-        <!--Recipe View Controller-->
-        <scene sceneID="PB1-DB-mX6">
+        <!--Table View Controller-->
+        <scene sceneID="ItI-dR-mLR">
             <objects>
-                <viewController id="bl8-ql-5FT" customClass="RecipeViewController" sceneMemberID="viewController">
+                <tableViewController id="XfK-8B-Zus" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8iY-O4-hUF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="VqG-jp-4vx">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="VqG-jp-4vx" id="DZ6-mo-gFz">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XfK-8B-Zus" id="gsS-p8-YFe"/>
+                            <outlet property="delegate" destination="XfK-8B-Zus" id="395-4m-pzS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="FMT-XK-eY6"/>
+                    <connections>
+                        <segue destination="YMA-bv-NHj" kind="push" identifier="showRecipe" id="aXx-X6-4tX"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vbn-wD-8OB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1296" y="49"/>
+        </scene>
+        <!--Recipe View Controller-->
+        <scene sceneID="p6J-H6-2Kg">
+            <objects>
+                <viewController id="YMA-bv-NHj" customClass="RecipeViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="x6q-uG-4xs"/>
-                        <viewControllerLayoutGuide type="bottom" id="UA8-6Y-iRq"/>
+                        <viewControllerLayoutGuide type="top" id="tXI-hm-W55"/>
+                        <viewControllerLayoutGuide type="bottom" id="lWW-83-xcM"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="iiC-hi-Ar0">
+                    <view key="view" contentMode="scaleToFill" id="pON-VZ-bSL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZo-Tv-Pje">
-                                <rect key="frame" x="110" y="148" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtB-9g-5Vm">
+                                <rect key="frame" x="186" y="518" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Add">
+                                <state key="normal" title="Add Reminder">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="recipeReminderAddPressed:" destination="bl8-ql-5FT" eventType="touchUpInside" id="t2p-Ai-GON"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="V3R-QV-cRC"/>
+                    <navigationItem key="navigationItem" id="Vr5-Xr-NDy"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hcG-pg-i0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g9u-jv-oZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1302" y="49"/>
+            <point key="canvasLocation" x="1694" y="49"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nKf-gJ-fsc">
@@ -230,7 +259,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lzi-MZ-QP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="85" y="75"/>
+            <point key="canvasLocation" x="83" y="49"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

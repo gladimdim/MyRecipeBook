@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F24899B617BC0E39009AACF7 /* MeatTypesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24899B517BC0E39009AACF7 /* MeatTypesTableViewController.m */; };
 		F24899B917BC1874009AACF7 /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24899B817BC1874009AACF7 /* RecipeViewController.m */; };
+		F25DF38B17C3F4BE000A27E6 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38A17C3F4BE000A27E6 /* Recipe.m */; };
+		F25DF38F17C3F583000A27E6 /* Ingridient.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38E17C3F583000A27E6 /* Ingridient.m */; };
 		F2FEE14817B80762007771CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14717B80762007771CF /* Foundation.framework */; };
 		F2FEE14A17B80762007771CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14917B80762007771CF /* CoreGraphics.framework */; };
 		F2FEE14C17B80762007771CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14B17B80762007771CF /* UIKit.framework */; };
@@ -43,6 +45,10 @@
 		F24899B517BC0E39009AACF7 /* MeatTypesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeatTypesTableViewController.m; path = Views/MeatTypesTableViewController.m; sourceTree = "<group>"; };
 		F24899B717BC1874009AACF7 /* RecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipeViewController.h; path = Views/RecipeViewController.h; sourceTree = "<group>"; };
 		F24899B817BC1874009AACF7 /* RecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipeViewController.m; path = Views/RecipeViewController.m; sourceTree = "<group>"; };
+		F25DF38917C3F4BE000A27E6 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recipe.h; path = Classes/Recipe.h; sourceTree = "<group>"; };
+		F25DF38A17C3F4BE000A27E6 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recipe.m; path = Classes/Recipe.m; sourceTree = "<group>"; };
+		F25DF38D17C3F583000A27E6 /* Ingridient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ingridient.h; path = Classes/Ingridient.h; sourceTree = "<group>"; };
+		F25DF38E17C3F583000A27E6 /* Ingridient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ingridient.m; path = Classes/Ingridient.m; sourceTree = "<group>"; };
 		F2FEE14417B80762007771CF /* My Recipe Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Recipe Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2FEE14717B80762007771CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F2FEE14917B80762007771CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -91,6 +97,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F25DF38C17C3F4C5000A27E6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F25DF38917C3F4BE000A27E6 /* Recipe.h */,
+				F25DF38A17C3F4BE000A27E6 /* Recipe.m */,
+				F25DF38D17C3F583000A27E6 /* Ingridient.h */,
+				F25DF38E17C3F583000A27E6 /* Ingridient.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		F2FEE13B17B80762007771CF = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +141,7 @@
 		F2FEE14D17B80762007771CF /* My Recipe Book */ = {
 			isa = PBXGroup;
 			children = (
+				F25DF38C17C3F4C5000A27E6 /* Classes */,
 				F2FEE17F17B80D72007771CF /* Views */,
 				F2FEE15617B80762007771CF /* RBAppDelegate.h */,
 				F2FEE15717B80762007771CF /* RBAppDelegate.m */,
@@ -282,8 +300,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2FEE15817B80762007771CF /* RBAppDelegate.m in Sources */,
+				F25DF38B17C3F4BE000A27E6 /* Recipe.m in Sources */,
 				F2FEE18517B81EF2007771CF /* FoodTypesTableViewController.m in Sources */,
 				F24899B917BC1874009AACF7 /* RecipeViewController.m in Sources */,
+				F25DF38F17C3F583000A27E6 /* Ingridient.m in Sources */,
 				F24899B617BC0E39009AACF7 /* MeatTypesTableViewController.m in Sources */,
 				F2FEE15417B80762007771CF /* main.m in Sources */,
 				F2FEE16117B80762007771CF /* RBViewController.m in Sources */,
