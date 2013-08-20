@@ -79,6 +79,7 @@
 - (IBAction)recipeReminderAddPressed:(id)sender {
     EKEventEditViewController *viewController = [[EKEventEditViewController alloc] init];
     viewController.event = self.event;
+    viewController.eventStore = self.eventStore;
     [self presentViewController:viewController animated:YES completion:nil];
     viewController.editViewDelegate = self;
 }
