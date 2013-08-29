@@ -14,6 +14,8 @@
 @property EKEventStore *eventStore;
 @property EKCalendar *calendar;
 @property EKEvent *event;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UITableView *tableViewIngridients;
 @end
 
 @implementation RecipeViewController
@@ -32,6 +34,11 @@
     [super viewDidLoad];
     self.eventStore = [[EKEventStore alloc] init];
     [self checkAccessToCalendars];
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.scrollView.contentSize = CGSizeMake(640, 381);
 }
 
 -(void) requestAccess {

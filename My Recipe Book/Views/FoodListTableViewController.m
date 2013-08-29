@@ -1,19 +1,21 @@
 //
-//  MeatTypesTableViewController.m
+//  FoodTypesTableViewController.m
 //  My Recipe Book
 //
-//  Created by Dmytro Gladkyi on 8/14/13.
+//  Created by Dmytro Gladkyi on 8/11/13.
 //  Copyright (c) 2013 Dmytro Gladkyi. All rights reserved.
 //
 
+#import "FoodListTableViewController.h"
+#import "FoodTypes.h"
 #import "FoodTypesTableViewController.h"
-#import "RecipesListTableViewController.h"
 
-@interface FoodTypesTableViewController ()
-@property NSArray *arrayOfExactTypes;
+@interface FoodListTableViewController ()
+@property FoodTypes *foodTypes;
+@property NSArray *arrayOfFoodTypes;
 @end
 
-@implementation FoodTypesTableViewController
+@implementation FoodListTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,8 +28,8 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.title = [self.dictFood allKeys][0];
-    self.arrayOfExactTypes = [self.dictFood objectForKey:[self.dictFood allKeys][0]];
+    self.foodTypes = [[FoodTypes alloc] init];
+    self.arrayOfFoodTypes = [self.foodTypes generateFoodTypes];
 }
 
 - (void)viewDidLoad
@@ -51,42 +53,39 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return self.arrayOfExactTypes.count;
+    return self.arrayOfFoodTypes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"cellExactFood";
+    static NSString *CellIdentifier = @"cellFoodType";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    NSDictionary *dict = [self.arrayOfExactTypes objectAtIndex:indexPath.row];
+    NSDictionary *dict = (NSDictionary *) [self.arrayOfFoodTypes objectAtIndex:indexPath.row];
+    cell.textLabel.text = (NSString *) [dict allKeys][0];
     // Configure the cell...
-    cell.textLabel.text = [dict allKeys][0];
-    NSArray *arrayOfRecipes = (NSArray *) [dict objectForKey:[dict allKeys][0]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", arrayOfRecipes.count];
+    
     return cell;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"showRecipesList" sender:self];
+    [self performSegueWithIdentifier:@"showFoodTypes" sender:self];
 }
+
+
 
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    RecipesListTableViewController *recipeListVC = (RecipesListTableViewController *) [segue destinationViewController];
-    NSDictionary *dict = (NSDictionary *) [self.arrayOfExactTypes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
-    recipeListVC.arrayOfRecipes = [dict objectForKey:[dict allKeys][0]];
+    NSDictionary *dict = (NSDictionary *) [self.arrayOfFoodTypes objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    FoodTypesTableViewController *foodVC = (FoodTypesTableViewController *) [segue destinationViewController];
+    foodVC.dictFood = dict;
 }
 
 @end

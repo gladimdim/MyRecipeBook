@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <EventKitUI/EventKitUI.h>
+#import "Recipe.h"
 
 @interface RecipeViewController : UIViewController <EKEventEditViewDelegate>
-
+@property Recipe *recipe;
 @end
