@@ -26,6 +26,7 @@
     recipeFriedMeat.arrayOfIngridients = @[ingrMeat, ingrEggs];
     recipeFriedMeat.name = @"Smashed meat";
     recipeFriedMeat.description = @"Smashed meat by the hammer";
+    recipeFriedMeat.stepsToCook = @"Take meat\n Take pan\n Put meat into pan\n";
     NSDictionary *fried = @{@"Fried": @[recipeFriedMeat, recipeFriedMeat]};
     NSDictionary *boiled = @{@"Boiled": @[recipeFriedMeat]};
     NSArray *meatTypes = @[fried, boiled];

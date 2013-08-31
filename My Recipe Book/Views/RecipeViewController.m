@@ -9,6 +9,8 @@
 #import "RecipeViewController.h"
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
+#import "IngridientsTableView.h"
+#import "Ingridient.h"
 
 @interface RecipeViewController ()
 @property EKEventStore *eventStore;
@@ -16,6 +18,9 @@
 @property EKEvent *event;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UITableView *tableViewIngridients;
+@property (strong, nonatomic) IngridientsTableView *tableViewIngridientsDelegate;
+@property (strong, nonatomic) IBOutlet UILabel *labelRecipeName;
+@property (strong, nonatomic) IBOutlet UITextView *textViewStepsToCook;
 @end
 
 @implementation RecipeViewController
@@ -34,11 +39,27 @@
     [super viewDidLoad];
     self.eventStore = [[EKEventStore alloc] init];
     [self checkAccessToCalendars];
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tableViewIngridientsDelegate = [[IngridientsTableView alloc] init];
+    self.tableViewIngridientsDelegate.recipe = self.recipe;
+    self.tableViewIngridients.delegate = self.tableViewIngridientsDelegate;
+    self.tableViewIngridients.dataSource = self.tableViewIngridientsDelegate;
+    self.labelRecipeName.text = self.recipe.name;
+    self.textViewStepsToCook.text = self.recipe.stepsToCook;
+    [self.tableViewIngridients reloadData];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.scrollView.contentSize = CGSizeMake(640, 381);
+
+}
+
+-(void) viewDidLayoutSubviews {
+    self.scrollView.contentSize = CGSizeMake(640, 361);
 }
 
 -(void) requestAccess {
@@ -73,16 +94,16 @@
 
 -(void) prepareEvent {
     self.event = [EKEvent eventWithEventStore:self.eventStore];
-    self.event.title = @"Prepare meat";
-    self.event.notes = @"Boil meat etc";
+    self.event.title = @"Prepare meal";
+    NSMutableString *notes = [NSMutableString string];
+    for (int i = 0; i < self.recipe.arrayOfIngridients.count; i++) {
+        Ingridient *ingr = [self.recipe.arrayOfIngridients objectAtIndex:i];
+        [notes appendString:[NSString stringWithFormat:@"%@ %@ %@\n", ingr.nameIngridient, [ingr.amount stringValue], ingr.unitOfMeasure]];
+    }
+    self.event.notes = notes;
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (IBAction)recipeReminderAddPressed:(id)sender {
     EKEventEditViewController *viewController = [[EKEventEditViewController alloc] init];
     viewController.event = self.event;
@@ -91,8 +112,13 @@
     viewController.editViewDelegate = self;
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 -(void) eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
-    NSLog(@"kuku");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

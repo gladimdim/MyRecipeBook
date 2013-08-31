@@ -12,5 +12,5 @@
 @property NSArray *arrayOfIngridients;
 @property NSString *name;
 @property NSString *description;
-@property NSArray *stepsToCook;
+@property NSString *stepsToCook;
 @end

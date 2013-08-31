@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Recipe.h"
 
 @interface IngridientsTableView : UITableView <UITableViewDataSource, UITableViewDelegate>
-
+@property Recipe *recipe;
 @end

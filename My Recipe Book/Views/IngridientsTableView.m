@@ -7,6 +7,7 @@
 //
 
 #import "IngridientsTableView.h"
+#import "Ingridient.h"
 
 @implementation IngridientsTableView
 
@@ -27,6 +28,32 @@
     // Drawing code
 }
 */
+
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return self.recipe.arrayOfIngridients.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"cellIngridient";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    Ingridient *ingridient = [self.recipe.arrayOfIngridients objectAtIndex:indexPath.row];
+    // Configure the cell...
+    cell.textLabel.text = ingridient.nameIngridient;
+    NSString *detailText = [NSString stringWithFormat:@"%@ %@", [ingridient.amount stringValue], ingridient.unitOfMeasure];
+    cell.detailTextLabel.text = detailText;
+    return cell;
+}
 
 
 @end
