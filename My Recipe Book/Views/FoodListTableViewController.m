@@ -12,7 +12,7 @@
 
 @interface FoodListTableViewController ()
 @property FoodTypes *foodTypes;
-@property NSArray *arrayOfFoodTypes;
+@property NSMutableArray *arrayOfFoodTypes;
 @end
 
 @implementation FoodListTableViewController
@@ -28,8 +28,10 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.foodTypes = [[FoodTypes alloc] init];
-    self.arrayOfFoodTypes = [self.foodTypes generateFoodTypes];
+    if (self.foodTypes == nil) {
+        self.foodTypes = [[FoodTypes alloc] init];
+        self.arrayOfFoodTypes = [self.foodTypes generateFoodTypes];
+    }
 }
 
 - (void)viewDidLoad
@@ -99,7 +101,7 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSDictionary *dict = (NSDictionary *) [self.arrayOfFoodTypes objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    NSMutableDictionary *dict = (NSMutableDictionary *) [self.arrayOfFoodTypes objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     FoodTypesTableViewController *foodVC = (FoodTypesTableViewController *) [segue destinationViewController];
     foodVC.dictFood = dict;
 }

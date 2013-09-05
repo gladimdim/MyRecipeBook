@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface FoodTypes : NSObject
--(NSArray *) generateFoodTypes;
+-(NSMutableArray *) generateFoodTypes;
+@property NSMutableArray *foodTypes;
 @end

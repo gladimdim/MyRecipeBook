@@ -10,8 +10,11 @@
 #import "Recipe.h"
 #import "Ingridient.h"
 
+@interface FoodTypes()
+@end
+
 @implementation FoodTypes
--(NSArray *) generateFoodTypes {
+-(NSMutableArray *) generateFoodTypes {
     Ingridient *ingrMeat = [[Ingridient alloc] init];
     ingrMeat.nameIngridient = @"Meat";
     ingrMeat.amount = @1;
@@ -23,16 +26,16 @@
     ingrEggs.unitOfMeasure = @"units";
                             
     Recipe *recipeFriedMeat = [[Recipe alloc] init];
-    recipeFriedMeat.arrayOfIngridients = @[ingrMeat, ingrEggs];
+    recipeFriedMeat.arrayOfIngridients = [NSMutableArray arrayWithObjects:ingrMeat, ingrEggs, nil];
     recipeFriedMeat.name = @"Smashed meat";
     recipeFriedMeat.description = @"Smashed meat by the hammer";
     recipeFriedMeat.stepsToCook = @"Take meat\n Take pan\n Put meat into pan\n";
-    NSDictionary *fried = @{@"Fried": @[recipeFriedMeat, recipeFriedMeat]};
-    NSDictionary *boiled = @{@"Boiled": @[recipeFriedMeat]};
-    NSArray *meatTypes = @[fried, boiled];
-    NSDictionary *dictMeat = @{@"Meat": meatTypes};
-    NSArray *arrayOfFoodTypes = @[dictMeat];
-    return arrayOfFoodTypes;
+    NSMutableDictionary *fried = [NSMutableDictionary dictionaryWithObject:@[recipeFriedMeat, recipeFriedMeat] forKey:@"Fried"];
+    NSMutableDictionary *boiled = [NSMutableDictionary dictionaryWithObject:@[recipeFriedMeat] forKey:@"Boiled"];
+    NSMutableArray *meatTypes = [NSMutableArray arrayWithObjects:fried, boiled, nil];
+    NSMutableDictionary *dictMeat = [NSMutableDictionary dictionaryWithObject:meatTypes forKey:@"Meat"];
+    self.foodTypes = [NSMutableArray arrayWithObject:dictMeat];
+    return self.foodTypes;
 }
 
 @end

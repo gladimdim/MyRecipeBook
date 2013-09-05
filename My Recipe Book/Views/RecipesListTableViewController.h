@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface RecipesListTableViewController : UITableViewController
-@property NSArray *arrayOfRecipes;
+@property NSMutableArray *arrayOfRecipes;
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Recipe : NSObject
-@property NSArray *arrayOfIngridients;
+@property NSMutableArray *arrayOfIngridients;
 @property NSString *name;
 @property NSString *description;
 @property NSString *stepsToCook;

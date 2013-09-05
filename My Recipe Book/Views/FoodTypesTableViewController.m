@@ -11,7 +11,7 @@
 
 @interface FoodTypesTableViewController ()
 - (IBAction)btnEditPressed:(id)sender;
-@property NSArray *arrayOfExactTypes;
+@property NSMutableArray *arrayOfExactTypes;
 @end
 
 @implementation FoodTypesTableViewController
@@ -79,14 +79,27 @@
     [self performSegueWithIdentifier:@"showRecipesList" sender:self];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [self.arrayOfExactTypes removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView reloadData];
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
+}
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     RecipesListTableViewController *recipeListVC = (RecipesListTableViewController *) [segue destinationViewController];
-    NSDictionary *dict = (NSDictionary *) [self.arrayOfExactTypes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
-    recipeListVC.arrayOfRecipes = [dict objectForKey:[dict allKeys][0]];
+    NSMutableDictionary *dict = (NSMutableDictionary *) [self.arrayOfExactTypes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+    recipeListVC.arrayOfRecipes = (NSMutableArray *) [dict objectForKey:[dict allKeys][0]];
 }
 
 @end

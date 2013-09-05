@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FoodTypesTableViewController : UITableViewController
-@property NSDictionary *dictFood;
+@property NSMutableDictionary *dictFood;
 @end
