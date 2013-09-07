@@ -11,7 +11,7 @@
 #import "FoodTypesTableViewController.h"
 #import "FoodTypesDocument.h"
 
-@interface FoodListTableViewController ()
+@interface FoodListTableViewController () <UIAlertViewDelegate>
 @property FoodTypes *foodTypes;
 @property FoodTypesDocument *docFoodTypes;
 @end
@@ -54,9 +54,7 @@
     self.foodTypes = [[FoodTypes alloc] init];
     self.foodTypes.arrayFoodCategories = [self.foodTypes generateFoodTypes];
     self.docFoodTypes.foodTypes = self.foodTypes;
-    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-        NSLog(@"Saved new file: %@", success ? @"YES" : @"NO");
-    }];
+    [self dataModelChanged];
 }
 
 - (void)viewDidLoad
@@ -104,22 +102,54 @@
 }
 
 -(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
     if (indexPath.row == self.foodTypes.arrayFoodCategories.count - 1) {
         return UITableViewCellEditingStyleInsert;
     }
-    return UITableViewCellEditingStyleInsert;
+    return UITableViewCellEditingStyleDelete;
 }
 
 -(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleInsert) {
-        
+        NSLog(@"inserted");
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Provide name", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:@"OK", nil];
+        alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [alertView show];
     }
-    else {
-        
+    else if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.foodTypes.arrayFoodCategories removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self dataModelChanged];
     }
 }
 
+#pragma mark - UIAlertView delegate methods
+-(void) alertViewCancel:(UIAlertView *)alertView {
+    [self.tableView endEditing:YES];
+}
 
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSString *typeName = [alertView textFieldAtIndex:0].text;
+        if (typeName) {
+            [self.foodTypes addCategory:typeName];
+            [self dataModelChanged];
+        }
+    }
+}
+
+-(void) dataModelChanged {
+    self.docFoodTypes.foodTypes = self.foodTypes;
+    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+        if (success) {
+            NSLog(@"Doc saved");
+        }
+        else {
+            NSLog(@"DOc was not saved");
+        }
+    }];
+    [self.tableView reloadData];
+}
 
 #pragma mark - Navigation
 

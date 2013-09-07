@@ -49,4 +49,11 @@
     return self;
 }
 
+-(void) addCategory:(NSString *)categoryName {
+    if (categoryName) {
+        NSMutableDictionary *dictToAdd = [NSMutableDictionary dictionaryWithObject:[NSMutableArray array] forKey:categoryName];
+        [self.arrayFoodCategories addObject:dictToAdd];
+    }
+}
+
 @end

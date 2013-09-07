@@ -10,5 +10,6 @@
 
 @interface FoodTypes : NSObject <NSCoding>
 -(NSMutableArray *) generateFoodTypes;
+-(void) addCategory:(NSString *) categoryName;
 @property NSMutableArray *arrayFoodCategories;
 @end
