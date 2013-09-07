@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Recipe : NSObject
+@interface Recipe : NSObject <NSCoding>
 @property NSMutableArray *arrayOfIngridients;
 @property NSString *name;
 @property NSString *description;

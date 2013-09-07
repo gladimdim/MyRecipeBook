@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F22066AA17DA6109004E4F72 /* FoodTypesDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F22066A917DA6109004E4F72 /* FoodTypesDocument.m */; };
 		F24899B617BC0E39009AACF7 /* FoodTypesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24899B517BC0E39009AACF7 /* FoodTypesTableViewController.m */; };
 		F24899B917BC1874009AACF7 /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24899B817BC1874009AACF7 /* RecipeViewController.m */; };
 		F25DF38B17C3F4BE000A27E6 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38A17C3F4BE000A27E6 /* Recipe.m */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F22066A817DA6109004E4F72 /* FoodTypesDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodTypesDocument.h; path = Classes/FoodTypesDocument.h; sourceTree = "<group>"; };
+		F22066A917DA6109004E4F72 /* FoodTypesDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodTypesDocument.m; path = Classes/FoodTypesDocument.m; sourceTree = "<group>"; };
 		F24899B317BC0CFD009AACF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		F24899B417BC0E39009AACF7 /* FoodTypesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodTypesTableViewController.h; path = Views/FoodTypesTableViewController.h; sourceTree = "<group>"; };
 		F24899B517BC0E39009AACF7 /* FoodTypesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodTypesTableViewController.m; path = Views/FoodTypesTableViewController.m; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				F25DF38E17C3F583000A27E6 /* Ingridient.m */,
 				F2C47A4617CE712900A42C4B /* FoodTypes.h */,
 				F2C47A4717CE712900A42C4B /* FoodTypes.m */,
+				F22066A817DA6109004E4F72 /* FoodTypesDocument.h */,
+				F22066A917DA6109004E4F72 /* FoodTypesDocument.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -324,6 +329,7 @@
 			files = (
 				F2FEE15817B80762007771CF /* RBAppDelegate.m in Sources */,
 				F2C47A4817CE712900A42C4B /* FoodTypes.m in Sources */,
+				F22066AA17DA6109004E4F72 /* FoodTypesDocument.m in Sources */,
 				F25DF38B17C3F4BE000A27E6 /* Recipe.m in Sources */,
 				F2FEE18517B81EF2007771CF /* FoodListTableViewController.m in Sources */,
 				F24899B917BC1874009AACF7 /* RecipeViewController.m in Sources */,

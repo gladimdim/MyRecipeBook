@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FoodTypesDocument.h"
 
 @interface FoodTypesTableViewController : UITableViewController
 @property NSMutableDictionary *dictFood;
+@property FoodTypesDocument *docFoodTypes;
 @end

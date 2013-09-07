@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Ingridient : NSObject
+@interface Ingridient : NSObject <NSCoding>
 @property NSString *nameIngridient;
 @property NSNumber *amount;
 @property NSString *unitOfMeasure;

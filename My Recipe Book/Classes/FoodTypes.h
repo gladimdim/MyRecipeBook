@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FoodTypes : NSObject
+@interface FoodTypes : NSObject <NSCoding>
 -(NSMutableArray *) generateFoodTypes;
-@property NSMutableArray *foodTypes;
+@property NSMutableArray *arrayFoodCategories;
 @end

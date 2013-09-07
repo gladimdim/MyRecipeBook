@@ -34,8 +34,19 @@
     NSMutableDictionary *boiled = [NSMutableDictionary dictionaryWithObject:@[recipeFriedMeat] forKey:@"Boiled"];
     NSMutableArray *meatTypes = [NSMutableArray arrayWithObjects:fried, boiled, nil];
     NSMutableDictionary *dictMeat = [NSMutableDictionary dictionaryWithObject:meatTypes forKey:@"Meat"];
-    self.foodTypes = [NSMutableArray arrayWithObject:dictMeat];
-    return self.foodTypes;
+    self.arrayFoodCategories = [NSMutableArray arrayWithObject:dictMeat];
+    return self.arrayFoodCategories;
+}
+
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.arrayFoodCategories forKey:@"foodTypes"];
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        self.arrayFoodCategories = [aDecoder decodeObjectForKey:@"foodTypes"];
+    }
+    return self;
 }
 
 @end

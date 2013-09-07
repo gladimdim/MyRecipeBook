@@ -9,10 +9,11 @@
 #import "FoodListTableViewController.h"
 #import "FoodTypes.h"
 #import "FoodTypesTableViewController.h"
+#import "FoodTypesDocument.h"
 
 @interface FoodListTableViewController ()
 @property FoodTypes *foodTypes;
-@property NSMutableArray *arrayOfFoodTypes;
+@property FoodTypesDocument *docFoodTypes;
 @end
 
 @implementation FoodListTableViewController
@@ -29,9 +30,33 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (self.foodTypes == nil) {
-        self.foodTypes = [[FoodTypes alloc] init];
-        self.arrayOfFoodTypes = [self.foodTypes generateFoodTypes];
+        [self initFoodTypes];
     }
+}
+
+-(void) initFoodTypes {
+    NSURL *baseURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *docURL = [NSURL URLWithString:[[baseURL absoluteString]  stringByAppendingString:@"foodTypes"]];
+    self.docFoodTypes = [[FoodTypesDocument alloc] initWithFileURL:docURL];
+    [self.docFoodTypes openWithCompletionHandler:^(BOOL success) {
+        if (success) {
+            NSLog(@"opened");
+            self.foodTypes = self.docFoodTypes.foodTypes;
+            [self.tableView reloadData];
+        }
+        else {
+            [self initNewFileWithDummyData];
+        }
+    }];
+}
+
+-(void) initNewFileWithDummyData {
+    self.foodTypes = [[FoodTypes alloc] init];
+    self.foodTypes.arrayFoodCategories = [self.foodTypes generateFoodTypes];
+    self.docFoodTypes.foodTypes = self.foodTypes;
+    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+        NSLog(@"Saved new file: %@", success ? @"YES" : @"NO");
+    }];
 }
 
 - (void)viewDidLoad
@@ -60,14 +85,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrayOfFoodTypes.count;
+    return self.foodTypes.arrayFoodCategories.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cellFoodType";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    NSDictionary *dict = (NSDictionary *) [self.arrayOfFoodTypes objectAtIndex:indexPath.row];
+    NSDictionary *dict = (NSDictionary *) [self.foodTypes.arrayFoodCategories objectAtIndex:indexPath.row];
     cell.textLabel.text = (NSString *) [dict allKeys][0];
     // Configure the cell...
     
@@ -79,7 +104,7 @@
 }
 
 -(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == self.arrayOfFoodTypes.count - 1) {
+    if (indexPath.row == self.foodTypes.arrayFoodCategories.count - 1) {
         return UITableViewCellEditingStyleInsert;
     }
     return UITableViewCellEditingStyleInsert;
@@ -101,9 +126,10 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSMutableDictionary *dict = (NSMutableDictionary *) [self.arrayOfFoodTypes objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    NSMutableDictionary *dict = (NSMutableDictionary *) [self.foodTypes.arrayFoodCategories objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     FoodTypesTableViewController *foodVC = (FoodTypesTableViewController *) [segue destinationViewController];
     foodVC.dictFood = dict;
+    foodVC.docFoodTypes = self.docFoodTypes;
 }
 
 @end
