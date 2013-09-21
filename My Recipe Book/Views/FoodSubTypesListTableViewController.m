@@ -8,9 +8,9 @@
 
 #import "FoodSubTypesListTableViewController.h"
 #import "RecipesListTableViewController.h"
+#import "FoodSubType.h"
 
 @interface FoodSubTypesListTableViewController ()
-@property NSMutableArray *arrayOfSubTypes;
 @end
 
 @implementation FoodSubTypesListTableViewController
@@ -26,8 +26,6 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.title = [self.dictFood allKeys][0];
-    self.arrayOfSubTypes = [self.dictFood objectForKey:[self.dictFood allKeys][0]];
 }
 
 - (void)viewDidLoad
@@ -65,18 +63,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrayOfSubTypes ? self.arrayOfSubTypes.count : 0;
+    return self.foodType.arrayOfSubTypes ? self.foodType.arrayOfSubTypes.count : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cellExactFood";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    NSDictionary *dict = [self.arrayOfSubTypes objectAtIndex:indexPath.row];
+    FoodSubType *foodSubType = [self.foodType.arrayOfSubTypes objectAtIndex:indexPath.row];
     // Configure the cell...
-    cell.textLabel.text = [dict allKeys][0];
-    NSArray *arrayOfRecipes = (NSArray *) [dict objectForKey:[dict allKeys][0]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", arrayOfRecipes.count];
+    cell.textLabel.text = foodSubType.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", foodSubType.arrayOfRecipes.count];
     return cell;
 }
 
@@ -88,7 +85,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [self.arrayOfSubTypes removeObjectAtIndex:indexPath.row];
+        [self.foodType.arrayOfSubTypes removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView reloadData];
         
@@ -113,7 +110,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     RecipesListTableViewController *recipeListVC = (RecipesListTableViewController *) [segue destinationViewController];
-    NSMutableDictionary *dict = (NSMutableDictionary *) [self.arrayOfSubTypes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+    NSMutableDictionary *dict = (NSMutableDictionary *) [self.foodType.arrayOfSubTypes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
     recipeListVC.arrayOfRecipes = (NSMutableArray *) [dict objectForKey:[dict allKeys][0]];
 }
 
@@ -131,9 +128,9 @@
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        NSString *typeName = [alertView textFieldAtIndex:0].text;
-        if (typeName) {
-           // [self.foodTypes addCategory:typeName];
+        NSString *subTypeName = [alertView textFieldAtIndex:0].text;
+        if (subTypeName) {
+            [self.foodType addSubType:subTypeName];
             [self dataModelChanged];
         }
     }

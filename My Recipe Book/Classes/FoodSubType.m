@@ -12,11 +12,13 @@
 @implementation FoodSubType
 -(void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.arrayOfRecipes forKey:@"arrayOfRecipes"];
+    [aCoder encodeObject:self.name forKey:@"name"];
 }
 
 -(id) initWithCoder:(NSCoder *)aDecoder {
     if (self = [super init]) {
         self.arrayOfRecipes = [aDecoder decodeObjectForKey:@"arrayOfRecipes"];
+        self.name = [aDecoder decodeObjectForKey:@"name"];
     }
     return self;
 }

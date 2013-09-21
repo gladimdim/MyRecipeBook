@@ -9,4 +9,5 @@
 #import <Foundation/Foundation.h>
 @interface FoodSubType : NSObject
 @property NSMutableArray *arrayOfRecipes;
+@property NSString *name;
 @end

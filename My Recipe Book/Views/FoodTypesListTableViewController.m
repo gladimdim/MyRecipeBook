@@ -43,8 +43,7 @@
             NSLog(@"opened");
             self.recipeBook = self.docFoodTypes.recipeBook;
             if (self.recipeBook == nil) {
-                self.recipeBook = [[RecipeBook alloc] init];
-                self.recipeBook.arrayOfFoodTypes = [NSMutableArray array];
+                [self initNewFileWithDummyData];
             }
             [self.tableView reloadData];
         }
@@ -57,10 +56,6 @@
 -(void) initNewFileWithDummyData {
     self.recipeBook = [[RecipeBook alloc] init];
     self.recipeBook.arrayOfFoodTypes = [NSMutableArray array];
-   /* self.foodTypes = [[FoodType alloc] init];
-    self.foodTypes.arrayFoodTypes = [self.foodTypes generateFoodTypes];
-    self.docFoodTypes.foodTypes = self.foodTypes;
-    [self dataModelChanged];*/
 }
 
 -(void) setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -106,8 +101,8 @@
 {
     static NSString *CellIdentifier = @"cellFoodType";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    NSDictionary *dict = (NSDictionary *) [self.recipeBook.arrayOfFoodTypes objectAtIndex:indexPath.row];
-    cell.textLabel.text = (NSString *) [dict allKeys][0];
+    FoodType *foodType = (FoodType *) [self.recipeBook.arrayOfFoodTypes objectAtIndex:indexPath.row];
+    cell.textLabel.text = foodType.name;
     // Configure the cell...
     
     return cell;
@@ -151,7 +146,7 @@
 {
     NSMutableDictionary *dict = (NSMutableDictionary *) [self.recipeBook.arrayOfFoodTypes objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     FoodSubTypesListTableViewController *foodVC = (FoodSubTypesListTableViewController *) [segue destinationViewController];
-    foodVC.dictFood = dict;
+    foodVC.foodType = dict;
     foodVC.docFoodTypes = self.docFoodTypes;
 }
 

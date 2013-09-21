@@ -23,8 +23,11 @@
 
 -(void) addFoodType:(NSString *)foodTypeName {
     if (foodTypeName) {
-        NSMutableDictionary *dictToAdd = [NSMutableDictionary dictionaryWithObject:[NSMutableArray array] forKey:foodTypeName];
-        [self.arrayOfFoodTypes addObject:dictToAdd];
+        FoodType *foodType = [[FoodType alloc] init];
+        foodType.name = foodTypeName;
+        foodType.arrayOfSubTypes = [NSMutableArray array];
+        [self.arrayOfFoodTypes addObject:foodType];
     }
 }
+
 @end
