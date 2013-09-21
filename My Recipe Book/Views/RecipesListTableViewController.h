@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FoodSubType.h"
+#import "FoodTypesDocument.h"
 
 @interface RecipesListTableViewController : UITableViewController
-@property NSMutableArray *arrayOfRecipes;
+@property FoodSubType *foodSubType;
+@property FoodTypesDocument *docFoodTypes;
 @end

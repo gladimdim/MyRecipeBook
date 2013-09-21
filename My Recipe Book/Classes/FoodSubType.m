@@ -23,4 +23,11 @@
     return self;
 }
 
+-(void) addRecipeWithName:(NSString *)name {
+    Recipe *recipe = [[Recipe alloc] init];
+    recipe.name = name;
+    recipe.arrayOfIngridients = [NSMutableArray array];
+    [self.arrayOfRecipes addObject:recipe];
+}
+
 @end

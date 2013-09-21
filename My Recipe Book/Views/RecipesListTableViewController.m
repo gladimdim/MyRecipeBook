@@ -41,6 +41,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void) setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    if (editing) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Add", nil) style:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
+    }
+    else {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -51,14 +62,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.arrayOfRecipes.count;
+    return self.foodSubType.arrayOfRecipes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cellRecipe";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    Recipe *recipe = [self.arrayOfRecipes objectAtIndex:indexPath.row];
+    Recipe *recipe = [self.foodSubType.arrayOfRecipes objectAtIndex:indexPath.row];
     // Configure the cell...
     cell.textLabel.text = recipe.name;
     return cell;
@@ -70,28 +81,18 @@
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showRecipe"]) {
-        Recipe *recipe = (Recipe *) [self.arrayOfRecipes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        Recipe *recipe = (Recipe *) [self.foodSubType.arrayOfRecipes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
         RecipeViewController *recipeVC = (RecipeViewController *) segue.destinationViewController;
         recipeVC.recipe = recipe;
     }
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [self.arrayOfRecipes removeObjectAtIndex:indexPath.row];
+        [self.foodSubType.arrayOfRecipes removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView reloadData];
     }   
@@ -117,6 +118,39 @@
 }
 */
 
+-(void) dataModelChanged {
+    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+        if (success) {
+            NSLog(@"Saved file.");
+        }
+        else {
+            NSLog(@"File was not saved.");
+        }
+    }];
+    [self.tableView reloadData];
+}
+
+#pragma mark - Table edit
+-(void) addButtonPressed {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Provide name", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:@"OK", nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alertView show];
+}
+
+#pragma mark - UIAlertView delegate methods
+-(void) alertViewCancel:(UIAlertView *)alertView {
+    [self.tableView endEditing:YES];
+}
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSString *recipeName = [alertView textFieldAtIndex:0].text;
+        if (recipeName) {
+            [self.foodSubType addRecipeWithName:recipeName];
+            [self dataModelChanged];
+        }
+    }
+}
 
 
 

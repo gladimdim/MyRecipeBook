@@ -21,7 +21,7 @@
     return self;
 }
 
--(void) addFoodType:(NSString *)foodTypeName {
+-(void) addFoodTypeWithName:(NSString *)foodTypeName {
     if (foodTypeName) {
         FoodType *foodType = [[FoodType alloc] init];
         foodType.name = foodTypeName;

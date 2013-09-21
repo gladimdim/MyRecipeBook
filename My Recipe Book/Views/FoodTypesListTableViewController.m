@@ -166,7 +166,7 @@
     if (buttonIndex == 1) {
         NSString *typeName = [alertView textFieldAtIndex:0].text;
         if (typeName) {
-            [self.recipeBook addFoodType:typeName];
+            [self.recipeBook addFoodTypeWithName:typeName];
             [self dataModelChanged];
         }
     }

@@ -10,4 +10,5 @@
 @interface FoodSubType : NSObject
 @property NSMutableArray *arrayOfRecipes;
 @property NSString *name;
+-(void) addRecipeWithName:(NSString *) name;
 @end

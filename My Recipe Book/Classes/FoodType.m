@@ -26,7 +26,7 @@
     return self;
 }
 
--(void) addSubType:(NSString *)subTypeName {
+-(void) addSubTypeWithName:(NSString *)subTypeName {
     FoodSubType *foodSubType = [[FoodSubType alloc] init];
     foodSubType.name = subTypeName;
     foodSubType.arrayOfRecipes = [NSMutableArray array];

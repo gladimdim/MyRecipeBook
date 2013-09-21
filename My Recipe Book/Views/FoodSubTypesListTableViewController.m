@@ -102,6 +102,7 @@
             NSLog(@"File was not saved.");
         }
     }];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Navigation
@@ -110,8 +111,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     RecipesListTableViewController *recipeListVC = (RecipesListTableViewController *) [segue destinationViewController];
-    NSMutableDictionary *dict = (NSMutableDictionary *) [self.foodType.arrayOfSubTypes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
-    recipeListVC.arrayOfRecipes = (NSMutableArray *) [dict objectForKey:[dict allKeys][0]];
+    FoodSubType *foodSubType = (FoodSubType *) [self.foodType.arrayOfSubTypes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+    recipeListVC.foodSubType = foodSubType;
+    recipeListVC.docFoodTypes = self.docFoodTypes;
 }
 
 #pragma mark - Table edit
@@ -130,7 +132,7 @@
     if (buttonIndex == 1) {
         NSString *subTypeName = [alertView textFieldAtIndex:0].text;
         if (subTypeName) {
-            [self.foodType addSubType:subTypeName];
+            [self.foodType addSubTypeWithName:subTypeName];
             [self dataModelChanged];
         }
     }

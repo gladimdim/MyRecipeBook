@@ -12,5 +12,5 @@
 @interface FoodType : NSObject <NSCoding>
 @property NSMutableArray *arrayOfSubTypes;
 @property NSString *name;
--(void) addSubType:(NSString *)subTypeName;
+-(void) addSubTypeWithName:(NSString *)subTypeName;
 @end
