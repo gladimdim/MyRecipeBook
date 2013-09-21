@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FoodTypes.h"
+#import "RecipeBook.h"
 
 @interface FoodTypesDocument : UIDocument
-@property (strong) FoodTypes *foodTypes;
+@property (strong) RecipeBook *recipeBook;
 @end

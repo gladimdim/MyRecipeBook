@@ -12,12 +12,12 @@
 
 -(BOOL) loadFromContents:(id)contents ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError {
     if ([contents length] > 0) {
-        self.foodTypes = [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *) contents];
+        self.recipeBook = [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *) contents];
     }
     return YES;
 }
 
 -(id) contentsForType:(NSString *)typeName error:(NSError *__autoreleasing *)outError {
-    return [NSKeyedArchiver archivedDataWithRootObject:self.foodTypes];
+    return [NSKeyedArchiver archivedDataWithRootObject:self.recipeBook];
 }
 @end
