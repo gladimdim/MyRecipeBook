@@ -11,4 +11,5 @@
 
 @interface IngridientsTableView : UITableView <UITableViewDataSource, UITableViewDelegate>
 @property Recipe *recipe;
+@property (nonatomic, strong) void (^dataModelChanged) (BOOL);
 @end

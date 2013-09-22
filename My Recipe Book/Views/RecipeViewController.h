@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <EventKitUI/EventKitUI.h>
 #import "Recipe.h"
+#import "FoodTypesDocument.h"
 
 @interface RecipeViewController : UIViewController <EKEventEditViewDelegate>
 @property Recipe *recipe;
+@property FoodTypesDocument *docFoodTypes;
 @end

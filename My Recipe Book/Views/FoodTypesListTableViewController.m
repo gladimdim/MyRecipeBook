@@ -144,9 +144,9 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSMutableDictionary *dict = (NSMutableDictionary *) [self.recipeBook.arrayOfFoodTypes objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    FoodType *foodType = (FoodType *) [self.recipeBook.arrayOfFoodTypes objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     FoodSubTypesListTableViewController *foodVC = (FoodSubTypesListTableViewController *) [segue destinationViewController];
-    foodVC.foodType = dict;
+    foodVC.foodType = foodType;
     foodVC.docFoodTypes = self.docFoodTypes;
 }
 

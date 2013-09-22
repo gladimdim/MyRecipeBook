@@ -48,18 +48,38 @@
     self.tableViewIngridientsDelegate.recipe = self.recipe;
     self.tableViewIngridients.delegate = self.tableViewIngridientsDelegate;
     self.tableViewIngridients.dataSource = self.tableViewIngridientsDelegate;
+    __weak RecipeViewController *self_weak = self;
+    self.tableViewIngridientsDelegate.dataModelChanged = ^(BOOL changed) {
+        [self_weak dataModelChanged];
+    };
+
     self.labelRecipeName.text = self.recipe.name;
     self.textViewStepsToCook.text = self.recipe.stepsToCook;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.tableViewIngridients reloadData];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
 }
 
 -(void) viewDidLayoutSubviews {
     self.scrollView.contentSize = CGSizeMake(640, 361);
+}
+
+-(void) setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [self.tableViewIngridients setEditing:editing animated:animated];
+   /* if (editing) {
+        
+        Ingridient *ingr = [[Ingridient alloc] init];
+        ingr.nameIngridient = @"Kuku";
+        ingr.amount = @10;
+        ingr.unitOfMeasure = @"EA";
+        [self.recipe.arrayOfIngridients addObject:ingr];
+        self.recipe.stepsToCook = @"Cook me tender \n kuukuku";
+        [self dataModelChanged];
+    }*/
 }
 
 -(void) requestAccess {
@@ -101,7 +121,6 @@
         [notes appendString:[NSString stringWithFormat:@"%@ %@ %@\n", ingr.nameIngridient, [ingr.amount stringValue], ingr.unitOfMeasure]];
     }
     self.event.notes = notes;
-    
 }
 
 - (IBAction)recipeReminderAddPressed:(id)sender {
@@ -124,6 +143,25 @@
 
 -(EKCalendar *) eventEditViewControllerDefaultCalendarForNewEvents:(EKEventEditViewController *)controller {
     return self.eventStore.defaultCalendarForNewReminders;
+}
+
+-(void) dataModelChanged {
+    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+        if (success) {
+            NSLog(@"Saved file.");
+        }
+        else {
+            NSLog(@"File was not saved.");
+        }
+    }];
+    [self.tableViewIngridients reloadData];
+    self.textViewStepsToCook.text = self.recipe.stepsToCook;
+}
+
+-(void) addButtonPressed {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Provide name", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:@"OK", nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alertView show];
 }
 
 @end
