@@ -10,6 +10,5 @@
 
 @interface Ingridient : NSObject <NSCoding>
 @property NSString *nameIngridient;
-@property NSNumber *amount;
-@property NSString *unitOfMeasure;
+@property NSString *amount;
 @end

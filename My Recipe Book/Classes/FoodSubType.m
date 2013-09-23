@@ -26,6 +26,8 @@
 -(void) addRecipeWithName:(NSString *)name {
     Recipe *recipe = [[Recipe alloc] init];
     recipe.name = name;
+    recipe.duration = @"2 hours";
+    recipe.portions = @2;
     recipe.arrayOfIngridients = [NSMutableArray array];
     [self.arrayOfRecipes addObject:recipe];
 }

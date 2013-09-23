@@ -19,8 +19,13 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UITableView *tableViewIngridients;
 @property (strong, nonatomic) IngridientsTableView *tableViewIngridientsDelegate;
-@property (strong, nonatomic) IBOutlet UILabel *labelRecipeName;
+@property (strong, nonatomic) IBOutlet UILabel *labelRecipeDuration;
 @property (strong, nonatomic) IBOutlet UITextView *textViewStepsToCook;
+@property (strong, nonatomic) IBOutlet UIView *viewContainerAddIngridient;
+@property (strong, nonatomic) IBOutlet UIButton *btnAddSReminder;
+@property (strong, nonatomic) IBOutlet UITextField *txtFieldIngrName;
+@property (strong, nonatomic) IBOutlet UITextField *txtFieldAmount;
+@property (strong, nonatomic) IBOutlet UILabel *labelPortions;
 @end
 
 @implementation RecipeViewController
@@ -53,7 +58,8 @@
         [self_weak dataModelChanged];
     };
 
-    self.labelRecipeName.text = self.recipe.name;
+    self.labelRecipeDuration.text = self.recipe.duration;
+    self.labelPortions.text = [NSString stringWithFormat:NSLocalizedString(@"Persons: %@", nil), [self.recipe.portions stringValue]];
     self.textViewStepsToCook.text = self.recipe.stepsToCook;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.tableViewIngridients reloadData];
@@ -61,6 +67,7 @@
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    self.title = self.recipe.name;
 }
 
 -(void) viewDidLayoutSubviews {
@@ -70,16 +77,26 @@
 -(void) setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     [self.tableViewIngridients setEditing:editing animated:animated];
-   /* if (editing) {
+    self.textViewStepsToCook.editable = editing;
+    if (editing) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Add", nil) style:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
+    }
+    else {
+        self.navigationItem.leftBarButtonItem = nil;
         
-        Ingridient *ingr = [[Ingridient alloc] init];
-        ingr.nameIngridient = @"Kuku";
-        ingr.amount = @10;
-        ingr.unitOfMeasure = @"EA";
-        [self.recipe.arrayOfIngridients addObject:ingr];
-        self.recipe.stepsToCook = @"Cook me tender \n kuukuku";
+        [UIView beginAnimations:@"animateHideAddIngridients" context:NULL];
+        [UIView setAnimationDelegate:nil];
+        [UIView setAnimationDuration:0.5];
+        self.viewContainerAddIngridient.center = CGPointMake(1200, 230);
+       // self.btnAddSReminder.center = CGPointMake(160, 230);
+        [UIView commitAnimations];
+        //hide keyboard
+        [self.txtFieldIngrName resignFirstResponder];
+        [self.txtFieldAmount resignFirstResponder];
+        //write down steps to cook when Done is pressed
+        self.recipe.stepsToCook = self.textViewStepsToCook.text;
         [self dataModelChanged];
-    }*/
+    }
 }
 
 -(void) requestAccess {
@@ -95,7 +112,7 @@
     EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityMaskEvent];
     switch (status) {
         case EKAuthorizationStatusAuthorized: {
-            [self prepareEvent];
+           // [self prepareEvent];
         }
             break;
         case EKAuthorizationStatusNotDetermined: {
@@ -114,17 +131,18 @@
 
 -(void) prepareEvent {
     self.event = [EKEvent eventWithEventStore:self.eventStore];
-    self.event.title = @"Prepare meal";
+    self.event.title = [NSString stringWithFormat:NSLocalizedString(@"Prepare %@", nil), self.recipe.name];
     NSMutableString *notes = [NSMutableString string];
     for (int i = 0; i < self.recipe.arrayOfIngridients.count; i++) {
         Ingridient *ingr = [self.recipe.arrayOfIngridients objectAtIndex:i];
-        [notes appendString:[NSString stringWithFormat:@"%@ %@ %@\n", ingr.nameIngridient, [ingr.amount stringValue], ingr.unitOfMeasure]];
+        [notes appendString:[NSString stringWithFormat:@"%@ %@\n", ingr.nameIngridient, ingr.amount]];
     }
     self.event.notes = notes;
 }
 
 - (IBAction)recipeReminderAddPressed:(id)sender {
     EKEventEditViewController *viewController = [[EKEventEditViewController alloc] init];
+    [self prepareEvent];
     viewController.event = self.event;
     viewController.eventStore = self.eventStore;
     [self presentViewController:viewController animated:YES completion:nil];
@@ -159,9 +177,19 @@
 }
 
 -(void) addButtonPressed {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Provide name", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:@"OK", nil];
-    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alertView show];
+    if (self.viewContainerAddIngridient.center.x >= 1200) {
+        [UIView beginAnimations:@"animateShowAddIngridients" context:NULL];
+        [UIView setAnimationDelegate:nil];
+        [UIView setAnimationDuration:0.5];
+        self.viewContainerAddIngridient.center = CGPointMake(160, 230);
+        // self.btnAddSReminder.center = CGPointMake(1200, 540);
+        [UIView commitAnimations];
+        return;
+    }
+    else if (self.txtFieldIngrName.text && ![self.txtFieldIngrName.text isEqualToString:@""]) {
+        [self.recipe addIngridientWithName:self.txtFieldIngrName.text amount:self.txtFieldAmount.text];
+        [self dataModelChanged];
+    }
 }
 
 @end

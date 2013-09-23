@@ -50,7 +50,7 @@
     Ingridient *ingridient = [self.recipe.arrayOfIngridients objectAtIndex:indexPath.row];
     // Configure the cell...
     cell.textLabel.text = ingridient.nameIngridient;
-    NSString *detailText = [NSString stringWithFormat:@"%@ %@", [ingridient.amount stringValue], ingridient.unitOfMeasure];
+    NSString *detailText = ingridient.amount;
     cell.detailTextLabel.text = detailText;
     return cell;
 }
