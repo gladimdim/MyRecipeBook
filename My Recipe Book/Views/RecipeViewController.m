@@ -19,13 +19,13 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UITableView *tableViewIngridients;
 @property (strong, nonatomic) IngridientsTableView *tableViewIngridientsDelegate;
-@property (strong, nonatomic) IBOutlet UILabel *labelRecipeDuration;
 @property (strong, nonatomic) IBOutlet UITextView *textViewStepsToCook;
 @property (strong, nonatomic) IBOutlet UIView *viewContainerAddIngridient;
 @property (strong, nonatomic) IBOutlet UIButton *btnAddSReminder;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldIngrName;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldAmount;
-@property (strong, nonatomic) IBOutlet UILabel *labelPortions;
+@property (strong, nonatomic) IBOutlet UITextField *txtFieldDuration;
+@property (strong, nonatomic) IBOutlet UITextField *txtFieldPortions;
 @end
 
 @implementation RecipeViewController
@@ -58,10 +58,11 @@
         [self_weak dataModelChanged];
     };
 
-    self.labelRecipeDuration.text = self.recipe.duration;
-    self.labelPortions.text = [NSString stringWithFormat:NSLocalizedString(@"Persons: %@", nil), [self.recipe.portions stringValue]];
+    self.txtFieldDuration.text = self.recipe.duration;
+    self.txtFieldPortions.text = [self.recipe.portions stringValue];
     self.textViewStepsToCook.text = self.recipe.stepsToCook;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
     [self.tableViewIngridients reloadData];
 }
 
@@ -78,11 +79,17 @@
     [super setEditing:editing animated:animated];
     [self.tableViewIngridients setEditing:editing animated:animated];
     self.textViewStepsToCook.editable = editing;
+    self.txtFieldPortions.enabled = editing;
+    self.txtFieldDuration.enabled = editing;
     if (editing) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Add", nil) style:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Add Ingridient", nil) style:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
+        self.txtFieldDuration.borderStyle = UITextBorderStyleLine;
+        self.txtFieldPortions.borderStyle = UITextBorderStyleLine;
     }
     else {
         self.navigationItem.leftBarButtonItem = nil;
+        self.txtFieldDuration.borderStyle = UITextBorderStyleNone;
+        self.txtFieldPortions.borderStyle = UITextBorderStyleNone;
         
         [UIView beginAnimations:@"animateHideAddIngridients" context:NULL];
         [UIView setAnimationDelegate:nil];
@@ -95,6 +102,11 @@
         [self.txtFieldAmount resignFirstResponder];
         //write down steps to cook when Done is pressed
         self.recipe.stepsToCook = self.textViewStepsToCook.text;
+        self.recipe.duration = self.txtFieldDuration.text;
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        
+        self.recipe.portions = self.txtFieldPortions.text ? [formatter numberFromString:self.txtFieldPortions.text] : [NSNumber numberWithInt:0];
         [self dataModelChanged];
     }
 }
@@ -112,7 +124,7 @@
     EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityMaskEvent];
     switch (status) {
         case EKAuthorizationStatusAuthorized: {
-           // [self prepareEvent];
+            [self prepareEvent];
         }
             break;
         case EKAuthorizationStatusNotDetermined: {
@@ -160,7 +172,7 @@
 }
 
 -(EKCalendar *) eventEditViewControllerDefaultCalendarForNewEvents:(EKEventEditViewController *)controller {
-    return self.eventStore.defaultCalendarForNewReminders;
+    return self.eventStore.defaultCalendarForNewEvents;
 }
 
 -(void) dataModelChanged {
@@ -188,6 +200,8 @@
     }
     else if (self.txtFieldIngrName.text && ![self.txtFieldIngrName.text isEqualToString:@""]) {
         [self.recipe addIngridientWithName:self.txtFieldIngrName.text amount:self.txtFieldAmount.text];
+        self.txtFieldIngrName.text = @"";
+        self.txtFieldAmount.text = @"";
         [self dataModelChanged];
     }
 }

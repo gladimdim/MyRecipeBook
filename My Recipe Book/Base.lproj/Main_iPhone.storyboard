@@ -191,13 +191,6 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="766" constant="400" id="QfQ-Tu-BBP"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNB-58-5zv">
-                                <rect key="frame" x="6" y="67" width="96" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j7q-hU-Cov">
                                 <rect key="frame" x="1200" y="502" width="320" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -217,18 +210,35 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5i-Ff-HZz">
-                                <rect key="frame" x="164" y="72" width="136" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Portions:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5i-Ff-HZz">
+                                <rect key="frame" x="155" y="71" width="109" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9e-ck-tEa">
+                                <rect key="frame" x="82" y="68" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kdG-KP-Beh">
+                                <rect key="frame" x="272" y="68" width="42" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4a-dg-viC">
+                                <rect key="frame" x="6" y="72" width="68" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gtB-9g-5Vm" firstAttribute="top" secondItem="xWJ-sN-hZ0" secondAttribute="bottom" constant="17" id="1vO-iU-hs4"/>
-                            <constraint firstItem="gNB-58-5zv" firstAttribute="top" relation="lessThanOrEqual" secondItem="pON-VZ-bSL" secondAttribute="top" constant="67" id="4Wr-1U-IqY"/>
                             <constraint firstAttribute="bottom" secondItem="j7q-hU-Cov" secondAttribute="bottom" constant="1" id="Rpg-12-I1l"/>
                             <constraint firstAttribute="bottom" secondItem="gtB-9g-5Vm" secondAttribute="bottom" constant="20" id="Vg8-Eu-dnI"/>
                             <constraint firstItem="j7q-hU-Cov" firstAttribute="top" secondItem="xWJ-sN-hZ0" secondAttribute="bottom" constant="1" id="Y49-Bw-oAu"/>
@@ -238,13 +248,13 @@
                     <navigationItem key="navigationItem" id="Vr5-Xr-NDy"/>
                     <connections>
                         <outlet property="btnAddSReminder" destination="gtB-9g-5Vm" id="gvt-Zo-BeG"/>
-                        <outlet property="labelPortions" destination="e5i-Ff-HZz" id="m3K-Jl-nCZ"/>
-                        <outlet property="labelRecipeDuration" destination="gNB-58-5zv" id="BcY-dh-krV"/>
                         <outlet property="scrollView" destination="xWJ-sN-hZ0" id="pN5-oI-CBs"/>
                         <outlet property="tableViewIngridients" destination="yOy-Zr-qg2" id="zDQ-b0-ARJ"/>
                         <outlet property="textViewStepsToCook" destination="CDc-bd-2VQ" id="Rlh-va-Cmu"/>
                         <outlet property="txtFieldAmount" destination="p7X-aO-ma8" id="96q-5f-aAy"/>
+                        <outlet property="txtFieldDuration" destination="b9e-ck-tEa" id="bo2-Ve-vrq"/>
                         <outlet property="txtFieldIngrName" destination="1or-dd-ZrG" id="uxI-Tk-EPs"/>
+                        <outlet property="txtFieldPortions" destination="kdG-KP-Beh" id="3tg-Il-qAv"/>
                         <outlet property="viewContainerAddIngridient" destination="j7q-hU-Cov" id="iPz-Ia-3cB"/>
                     </connections>
                 </viewController>
