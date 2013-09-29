@@ -196,12 +196,14 @@
         self.viewContainerAddIngridient.center = CGPointMake(160, 230);
         // self.btnAddSReminder.center = CGPointMake(1200, 540);
         [UIView commitAnimations];
+        self.navigationItem.leftBarButtonItem.tintColor = [UIColor greenColor];
         return;
     }
     else if (self.txtFieldIngrName.text && ![self.txtFieldIngrName.text isEqualToString:@""]) {
         [self.recipe addIngridientWithName:self.txtFieldIngrName.text amount:self.txtFieldAmount.text];
         self.txtFieldIngrName.text = @"";
         self.txtFieldAmount.text = @"";
+        [self.txtFieldIngrName becomeFirstResponder];
         [self dataModelChanged];
     }
 }
