@@ -9,6 +9,11 @@
 #import "IngridientsTableView.h"
 #import "Ingridient.h"
 
+@interface IngridientsTableView ()
+@property UITextField *textFieldIngrName;
+@property UITextField *textFieldAmount;
+@end
+
 @implementation IngridientsTableView
 
 - (id)initWithFrame:(CGRect)frame
@@ -45,26 +50,45 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"cellIngridient";
+    NSString *CellIdentifier = (self.editing && indexPath.row == 0) ? @"cellNewIngridient" : @"cellIngridient";
+    NSLog(@"%@", CellIdentifier);
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    Ingridient *ingridient = [self.recipe.arrayOfIngridients objectAtIndex:indexPath.row];
-    // Configure the cell...
-    cell.textLabel.text = ingridient.nameIngridient;
-    NSString *detailText = ingridient.amount;
-    cell.detailTextLabel.text = detailText;
+    if (self.editing && indexPath.row == 0) {
+        if (self.textFieldIngrName == nil) {
+            self.textFieldIngrName = (UITextField *) [cell viewWithTag:1];
+        }
+        if (self.textFieldAmount == nil) {
+            self.textFieldAmount = (UITextField *) [cell viewWithTag:2];
+        }
+    }
+    else {
+        Ingridient *ingridient = [self.recipe.arrayOfIngridients objectAtIndex:indexPath.row];
+        // Configure the cell...
+        cell.textLabel.text = ingridient.nameIngridient;
+        NSString *detailText = ingridient.amount;
+        cell.detailTextLabel.text = detailText;
+    }
     return cell;
 }
 
 -(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewCellEditingStyleDelete;
+    return (self.editing && indexPath.row) == 0 ? UITableViewCellEditingStyleInsert : UITableViewCellEditingStyleDelete;
 }
 
 -(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.recipe.arrayOfIngridients removeObjectAtIndex:indexPath.row];
-        [self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        //[self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         self.dataModelChanged(YES);
     }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        Ingridient *ingr = [[Ingridient alloc] init];
+        ingr.nameIngridient = self.textFieldIngrName.text;
+        ingr.amount = self.textFieldAmount.text;
+        [self.recipe.arrayOfIngridients insertObject:ingr atIndex:self.recipe.arrayOfIngridients.count];
+        self.dataModelChanged(YES);
+    }
+    
 }
 
 

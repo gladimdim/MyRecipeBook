@@ -124,8 +124,6 @@
     }
 }
 
-
-
 -(void) dataModelChanged {
     self.docFoodTypes.recipeBook = self.recipeBook;
     [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {

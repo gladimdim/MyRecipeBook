@@ -20,7 +20,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableViewIngridients;
 @property (strong, nonatomic) IngridientsTableView *tableViewIngridientsDelegate;
 @property (strong, nonatomic) IBOutlet UITextView *textViewStepsToCook;
-@property (strong, nonatomic) IBOutlet UIView *viewContainerAddIngridient;
 @property (strong, nonatomic) IBOutlet UIButton *btnAddSReminder;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldIngrName;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldAmount;
@@ -77,27 +76,26 @@
 
 -(void) setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
-    [self.tableViewIngridients setEditing:editing animated:animated];
+    [self.tableViewIngridients setEditing:editing animated:YES];
+    [self.tableViewIngridientsDelegate setEditing:editing animated:animated];
     self.textViewStepsToCook.editable = editing;
     self.txtFieldPortions.enabled = editing;
     self.txtFieldDuration.enabled = editing;
+    
     if (editing) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Add Ingridient", nil) style:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
         self.txtFieldDuration.borderStyle = UITextBorderStyleLine;
         self.txtFieldPortions.borderStyle = UITextBorderStyleLine;
+        //add dummy ingr object to display new row in table view.
+        Ingridient *ingr = [[Ingridient alloc] init];
+        [self.recipe.arrayOfIngridients insertObject:ingr atIndex:0];
+        [self.tableViewIngridients reloadData];
     }
     else {
-        self.navigationItem.leftBarButtonItem = nil;
+        [self.recipe.arrayOfIngridients removeObjectAtIndex:0];
+        [self.tableViewIngridients reloadData];
         self.txtFieldDuration.borderStyle = UITextBorderStyleNone;
         self.txtFieldPortions.borderStyle = UITextBorderStyleNone;
         
-        [UIView beginAnimations:@"animateHideAddIngridients" context:NULL];
-        [UIView setAnimationDelegate:nil];
-        [UIView setAnimationDuration:0.5];
-        self.viewContainerAddIngridient.center = CGPointMake(1200, 230);
-       // self.btnAddSReminder.center = CGPointMake(160, 230);
-        [UIView commitAnimations];
-        //hide keyboard
         [self.txtFieldIngrName resignFirstResponder];
         [self.txtFieldAmount resignFirstResponder];
         //write down steps to cook when Done is pressed
@@ -189,17 +187,7 @@
 }
 
 -(void) addButtonPressed {
-    if (self.viewContainerAddIngridient.center.x >= 1200) {
-        [UIView beginAnimations:@"animateShowAddIngridients" context:NULL];
-        [UIView setAnimationDelegate:nil];
-        [UIView setAnimationDuration:0.5];
-        self.viewContainerAddIngridient.center = CGPointMake(160, 230);
-        // self.btnAddSReminder.center = CGPointMake(1200, 540);
-        [UIView commitAnimations];
-        self.navigationItem.leftBarButtonItem.tintColor = [UIColor greenColor];
-        return;
-    }
-    else if (self.txtFieldIngrName.text && ![self.txtFieldIngrName.text isEqualToString:@""]) {
+    if (self.txtFieldIngrName.text && ![self.txtFieldIngrName.text isEqualToString:@""]) {
         [self.recipe addIngridientWithName:self.txtFieldIngrName.text amount:self.txtFieldAmount.text];
         self.txtFieldIngrName.text = @"";
         self.txtFieldAmount.text = @"";
