@@ -25,7 +25,7 @@
     if (foodTypeName) {
         FoodType *foodType = [[FoodType alloc] init];
         foodType.name = foodTypeName;
-        foodType.arrayOfSubTypes = [NSMutableArray array];
+        foodType.arrayOfRecipes = [NSMutableArray array];
         [self.arrayOfFoodTypes addObject:foodType];
     }
 }

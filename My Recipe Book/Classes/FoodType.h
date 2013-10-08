@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FoodSubType.h"
 
 @interface FoodType : NSObject <NSCoding>
-@property NSMutableArray *arrayOfSubTypes;
 @property NSString *name;
--(void) addSubTypeWithName:(NSString *)subTypeName;
+@property NSMutableArray *arrayOfRecipes;
+-(void) addRecipeWithName:(NSString *) name;
 @end

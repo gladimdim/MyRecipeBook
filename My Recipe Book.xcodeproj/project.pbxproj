@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F22066AA17DA6109004E4F72 /* FoodTypesDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F22066A917DA6109004E4F72 /* FoodTypesDocument.m */; };
-		F24899B617BC0E39009AACF7 /* FoodSubTypesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24899B517BC0E39009AACF7 /* FoodSubTypesListTableViewController.m */; };
 		F24899B917BC1874009AACF7 /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24899B817BC1874009AACF7 /* RecipeViewController.m */; };
 		F25DF38B17C3F4BE000A27E6 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38A17C3F4BE000A27E6 /* Recipe.m */; };
 		F25DF38F17C3F583000A27E6 /* Ingridient.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38E17C3F583000A27E6 /* Ingridient.m */; };
-		F2C3E79717EE10F1001B6BEB /* FoodSubType.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E79617EE10F1001B6BEB /* FoodSubType.m */; };
 		F2C3E79A17EE13AE001B6BEB /* RecipeBook.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E79917EE13AE001B6BEB /* RecipeBook.m */; };
 		F2C47A4817CE712900A42C4B /* FoodType.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C47A4717CE712900A42C4B /* FoodType.m */; };
 		F2C47A4B17CE7BDA00A42C4B /* RecipesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C47A4A17CE7BDA00A42C4B /* RecipesListTableViewController.m */; };
@@ -49,16 +47,12 @@
 		F22066A817DA6109004E4F72 /* FoodTypesDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodTypesDocument.h; path = Classes/FoodTypesDocument.h; sourceTree = "<group>"; };
 		F22066A917DA6109004E4F72 /* FoodTypesDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodTypesDocument.m; path = Classes/FoodTypesDocument.m; sourceTree = "<group>"; };
 		F24899B317BC0CFD009AACF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
-		F24899B417BC0E39009AACF7 /* FoodSubTypesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodSubTypesListTableViewController.h; path = Views/FoodSubTypesListTableViewController.h; sourceTree = "<group>"; };
-		F24899B517BC0E39009AACF7 /* FoodSubTypesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodSubTypesListTableViewController.m; path = Views/FoodSubTypesListTableViewController.m; sourceTree = "<group>"; };
 		F24899B717BC1874009AACF7 /* RecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipeViewController.h; path = Views/RecipeViewController.h; sourceTree = "<group>"; };
 		F24899B817BC1874009AACF7 /* RecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipeViewController.m; path = Views/RecipeViewController.m; sourceTree = "<group>"; };
 		F25DF38917C3F4BE000A27E6 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recipe.h; path = Classes/Recipe.h; sourceTree = "<group>"; };
 		F25DF38A17C3F4BE000A27E6 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recipe.m; path = Classes/Recipe.m; sourceTree = "<group>"; };
 		F25DF38D17C3F583000A27E6 /* Ingridient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ingridient.h; path = Classes/Ingridient.h; sourceTree = "<group>"; };
 		F25DF38E17C3F583000A27E6 /* Ingridient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ingridient.m; path = Classes/Ingridient.m; sourceTree = "<group>"; };
-		F2C3E79517EE10F1001B6BEB /* FoodSubType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodSubType.h; path = Classes/FoodSubType.h; sourceTree = "<group>"; };
-		F2C3E79617EE10F1001B6BEB /* FoodSubType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodSubType.m; path = Classes/FoodSubType.m; sourceTree = "<group>"; };
 		F2C3E79817EE13AE001B6BEB /* RecipeBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipeBook.h; path = Classes/RecipeBook.h; sourceTree = "<group>"; };
 		F2C3E79917EE13AE001B6BEB /* RecipeBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipeBook.m; path = Classes/RecipeBook.m; sourceTree = "<group>"; };
 		F2C47A4617CE712900A42C4B /* FoodType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodType.h; path = Classes/FoodType.h; sourceTree = "<group>"; };
@@ -122,8 +116,6 @@
 				F25DF38A17C3F4BE000A27E6 /* Recipe.m */,
 				F25DF38D17C3F583000A27E6 /* Ingridient.h */,
 				F25DF38E17C3F583000A27E6 /* Ingridient.m */,
-				F2C3E79517EE10F1001B6BEB /* FoodSubType.h */,
-				F2C3E79617EE10F1001B6BEB /* FoodSubType.m */,
 				F2C47A4617CE712900A42C4B /* FoodType.h */,
 				F2C47A4717CE712900A42C4B /* FoodType.m */,
 				F22066A817DA6109004E4F72 /* FoodTypesDocument.h */,
@@ -223,8 +215,6 @@
 			children = (
 				F2FEE18317B81EF2007771CF /* FoodTypesListTableViewController.h */,
 				F2FEE18417B81EF2007771CF /* FoodTypesListTableViewController.m */,
-				F24899B417BC0E39009AACF7 /* FoodSubTypesListTableViewController.h */,
-				F24899B517BC0E39009AACF7 /* FoodSubTypesListTableViewController.m */,
 				F2C47A4917CE7BDA00A42C4B /* RecipesListTableViewController.h */,
 				F2C47A4A17CE7BDA00A42C4B /* RecipesListTableViewController.m */,
 				F24899B717BC1874009AACF7 /* RecipeViewController.h */,
@@ -342,12 +332,10 @@
 				F2C47A4817CE712900A42C4B /* FoodType.m in Sources */,
 				F22066AA17DA6109004E4F72 /* FoodTypesDocument.m in Sources */,
 				F25DF38B17C3F4BE000A27E6 /* Recipe.m in Sources */,
-				F2C3E79717EE10F1001B6BEB /* FoodSubType.m in Sources */,
 				F2FEE18517B81EF2007771CF /* FoodTypesListTableViewController.m in Sources */,
 				F24899B917BC1874009AACF7 /* RecipeViewController.m in Sources */,
 				F25DF38F17C3F583000A27E6 /* Ingridient.m in Sources */,
 				F2C47A4E17CFD77800A42C4B /* IngridientsTableView.m in Sources */,
-				F24899B617BC0E39009AACF7 /* FoodSubTypesListTableViewController.m in Sources */,
 				F2FEE15417B80762007771CF /* main.m in Sources */,
 				F2C47A4B17CE7BDA00A42C4B /* RecipesListTableViewController.m in Sources */,
 				F2FEE16117B80762007771CF /* RBViewController.m in Sources */,

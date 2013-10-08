@@ -7,6 +7,7 @@
 //
 
 #import "FoodType.h"
+#import "Recipe.h"
 
 @interface FoodType()
 @end
@@ -14,23 +15,25 @@
 @implementation FoodType
 
 -(void) encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.arrayOfSubTypes forKey:@"arrayOfSubTypes"];
+    [aCoder encodeObject:self.arrayOfRecipes forKey:@"arrayOfRecipes"];
     [aCoder encodeObject:self.name forKey:@"name"];
 }
 
 -(id) initWithCoder:(NSCoder *)aDecoder {
     if (self = [super init]) {
-        self.arrayOfSubTypes = [aDecoder decodeObjectForKey:@"arrayOfSubTypes"];
+        self.arrayOfRecipes = [aDecoder decodeObjectForKey:@"arrayOfRecipes"];
         self.name = [aDecoder decodeObjectForKey:@"name"];
     }
     return self;
 }
 
--(void) addSubTypeWithName:(NSString *)subTypeName {
-    FoodSubType *foodSubType = [[FoodSubType alloc] init];
-    foodSubType.name = subTypeName;
-    foodSubType.arrayOfRecipes = [NSMutableArray array];
-    [self.arrayOfSubTypes addObject:foodSubType];
+-(void) addRecipeWithName:(NSString *)name {
+    Recipe *recipe = [[Recipe alloc] init];
+    recipe.name = name;
+    recipe.duration = @"20";
+    recipe.portions = @2;
+    recipe.arrayOfIngridients = [NSMutableArray array];
+    [self.arrayOfRecipes addObject:recipe];
 }
 
 @end

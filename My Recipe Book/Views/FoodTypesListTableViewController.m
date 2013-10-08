@@ -7,7 +7,7 @@
 //
 
 #import "FoodTypesListTableViewController.h"
-#import "FoodSubTypesListTableViewController.h"
+#import "RecipesListTableViewController.h"
 #import "FoodTypesDocument.h"
 #import "RecipeBook.h"
 
@@ -109,7 +109,7 @@
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"showFoodTypes" sender:self];
+    [self performSegueWithIdentifier:@"showRecipesList" sender:self];
 }
 
 -(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -145,9 +145,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     FoodType *foodType = (FoodType *) [self.recipeBook.arrayOfFoodTypes objectAtIndex:self.tableView.indexPathForSelectedRow.row];
-    FoodSubTypesListTableViewController *foodVC = (FoodSubTypesListTableViewController *) [segue destinationViewController];
-    foodVC.foodType = foodType;
-    foodVC.docFoodTypes = self.docFoodTypes;
+    RecipesListTableViewController *recipeListVC = (RecipesListTableViewController *) [segue destinationViewController];
+    recipeListVC.foodType = foodType;
+    recipeListVC.docFoodTypes = self.docFoodTypes;
 }
 
 #pragma mark - Table edit

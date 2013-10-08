@@ -37,7 +37,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationItem.title = self.foodSubType.name;
+    self.navigationItem.title = self.foodType.name;
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,14 +67,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.foodSubType.arrayOfRecipes.count;
+    return self.foodType.arrayOfRecipes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cellRecipe";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    Recipe *recipe = [self.foodSubType.arrayOfRecipes objectAtIndex:indexPath.row];
+    Recipe *recipe = [self.foodType.arrayOfRecipes objectAtIndex:indexPath.row];
     // Configure the cell...
     cell.textLabel.text = recipe.name;
     return cell;
@@ -86,7 +86,7 @@
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showRecipe"]) {
-        Recipe *recipe = (Recipe *) [self.foodSubType.arrayOfRecipes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        Recipe *recipe = (Recipe *) [self.foodType.arrayOfRecipes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
         RecipeViewController *recipeVC = (RecipeViewController *) segue.destinationViewController;
         recipeVC.recipe = recipe;
         recipeVC.docFoodTypes = self.docFoodTypes;
@@ -98,7 +98,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [self.foodSubType.arrayOfRecipes removeObjectAtIndex:indexPath.row];
+        [self.foodType.arrayOfRecipes removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView reloadData];
     }   
@@ -135,7 +135,7 @@
     if (buttonIndex == 1) {
         NSString *recipeName = [alertView textFieldAtIndex:0].text;
         if (recipeName) {
-            [self.foodSubType addRecipeWithName:recipeName];
+            [self.foodType addRecipeWithName:recipeName];
             [self dataModelChanged];
         }
     }
