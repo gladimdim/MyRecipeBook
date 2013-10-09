@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Recipe.h"
+#import "Ingridient.h"
 
-@interface IngridientsTableView : UITableView <UITableViewDataSource, UITableViewDelegate>
+@interface IngridientsTableView : UITableView <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property Recipe *recipe;
 @property (nonatomic, strong) void (^dataModelChanged) (BOOL);
+@property (nonatomic, strong) void (^addIngridient) (Ingridient *);
+@property (nonatomic, strong) void (^removeIngridient) (NSIndexPath *indexPath );
 @end

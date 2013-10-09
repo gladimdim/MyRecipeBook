@@ -17,6 +17,7 @@
     [aCoder encodeObject:self.stepsToCook forKey:@"stepsToCook"];
     [aCoder encodeObject:self.duration forKey:@"duration"];
     [aCoder encodeObject:self.portions forKey:@"portions"];
+    [aCoder encodeObject:self.image forKey:@"image"];
 }
 
 -(id) initWithCoder:(NSCoder *)aDecoder {
@@ -27,6 +28,7 @@
         self.stepsToCook = [aDecoder decodeObjectForKey:@"stepsToCook"];
         self.duration = [aDecoder decodeObjectForKey:@"duration"];
         self.portions = [aDecoder decodeObjectForKey:@"portions"];
+        self.image = [aDecoder decodeObjectForKey:@"image"];
     }
     return self;
 }

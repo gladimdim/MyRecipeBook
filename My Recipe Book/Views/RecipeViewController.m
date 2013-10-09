@@ -53,8 +53,20 @@
     self.tableViewIngridients.delegate = self.tableViewIngridientsDelegate;
     self.tableViewIngridients.dataSource = self.tableViewIngridientsDelegate;
     __weak RecipeViewController *self_weak = self;
-    self.tableViewIngridientsDelegate.dataModelChanged = ^(BOOL changed) {
+    self.tableViewIngridientsDelegate.addIngridient = ^(Ingridient *ingr) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self_weak.recipe.arrayOfIngridients.count inSection:0];
+        [self_weak.recipe.arrayOfIngridients insertObject:ingr atIndex:self_weak.recipe.arrayOfIngridients.count];
+        [self_weak.tableViewIngridients insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//        [self_weak.tableViewIngridients scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
         [self_weak dataModelChanged];
+    };
+    self.tableViewIngridientsDelegate.removeIngridient = ^(NSIndexPath *indexPath) {
+        if (indexPath.row > 0 && indexPath.row < self_weak.recipe.arrayOfIngridients.count) {
+            [self_weak.recipe.arrayOfIngridients removeObjectAtIndex:indexPath.row];
+            [self_weak.tableViewIngridients deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self_weak dataModelChanged];
+        }
+
     };
 
     self.txtFieldDuration.text = self.recipe.duration;
@@ -182,7 +194,7 @@
             NSLog(@"File was not saved.");
         }
     }];
-    [self.tableViewIngridients reloadData];
+    //[self.tableViewIngridients reloadData];
     self.textViewStepsToCook.text = self.recipe.stepsToCook;
 }
 

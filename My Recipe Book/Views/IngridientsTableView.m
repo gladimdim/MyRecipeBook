@@ -25,16 +25,6 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -51,14 +41,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier = (self.editing && indexPath.row == 0) ? @"cellNewIngridient" : @"cellIngridient";
-    NSLog(@"%@", CellIdentifier);
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (self.editing && indexPath.row == 0) {
         if (self.textFieldIngrName == nil) {
             self.textFieldIngrName = (UITextField *) [cell viewWithTag:1];
+            self.textFieldIngrName.delegate = self;
         }
         if (self.textFieldAmount == nil) {
             self.textFieldAmount = (UITextField *) [cell viewWithTag:2];
+            self.textFieldAmount.delegate = self;
         }
     }
     else {
@@ -77,19 +69,36 @@
 
 -(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.recipe.arrayOfIngridients removeObjectAtIndex:indexPath.row];
-        //[self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        self.dataModelChanged(YES);
+        self.removeIngridient(indexPath);
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        Ingridient *ingr = [[Ingridient alloc] init];
-        ingr.nameIngridient = self.textFieldIngrName.text;
-        ingr.amount = self.textFieldAmount.text;
-        [self.recipe.arrayOfIngridients insertObject:ingr atIndex:self.recipe.arrayOfIngridients.count];
-        self.dataModelChanged(YES);
+        [self addNewIngridient];
     }
-    
 }
 
+#pragma mark - UITextField delegate
 
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.textFieldIngrName) {
+        [textField resignFirstResponder];
+        [self.textFieldAmount becomeFirstResponder];
+    }
+    else if (textField == self.textFieldAmount) {
+        [self.textFieldAmount resignFirstResponder];
+        [self.textFieldIngrName becomeFirstResponder];
+        [self addNewIngridient];
+    }
+    return YES;
+}
+
+-(void) addNewIngridient {
+    Ingridient *ingr = [[Ingridient alloc] init];
+    ingr.nameIngridient = self.textFieldIngrName.text;
+    ingr.amount = self.textFieldAmount.text;
+//    [self.recipe.arrayOfIngridients insertObject:ingr atIndex:self.recipe.arrayOfIngridients.count];
+    //self.dataModelChanged(YES);
+    self.addIngridient(ingr);
+    self.textFieldAmount.text = @"";
+    self.textFieldIngrName.text = @"";
+}
 @end
