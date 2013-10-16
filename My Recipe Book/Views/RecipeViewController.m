@@ -83,7 +83,9 @@
 }
 
 -(void) viewDidLayoutSubviews {
-    self.scrollView.contentSize = CGSizeMake(640, 361);
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGFloat screenHeight= screen.size.height;
+    self.scrollView.contentSize = CGSizeMake(640, screenHeight == 568 ? 354 : 266);
 }
 
 -(void) setEditing:(BOOL)editing animated:(BOOL)animated {
