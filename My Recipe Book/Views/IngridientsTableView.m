@@ -92,13 +92,15 @@
 }
 
 -(void) addNewIngridient {
-    Ingridient *ingr = [[Ingridient alloc] init];
-    ingr.nameIngridient = self.textFieldIngrName.text;
-    ingr.amount = self.textFieldAmount.text;
-//    [self.recipe.arrayOfIngridients insertObject:ingr atIndex:self.recipe.arrayOfIngridients.count];
-    //self.dataModelChanged(YES);
-    self.addIngridient(ingr);
-    self.textFieldAmount.text = @"";
-    self.textFieldIngrName.text = @"";
+    if (![self.textFieldAmount.text isEqualToString:@""] || ![self.textFieldIngrName.text isEqualToString:@""]) {
+        Ingridient *ingr = [[Ingridient alloc] init];
+        ingr.nameIngridient = self.textFieldIngrName.text;
+        ingr.amount = self.textFieldAmount.text;
+        //    [self.recipe.arrayOfIngridients insertObject:ingr atIndex:self.recipe.arrayOfIngridients.count];
+        //self.dataModelChanged(YES);
+        self.addIngridient(ingr);
+        self.textFieldAmount.text = @"";
+        self.textFieldIngrName.text = @"";
+    }
 }
 @end

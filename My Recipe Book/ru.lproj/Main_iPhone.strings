@@ -1,7 +1,4 @@
 
-/* Class = "IBUILabel"; text = "Ingridients -> Description"; ObjectID = "9gg-q9-edh"; */
-"9gg-q9-edh.text" = "Ingridients -> Description";
-
 /* Class = "IBUILabel"; text = "Title"; ObjectID = "PiC-DL-MMe"; */
 "PiC-DL-MMe.text" = "Title";
 
@@ -12,13 +9,13 @@
 "Wuy-Em-q3B.text" = "Описание:";
 
 /* Class = "IBUITextField"; placeholder = "Amount"; ObjectID = "akN-Dl-QAZ"; */
-"akN-Dl-QAZ.placeholder" = "Количество";
+"akN-Dl-QAZ.placeholder" = "Сколько";
 
 /* Class = "IBUILabel"; text = "Portions:"; ObjectID = "e5i-Ff-HZz"; */
 "e5i-Ff-HZz.text" = "Порций:";
 
 /* Class = "IBUIButton"; normalTitle = "Add Reminder"; ObjectID = "gtB-9g-5Vm"; */
-"gtB-9g-5Vm.normalTitle" = "Добавить напоминание";
+"gtB-9g-5Vm.normalTitle" = "Напомнить";
 
 /* Class = "IBUILabel"; text = "Title"; ObjectID = "hq3-SW-oKx"; */
 "hq3-SW-oKx.text" = "Title";

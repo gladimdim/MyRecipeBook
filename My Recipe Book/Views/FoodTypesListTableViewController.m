@@ -131,7 +131,7 @@
             NSLog(@"Doc saved");
         }
         else {
-            NSLog(@"DOc was not saved");
+            NSLog(@"Doc was not saved");
         }
     }];
     [self.tableView reloadData];
