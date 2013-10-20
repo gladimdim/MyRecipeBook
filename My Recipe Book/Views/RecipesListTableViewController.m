@@ -135,6 +135,7 @@
     if (buttonIndex == 1) {
         NSString *recipeName = [alertView textFieldAtIndex:0].text;
         if (recipeName) {
+            [self setEditing:NO animated:YES];
             [self.foodType addRecipeWithName:recipeName];
             [self dataModelChanged];
         }
