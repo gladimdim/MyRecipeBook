@@ -18,7 +18,7 @@
 "XtY-oJ-GUA.text" = "Boiled";
 
 /* Class = "IBUINavigationItem"; title = "Food Types"; ObjectID = "nsr-8H-94P"; */
-"nsr-8H-94P.title" = "Food Types";
+"nsr-8H-94P.title" = "Categories";
 
 /* Class = "IBUILabel"; text = "Salads"; ObjectID = "vgH-k5-RTx"; */
 "vgH-k5-RTx.text" = "Salads";

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F22066AA17DA6109004E4F72 /* FoodTypesDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F22066A917DA6109004E4F72 /* FoodTypesDocument.m */; };
 		F24899B917BC1874009AACF7 /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24899B817BC1874009AACF7 /* RecipeViewController.m */; };
+		F24FE8F11814638800D54E96 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F24FE8F31814638800D54E96 /* Localizable.strings */; };
 		F25DF38B17C3F4BE000A27E6 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38A17C3F4BE000A27E6 /* Recipe.m */; };
 		F25DF38F17C3F583000A27E6 /* Ingridient.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38E17C3F583000A27E6 /* Ingridient.m */; };
 		F2C3E79A17EE13AE001B6BEB /* RecipeBook.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E79917EE13AE001B6BEB /* RecipeBook.m */; };
@@ -49,6 +50,9 @@
 		F24899B317BC0CFD009AACF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		F24899B717BC1874009AACF7 /* RecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipeViewController.h; path = Views/RecipeViewController.h; sourceTree = "<group>"; };
 		F24899B817BC1874009AACF7 /* RecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipeViewController.m; path = Views/RecipeViewController.m; sourceTree = "<group>"; };
+		F24FE8E91814604500D54E96 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F24FE8F21814638800D54E96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F24FE8F41814638C00D54E96 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F25DF38917C3F4BE000A27E6 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recipe.h; path = Classes/Recipe.h; sourceTree = "<group>"; };
 		F25DF38A17C3F4BE000A27E6 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recipe.m; path = Classes/Recipe.m; sourceTree = "<group>"; };
 		F25DF38D17C3F583000A27E6 /* Ingridient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ingridient.h; path = Classes/Ingridient.h; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 				F2FEE15017B80762007771CF /* InfoPlist.strings */,
 				F2FEE15317B80762007771CF /* main.m */,
 				F2FEE15517B80762007771CF /* My Recipe Book-Prefix.pch */,
+				F24FE8F31814638800D54E96 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = F2FEE13B17B80762007771CF;
 			productRefGroup = F2FEE14517B80762007771CF /* Products */;
@@ -307,6 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F24FE8F11814638800D54E96 /* Localizable.strings in Resources */,
 				F2FEE15E17B80762007771CF /* Main_iPad.storyboard in Resources */,
 				F2FEE16317B80762007771CF /* Images.xcassets in Resources */,
 				F2FEE15B17B80762007771CF /* Main_iPhone.storyboard in Resources */,
@@ -363,10 +370,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F24FE8F31814638800D54E96 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F24FE8F21814638800D54E96 /* Base */,
+				F24FE8F41814638C00D54E96 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F2FEE15017B80762007771CF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F2FEE15117B80762007771CF /* en */,
+				F24FE8E91814604500D54E96 /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

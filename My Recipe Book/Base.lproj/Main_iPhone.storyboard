@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--Food Types List Table View Controller - Food Types-->
+        <!--Food Types List Table View Controller - Categories-->
         <scene sceneID="omc-CO-hHy">
             <objects>
                 <tableViewController id="N8n-oo-XPC" customClass="FoodTypesListTableViewController" sceneMemberID="viewController">
@@ -38,7 +38,7 @@
                             <outlet property="delegate" destination="N8n-oo-XPC" id="vRu-zH-vVq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Food Types" id="nsr-8H-94P"/>
+                    <navigationItem key="navigationItem" title="Categories" id="nsr-8H-94P"/>
                     <connections>
                         <segue destination="XfK-8B-Zus" kind="push" identifier="showRecipesList" id="H9N-51-aCh"/>
                     </connections>

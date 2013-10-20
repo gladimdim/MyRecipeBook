@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  My Recipe Book
+
+  Created by Dmytro Gladkyi on 10/20/13.
+  Copyright (c) 2013 Dmytro Gladkyi. All rights reserved.
+*/
+
+"Add" = "Add";
+
+"Prepare %@" = "Prepare %@";
+
+"Provide name" = "Provide name";
