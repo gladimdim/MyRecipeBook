@@ -1,0 +1,36 @@
+
+/* Class = "IBUILabel"; text = "Ingridients -> Description"; ObjectID = "9gg-q9-edh"; */
+"9gg-q9-edh.text" = "Ingridients -> Description";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "PiC-DL-MMe"; */
+"PiC-DL-MMe.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Time:"; ObjectID = "W4a-dg-viC"; */
+"W4a-dg-viC.text" = "Займет:";
+
+/* Class = "IBUILabel"; text = "Steps to cook"; ObjectID = "Wuy-Em-q3B"; */
+"Wuy-Em-q3B.text" = "Описание:";
+
+/* Class = "IBUITextField"; placeholder = "Amount"; ObjectID = "akN-Dl-QAZ"; */
+"akN-Dl-QAZ.placeholder" = "Количество";
+
+/* Class = "IBUILabel"; text = "Portions:"; ObjectID = "e5i-Ff-HZz"; */
+"e5i-Ff-HZz.text" = "Порций:";
+
+/* Class = "IBUIButton"; normalTitle = "Add Reminder"; ObjectID = "gtB-9g-5Vm"; */
+"gtB-9g-5Vm.normalTitle" = "Добавить напоминание";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "hq3-SW-oKx"; */
+"hq3-SW-oKx.text" = "Title";
+
+/* Class = "IBUINavigationItem"; title = "Food Types"; ObjectID = "nsr-8H-94P"; */
+"nsr-8H-94P.title" = "Разделы";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "oOl-qn-nNv"; */
+"oOl-qn-nNv.text" = "Detail";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "plw-H9-vsg"; */
+"plw-H9-vsg.text" = "Title";
+
+/* Class = "IBUITextField"; placeholder = "Ingridient Name"; ObjectID = "tg5-Bg-JVK"; */
+"tg5-Bg-JVK.placeholder" = "Ингридиент:";

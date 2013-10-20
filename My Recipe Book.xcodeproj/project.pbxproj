@@ -53,6 +53,8 @@
 		F25DF38A17C3F4BE000A27E6 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recipe.m; path = Classes/Recipe.m; sourceTree = "<group>"; };
 		F25DF38D17C3F583000A27E6 /* Ingridient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ingridient.h; path = Classes/Ingridient.h; sourceTree = "<group>"; };
 		F25DF38E17C3F583000A27E6 /* Ingridient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ingridient.m; path = Classes/Ingridient.m; sourceTree = "<group>"; };
+		F26524FC18144B4E00F6F744 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		F26524FD18144B4E00F6F744 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPad.strings; sourceTree = "<group>"; };
 		F2C3E79817EE13AE001B6BEB /* RecipeBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipeBook.h; path = Classes/RecipeBook.h; sourceTree = "<group>"; };
 		F2C3E79917EE13AE001B6BEB /* RecipeBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipeBook.m; path = Classes/RecipeBook.m; sourceTree = "<group>"; };
 		F2C47A4617CE712900A42C4B /* FoodType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodType.h; path = Classes/FoodType.h; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 			children = (
 				F2FEE15A17B80762007771CF /* Base */,
 				F24899B317BC0CFD009AACF7 /* en */,
+				F26524FC18144B4E00F6F744 /* ru */,
 			);
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F2FEE15D17B80762007771CF /* Base */,
+				F26524FD18144B4E00F6F744 /* ru */,
 			);
 			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
