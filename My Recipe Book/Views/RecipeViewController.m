@@ -11,6 +11,8 @@
 #import <EventKitUI/EventKitUI.h>
 #import "IngridientsTableView.h"
 #import "Ingridient.h"
+#import "Utilities.h"
+@import MessageUI;
 
 @interface RecipeViewController ()
 @property EKEventStore *eventStore;
@@ -21,10 +23,12 @@
 @property (strong, nonatomic) IngridientsTableView *tableViewIngridientsDelegate;
 @property (strong, nonatomic) IBOutlet UITextView *textViewStepsToCook;
 @property (strong, nonatomic) IBOutlet UIButton *btnAddSReminder;
-@property (strong, nonatomic) IBOutlet UITextField *txtFieldIngrName;
-@property (strong, nonatomic) IBOutlet UITextField *txtFieldAmount;
+@property (strong, nonatomic) UITextField *txtFieldIngrName;
+@property (strong, nonatomic) UITextField *txtFieldAmount;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldDuration;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldPortions;
+- (IBAction)btnSharedPressed:(id)sender;
+@property MFMailComposeViewController *mail;
 @end
 
 @implementation RecipeViewController
@@ -208,6 +212,21 @@
         [self.txtFieldIngrName becomeFirstResponder];
         [self dataModelChanged];
     }
+}
+
+- (IBAction)btnSharedPressed:(id)sender {
+    if ([MFMailComposeViewController canSendMail]) {
+        self.mail = [[MFMailComposeViewController alloc] init];
+        [self.mail setMailComposeDelegate:self];
+        [self.mail setSubject:[NSString stringWithFormat:NSLocalizedString(@"Recipe for %@", nil), self.recipe.name]];
+       // [self.mail setMessageBody:[Utilities composeEmailForRecipe:self.recipe withHTML:YES] isHTML:YES];
+        [self.mail setMessageBody:[Utilities composeEmailForRecipeBook:self.docFoodTypes.recipeBook withHTML:YES] isHTML:YES];
+        [self.navigationController presentViewController:self.mail animated:YES completion:nil];
+    }
+}
+
+-(void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [self.mail dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

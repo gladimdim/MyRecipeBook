@@ -11,3 +11,13 @@
 "Prepare %@" = "Приготовить %@";
 
 "Provide name" = "Имя раздела";
+
+"Recipe for %@" = "Рецепт для %@";
+
+"Description: " = "Описание";
+
+"List of ingredients: " = "Список ингридиентов :";
+
+"Cancel" = "Отменить";
+
+"OK" = "OK";

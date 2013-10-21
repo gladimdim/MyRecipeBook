@@ -227,13 +227,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJ6-QX-Qrj">
+                                <rect key="frame" x="15" y="454" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnSharedPressed:" destination="YMA-bv-NHj" eventType="touchUpInside" id="gNc-r5-lfJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="xWJ-sN-hZ0" firstAttribute="leading" secondItem="pON-VZ-bSL" secondAttribute="leading" id="JNY-4e-wo9"/>
                             <constraint firstAttribute="trailing" secondItem="gtB-9g-5Vm" secondAttribute="trailing" constant="20" id="Rv7-kC-7h3"/>
+                            <constraint firstItem="FJ6-QX-Qrj" firstAttribute="leading" secondItem="pON-VZ-bSL" secondAttribute="leading" constant="15" id="a5N-Ca-1OE"/>
                             <constraint firstItem="gtB-9g-5Vm" firstAttribute="top" secondItem="xWJ-sN-hZ0" secondAttribute="bottom" constant="15" id="jXh-l3-DQv"/>
                             <constraint firstItem="xWJ-sN-hZ0" firstAttribute="top" secondItem="pON-VZ-bSL" secondAttribute="top" constant="43" id="mAR-XY-gb8"/>
+                            <constraint firstAttribute="bottom" secondItem="FJ6-QX-Qrj" secondAttribute="bottom" constant="20" id="nb7-ZU-Dsn"/>
                             <constraint firstAttribute="bottom" secondItem="gtB-9g-5Vm" secondAttribute="bottom" constant="20" id="umx-ek-XTy"/>
                         </constraints>
                     </view>

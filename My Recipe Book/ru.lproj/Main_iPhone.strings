@@ -31,3 +31,6 @@
 
 /* Class = "IBUITextField"; placeholder = "Ingridient Name"; ObjectID = "tg5-Bg-JVK"; */
 "tg5-Bg-JVK.placeholder" = "Ингридиент:";
+
+/* Class = "IBUIButton"; normalTitle = "Share"; ObjectID = "FJ6-QX-Qrj"; */
+"FJ6-QX-Qrj.normalTitle" = "Сохранить";

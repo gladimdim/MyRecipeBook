@@ -10,8 +10,9 @@
 #import <EventKitUI/EventKitUI.h>
 #import "Recipe.h"
 #import "FoodTypesDocument.h"
+@import MessageUI;
 
-@interface RecipeViewController : UIViewController <EKEventEditViewDelegate>
+@interface RecipeViewController : UIViewController <EKEventEditViewDelegate, MFMailComposeViewControllerDelegate>
 @property Recipe *recipe;
 @property FoodTypesDocument *docFoodTypes;
 @end
