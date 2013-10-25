@@ -61,7 +61,6 @@
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self_weak.recipe.arrayOfIngridients.count inSection:0];
         [self_weak.recipe.arrayOfIngridients insertObject:ingr atIndex:self_weak.recipe.arrayOfIngridients.count];
         [self_weak.tableViewIngridients insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//        [self_weak.tableViewIngridients scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
         [self_weak dataModelChanged];
     };
     self.tableViewIngridientsDelegate.removeIngridient = ^(NSIndexPath *indexPath) {
@@ -75,7 +74,7 @@
 
     self.txtFieldDuration.text = self.recipe.duration;
     self.txtFieldPortions.text = [self.recipe.portions stringValue];
-    self.textViewStepsToCook.text = self.recipe.stepsToCook;
+    self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] ? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     [self.tableViewIngridients reloadData];
@@ -117,7 +116,10 @@
         [self.txtFieldIngrName resignFirstResponder];
         [self.txtFieldAmount resignFirstResponder];
         //write down steps to cook when Done is pressed
-        self.recipe.stepsToCook = self.textViewStepsToCook.text;
+        if (![self.textViewStepsToCook.text isEqualToString:NSLocalizedString(@"Provide steps to cook.", nil)]) {
+            self.recipe.stepsToCook = self.textViewStepsToCook.text;
+        }
+
         self.recipe.duration = self.txtFieldDuration.text;
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
