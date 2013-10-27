@@ -210,7 +210,7 @@
         }
     }];
     //[self.tableViewIngridients reloadData];
-    self.textViewStepsToCook.text = self.recipe.stepsToCook;
+    self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
 }
 
 -(void) addButtonPressed {
