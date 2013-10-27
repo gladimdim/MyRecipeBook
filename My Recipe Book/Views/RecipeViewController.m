@@ -74,10 +74,17 @@
 
     self.txtFieldDuration.text = self.recipe.duration;
     self.txtFieldPortions.text = [self.recipe.portions stringValue];
-    self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] ? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
+    self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     [self.tableViewIngridients reloadData];
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.editing) {
+        [self setEditing:NO animated:NO];
+    }
 }
 
 -(void) viewDidAppear:(BOOL)animated {

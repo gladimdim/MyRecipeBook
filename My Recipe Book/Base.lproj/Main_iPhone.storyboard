@@ -114,7 +114,7 @@
                                     <action selector="recipeReminderAddPressed:" destination="YMA-bv-NHj" eventType="touchUpInside" id="Q1U-TW-E6S"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWJ-sN-hZ0">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWJ-sN-hZ0">
                                 <rect key="frame" x="0.0" y="43" width="320" height="396"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
@@ -129,13 +129,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yOy-Zr-qg2">
-                                        <rect key="frame" x="0.0" y="10" width="320" height="396"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yOy-Zr-qg2">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="386"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="C6u-nB-0KA"/>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" priority="772" constant="396" id="cbs-jn-cbH"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" priority="772" constant="386" id="cbs-jn-cbH"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellIngridient" textLabel="hq3-SW-oKx" detailTextLabel="oOl-qn-nNv" style="IBUITableViewCellStyleValue1" id="sgJ-gF-skb">
@@ -199,6 +199,7 @@
                                     <constraint firstItem="CDc-bd-2VQ" firstAttribute="leading" secondItem="xWJ-sN-hZ0" secondAttribute="leading" constant="320" id="SWM-fD-ybW"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="704" constant="396" id="cJr-Sd-0Z8"/>
                                     <constraint firstItem="yOy-Zr-qg2" firstAttribute="top" secondItem="xWJ-sN-hZ0" secondAttribute="top" constant="10" id="gPE-QU-58N"/>
+                                    <constraint firstItem="yOy-Zr-qg2" firstAttribute="height" secondItem="xWJ-sN-hZ0" secondAttribute="height" id="pRa-CG-q61"/>
                                     <constraint firstAttribute="trailing" secondItem="yOy-Zr-qg2" secondAttribute="trailing" id="vlK-gN-dXm"/>
                                 </constraints>
                             </scrollView>

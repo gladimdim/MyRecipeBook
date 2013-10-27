@@ -92,7 +92,7 @@
 }
 
 -(void) addNewIngridient {
-    if (![self.textFieldAmount.text isEqualToString:@""] || ![self.textFieldIngrName.text isEqualToString:@""]) {
+    if ((![self.textFieldAmount.text isEqualToString:@""] || ![self.textFieldIngrName.text isEqualToString:@""]) && (self.textFieldIngrName.text != nil || self.textFieldAmount.text != nil)) {
         Ingridient *ingr = [[Ingridient alloc] init];
         ingr.nameIngridient = self.textFieldIngrName.text;
         ingr.amount = self.textFieldAmount.text;
