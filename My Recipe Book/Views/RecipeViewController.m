@@ -12,6 +12,7 @@
 #import "IngridientsTableView.h"
 #import "Ingridient.h"
 #import "Utilities.h"
+#import "StatusLabelAnimator.h"
 @import MessageUI;
 
 @interface RecipeViewController ()
@@ -76,7 +77,6 @@
     self.txtFieldPortions.text = [self.recipe.portions stringValue];
     self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
     [self.tableViewIngridients reloadData];
 }
 
@@ -90,6 +90,17 @@
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.title = self.recipe.name;
+    if (self.recipe.arrayOfIngridients.count == 0) {
+        [self setEditing:YES animated:YES];
+    }
+    
+    NSInteger timesLaunched = [[NSUserDefaults standardUserDefaults] integerForKey:@"timesLaunched"];
+    if (timesLaunched < 2) {
+        StatusLabelAnimator *animatorLabel = [[StatusLabelAnimator alloc] init];
+        [animatorLabel showStatus:NSLocalizedString(@"Swipe right for description", nil) inView:self.view];
+        timesLaunched++;
+        [[NSUserDefaults standardUserDefaults] setInteger:timesLaunched forKey:@"timesLaunched"];
+    }
 }
 
 -(void) viewDidLayoutSubviews {

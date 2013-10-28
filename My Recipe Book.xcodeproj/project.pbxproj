@@ -12,6 +12,7 @@
 		F24FE8F11814638800D54E96 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F24FE8F31814638800D54E96 /* Localizable.strings */; };
 		F25DF38B17C3F4BE000A27E6 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38A17C3F4BE000A27E6 /* Recipe.m */; };
 		F25DF38F17C3F583000A27E6 /* Ingridient.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38E17C3F583000A27E6 /* Ingridient.m */; };
+		F265AB7B181EFF9D001B3EB8 /* StatusLabelAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F265AB7A181EFF9D001B3EB8 /* StatusLabelAnimator.m */; };
 		F292CC111815A69B0084276D /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F292CC101815A69B0084276D /* Utilities.m */; };
 		F2C3E79A17EE13AE001B6BEB /* RecipeBook.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E79917EE13AE001B6BEB /* RecipeBook.m */; };
 		F2C47A4817CE712900A42C4B /* FoodType.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C47A4717CE712900A42C4B /* FoodType.m */; };
@@ -60,6 +61,8 @@
 		F25DF38E17C3F583000A27E6 /* Ingridient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ingridient.m; path = Classes/Ingridient.m; sourceTree = "<group>"; };
 		F26524FC18144B4E00F6F744 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		F26524FD18144B4E00F6F744 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPad.strings; sourceTree = "<group>"; };
+		F265AB79181EFF9D001B3EB8 /* StatusLabelAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusLabelAnimator.h; path = Utilities/StatusLabelAnimator.h; sourceTree = "<group>"; };
+		F265AB7A181EFF9D001B3EB8 /* StatusLabelAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusLabelAnimator.m; path = Utilities/StatusLabelAnimator.m; sourceTree = "<group>"; };
 		F292CC0F1815A69B0084276D /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = Classes/Utilities.h; sourceTree = "<group>"; };
 		F292CC101815A69B0084276D /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilities.m; path = Classes/Utilities.m; sourceTree = "<group>"; };
 		F2C3E79817EE13AE001B6BEB /* RecipeBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipeBook.h; path = Classes/RecipeBook.h; sourceTree = "<group>"; };
@@ -137,6 +140,15 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		F265AB78181EFF6B001B3EB8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F265AB79181EFF9D001B3EB8 /* StatusLabelAnimator.h */,
+				F265AB7A181EFF9D001B3EB8 /* StatusLabelAnimator.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		F292CC0E1815A4050084276D /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +196,7 @@
 		F2FEE14D17B80762007771CF /* My Recipe Book */ = {
 			isa = PBXGroup;
 			children = (
+				F265AB78181EFF6B001B3EB8 /* Utilities */,
 				F292CC0E1815A4050084276D /* Delegates */,
 				F2C47A4517CD35C200A42C4B /* Data */,
 				F25DF38C17C3F4C5000A27E6 /* Classes */,
@@ -360,6 +373,7 @@
 				F2C47A4E17CFD77800A42C4B /* IngridientsTableView.m in Sources */,
 				F2FEE15417B80762007771CF /* main.m in Sources */,
 				F2C47A4B17CE7BDA00A42C4B /* RecipesListTableViewController.m in Sources */,
+				F265AB7B181EFF9D001B3EB8 /* StatusLabelAnimator.m in Sources */,
 				F292CC111815A69B0084276D /* Utilities.m in Sources */,
 				F2FEE16117B80762007771CF /* RBViewController.m in Sources */,
 			);
