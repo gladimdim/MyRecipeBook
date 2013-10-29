@@ -25,3 +25,11 @@
 "Provide steps to cook." = "Введите шаги приготовления.";
 
 "Recipe name" = "Имя рецепта";
+
+"Swipe left for description" = "Пролистайте влево, чтобы увидеть описание";
+
+"Missing" = "Отсутствует";
+
+"Prep time: %@" = "Займет: %@";
+
+"Portions: %@" = "Порций: %@";

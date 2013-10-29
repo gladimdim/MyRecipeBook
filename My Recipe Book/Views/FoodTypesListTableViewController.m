@@ -103,6 +103,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     FoodType *foodType = (FoodType *) [self.recipeBook.arrayOfFoodTypes objectAtIndex:indexPath.row];
     cell.textLabel.text = foodType.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", foodType.arrayOfRecipes.count];
     // Configure the cell...
     
     return cell;

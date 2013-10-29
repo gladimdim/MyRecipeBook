@@ -97,7 +97,7 @@
     NSInteger timesLaunched = [[NSUserDefaults standardUserDefaults] integerForKey:@"timesLaunched"];
     if (timesLaunched < 2) {
         StatusLabelAnimator *animatorLabel = [[StatusLabelAnimator alloc] init];
-        [animatorLabel showStatus:NSLocalizedString(@"Swipe right for description", nil) inView:self.view];
+        [animatorLabel showStatus:NSLocalizedString(@"Swipe left for description", nil) inView:self.view];
         timesLaunched++;
         [[NSUserDefaults standardUserDefaults] setInteger:timesLaunched forKey:@"timesLaunched"];
     }
@@ -246,6 +246,9 @@
 }
 
 -(void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    //scroll to beginning of scrollArea so app does not crash with blocking constraints (autolayout).
+    //It cannot calculate X Center for table view and scrollview.
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
     [self.mail dismissViewControllerAnimated:YES completion:nil];
 }
 

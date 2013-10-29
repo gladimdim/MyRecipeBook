@@ -17,6 +17,13 @@
     withHTML ? [resultString appendString:@"<h3>"] : nil;
     [resultString appendString:[NSString stringWithFormat:NSLocalizedString(@"Recipe for %@", nil), recipe.name]];
     withHTML ? [resultString appendString:@"</h3>"] : nil;
+    withHTML ? [resultString appendString:@"<h4>"] : nil;
+    [resultString appendString:[NSString stringWithFormat:NSLocalizedString(@"Prep time: %@", nil), recipe.duration]];
+    withHTML ? [resultString appendString:@"</h4>"] : nil;
+    withHTML ? [resultString appendString:@"<h4>"] : nil;
+    [resultString appendString:[NSString stringWithFormat:NSLocalizedString(@"Portions: %@", nil), [recipe.portions stringValue]]];
+    withHTML ? [resultString appendString:@"</h4>"] : nil;
+
     withHTML ? [resultString appendString:@"<p><h4>"] : [resultString appendString:@"\n"];
     [resultString appendString:NSLocalizedString(@"List of ingredients: ", nil)];
     withHTML ? [resultString appendString:@"</b></h4>"] : [resultString appendString:@"\n"];
@@ -26,7 +33,7 @@
     for (int i = 0; i < recipe.arrayOfIngridients.count; i++) {
         Ingridient *ingr = (Ingridient *) recipe.arrayOfIngridients[i];
         withHTML ? [resultString appendString:@"<li>"] : nil;
-        [resultString appendString:[NSString stringWithFormat:@"%@: %@", ingr.nameIngridient, ingr.amount]];
+        [resultString appendString:[NSString stringWithFormat:@"%@: %@", ingr.nameIngridient ? ingr.nameIngridient : @"", ingr.amount ? ingr.amount : @""]];
         withHTML ? [resultString appendString:@"</li>"] : [resultString appendString:@"\n"];
     }
     //list ends
@@ -37,6 +44,9 @@
     
     if (recipe.stepsToCook && ![recipe.stepsToCook isEqualToString:@""]) {
         [resultString appendString:recipe.stepsToCook];
+    }
+    else {
+        [resultString appendString:NSLocalizedString(@"Missing", nil)];
     }
     return resultString;
 }
