@@ -16,7 +16,7 @@
 
 "Description: " = "Описание";
 
-"List of ingredients: " = "Список ингридиентов :";
+"List of ingredients: " = "Список ингридиентов: ";
 
 "Cancel" = "Отменить";
 
@@ -33,3 +33,11 @@
 "Prep time: %@" = "Займет: %@";
 
 "Portions: %@" = "Порций: %@";
+
+"Your device cannot send email" = "Ваше устройство не может отсылать письма";
+
+"Only this recipe" = "Только этот рецепт";
+
+"Whole recipe book" = "Всю книжку";
+
+"Recipe book" = "Книга рецептов";

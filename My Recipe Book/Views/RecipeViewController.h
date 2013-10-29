@@ -12,7 +12,7 @@
 #import "FoodTypesDocument.h"
 @import MessageUI;
 
-@interface RecipeViewController : UIViewController <EKEventEditViewDelegate, MFMailComposeViewControllerDelegate>
+@interface RecipeViewController : UIViewController <EKEventEditViewDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate>
 @property Recipe *recipe;
 @property FoodTypesDocument *docFoodTypes;
 @end
