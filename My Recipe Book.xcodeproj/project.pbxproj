@@ -73,7 +73,7 @@
 		F2C47A4A17CE7BDA00A42C4B /* RecipesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipesListTableViewController.m; path = Views/RecipesListTableViewController.m; sourceTree = "<group>"; };
 		F2C47A4C17CFD77800A42C4B /* IngridientsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IngridientsTableView.h; path = Views/IngridientsTableView.h; sourceTree = "<group>"; };
 		F2C47A4D17CFD77800A42C4B /* IngridientsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IngridientsTableView.m; path = Views/IngridientsTableView.m; sourceTree = "<group>"; };
-		F2FEE14417B80762007771CF /* My Recipe Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Recipe Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2FEE14417B80762007771CF /* Book for Cook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Book for Cook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2FEE14717B80762007771CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F2FEE14917B80762007771CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F2FEE14B17B80762007771CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -149,20 +149,6 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		F292CC0E1815A4050084276D /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Delegates;
-			sourceTree = "<group>";
-		};
-		F2C47A4517CD35C200A42C4B /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Data;
-			sourceTree = "<group>";
-		};
 		F2FEE13B17B80762007771CF = {
 			isa = PBXGroup;
 			children = (
@@ -176,7 +162,7 @@
 		F2FEE14517B80762007771CF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F2FEE14417B80762007771CF /* My Recipe Book.app */,
+				F2FEE14417B80762007771CF /* Book for Cook.app */,
 				F2FEE16817B80762007771CF /* My Recipe BookTests.xctest */,
 			);
 			name = Products;
@@ -197,8 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				F265AB78181EFF6B001B3EB8 /* Utilities */,
-				F292CC0E1815A4050084276D /* Delegates */,
-				F2C47A4517CD35C200A42C4B /* Data */,
 				F25DF38C17C3F4C5000A27E6 /* Classes */,
 				F2FEE17F17B80D72007771CF /* Views */,
 				F2FEE15617B80762007771CF /* RBAppDelegate.h */,
@@ -275,7 +259,7 @@
 			);
 			name = "My Recipe Book";
 			productName = "My Recipe Book";
-			productReference = F2FEE14417B80762007771CF /* My Recipe Book.app */;
+			productReference = F2FEE14417B80762007771CF /* Book for Cook.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F2FEE16717B80762007771CF /* My Recipe BookTests */ = {
@@ -527,7 +511,7 @@
 				GCC_PREFIX_HEADER = "My Recipe Book/My Recipe Book-Prefix.pch";
 				INFOPLIST_FILE = "My Recipe Book/My Recipe Book-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Book for Cook";
 				PROVISIONING_PROFILE = "11229C06-C8D1-41CF-9C73-313126F2314E";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -545,7 +529,7 @@
 				GCC_PREFIX_HEADER = "My Recipe Book/My Recipe Book-Prefix.pch";
 				INFOPLIST_FILE = "My Recipe Book/My Recipe Book-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Book for Cook";
 				PROVISIONING_PROFILE = "11229C06-C8D1-41CF-9C73-313126F2314E";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

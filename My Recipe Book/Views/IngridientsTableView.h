@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Recipe.h"
 #import "Ingridient.h"
+#import "Utilities.h"
 
 @interface IngridientsTableView : UITableView <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property Recipe *recipe;

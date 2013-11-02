@@ -12,6 +12,7 @@
 @interface IngridientsTableView ()
 @property UITextField *textFieldIngrName;
 @property UITextField *textFieldAmount;
+@property INGR_COLOR ingrColor;
 @end
 
 @implementation IngridientsTableView
@@ -59,8 +60,23 @@
         cell.textLabel.text = ingridient.nameIngridient;
         NSString *detailText = ingridient.amount;
         cell.detailTextLabel.text = detailText;
+        [cell setBackgroundColor:ingridient.color];
     }
+
+    UIButton *button = (UIButton *) [cell viewWithTag:3];
+    [button addTarget:self action:@selector(btnIngrColorPressed:) forControlEvents:UIControlEventTouchDown];
     return cell;
+}
+
+-(void) btnIngrColorPressed:(id) sender {
+    if (self.ingrColor == mainCategory) {
+        self.ingrColor = secondaryCategory;
+    }
+    else {
+        self.ingrColor = mainCategory;
+    }
+    UIButton *button = (UIButton *) sender;
+    [button setBackgroundColor:[Utilities colorForCategory:self.ingrColor]];
 }
 
 -(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -96,6 +112,7 @@
         Ingridient *ingr = [[Ingridient alloc] init];
         ingr.nameIngridient = self.textFieldIngrName.text;
         ingr.amount = self.textFieldAmount.text;
+        ingr.color = [Utilities colorForCategory:self.ingrColor];
         //    [self.recipe.arrayOfIngridients insertObject:ingr atIndex:self.recipe.arrayOfIngridients.count];
         //self.dataModelChanged(YES);
         self.addIngridient(ingr);

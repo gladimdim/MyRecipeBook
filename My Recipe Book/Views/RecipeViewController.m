@@ -15,6 +15,8 @@
 #import "StatusLabelAnimator.h"
 @import MessageUI;
 
+
+
 @interface RecipeViewController ()
 @property EKEventStore *eventStore;
 @property EKCalendar *calendar;
@@ -24,8 +26,6 @@
 @property (strong, nonatomic) IngridientsTableView *tableViewIngridientsDelegate;
 @property (strong, nonatomic) IBOutlet UITextView *textViewStepsToCook;
 @property (strong, nonatomic) IBOutlet UIButton *btnAddSReminder;
-@property (strong, nonatomic) UITextField *txtFieldIngrName;
-@property (strong, nonatomic) UITextField *txtFieldAmount;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldDuration;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldPortions;
 - (IBAction)btnSharedPressed:(id)sender;
@@ -113,7 +113,6 @@
     [super setEditing:editing animated:animated];
     [self.tableViewIngridients setEditing:editing animated:YES];
     [self.tableViewIngridientsDelegate setEditing:editing animated:animated];
-    self.textViewStepsToCook.editable = editing;
     self.txtFieldPortions.enabled = editing;
     self.txtFieldDuration.enabled = editing;
     
@@ -131,8 +130,6 @@
         self.txtFieldDuration.borderStyle = UITextBorderStyleNone;
         self.txtFieldPortions.borderStyle = UITextBorderStyleNone;
         
-        [self.txtFieldIngrName resignFirstResponder];
-        [self.txtFieldAmount resignFirstResponder];
         //write down steps to cook when Done is pressed
         if (![self.textViewStepsToCook.text isEqualToString:NSLocalizedString(@"Provide steps to cook.", nil)]) {
             self.recipe.stepsToCook = self.textViewStepsToCook.text;
@@ -222,16 +219,6 @@
     }];
     //[self.tableViewIngridients reloadData];
     self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
-}
-
--(void) addButtonPressed {
-    if (self.txtFieldIngrName.text && ![self.txtFieldIngrName.text isEqualToString:@""]) {
-        [self.recipe addIngridientWithName:self.txtFieldIngrName.text amount:self.txtFieldAmount.text];
-        self.txtFieldIngrName.text = @"";
-        self.txtFieldAmount.text = @"";
-        [self.txtFieldIngrName becomeFirstResponder];
-        [self dataModelChanged];
-    }
 }
 
 - (IBAction)btnSharedPressed:(id)sender {

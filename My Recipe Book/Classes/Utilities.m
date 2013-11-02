@@ -67,4 +67,16 @@
     }
     return resultString;
 }
+
++(UIColor *) colorForCategory:(INGR_COLOR)catColor {
+    switch (catColor) {
+        case mainCategory:
+            return [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.3];
+        break;
+        case secondaryCategory:
+            return [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.3];
+        default:
+            return [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.3];
+    }
+}
 @end

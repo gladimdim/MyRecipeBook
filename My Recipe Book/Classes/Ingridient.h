@@ -11,4 +11,5 @@
 @interface Ingridient : NSObject <NSCoding>
 @property NSString *nameIngridient;
 @property NSString *amount;
+@property UIColor *color;
 @end

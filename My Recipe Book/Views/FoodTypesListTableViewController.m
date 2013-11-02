@@ -79,6 +79,13 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (self.recipeBook.arrayOfFoodTypes.count == 0) {
+        [self setEditing:YES animated:YES];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
