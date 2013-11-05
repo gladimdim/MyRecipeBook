@@ -14,8 +14,8 @@
 +(NSString *) composeEmailForRecipe:(Recipe *) recipe withHTML:(BOOL) withHTML;
 +(NSString *) composeEmailForRecipeBook:(RecipeBook *) recipeBook withHTML:(BOOL) withHTML;
 typedef NS_ENUM(int, INGR_COLOR) {
-    mainCategory = 1,
-    secondaryCategory = 2
+    mainCategory = 0,
+    secondaryCategory = 1
 };
 +(UIColor *) colorForCategory:(INGR_COLOR) catColor;
 @end

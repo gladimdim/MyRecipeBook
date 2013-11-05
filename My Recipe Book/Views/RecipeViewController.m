@@ -62,6 +62,28 @@
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self_weak.recipe.arrayOfIngridients.count inSection:0];
         [self_weak.recipe.arrayOfIngridients insertObject:ingr atIndex:self_weak.recipe.arrayOfIngridients.count];
         [self_weak.tableViewIngridients insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        for( Ingridient *ing in self_weak.recipe.arrayOfIngridients) {
+            NSLog(@"INgr: %@", ing.nameIngridient);
+        }
+        NSMutableArray *arrayTemp = [NSMutableArray array];
+        arrayTemp[0] = self_weak.recipe.arrayOfIngridients[0];
+        for (int i = 1; i < self_weak.recipe.arrayOfIngridients.count; i++) {
+            Ingridient *ing = self_weak.recipe.arrayOfIngridients[i];
+            if ([ing.color isEqual:[Utilities colorForCategory:mainCategory]]) {
+                [arrayTemp insertObject:ing atIndex:i];
+                [self_weak.recipe.arrayOfIngridients removeObjectAtIndex:i];
+                i--;
+            }
+        }
+        [self_weak.recipe.arrayOfIngridients removeObjectAtIndex:0];
+        [arrayTemp addObjectsFromArray:self_weak.recipe.arrayOfIngridients];
+        self_weak.recipe.arrayOfIngridients = arrayTemp;
+        
+        for( Ingridient *ing in self_weak.recipe.arrayOfIngridients) {
+            NSLog(@"INgr: %@", ing.nameIngridient);
+        }
+        
+        [self_weak.tableViewIngridients reloadData];
         [self_weak dataModelChanged];
     };
     self.tableViewIngridientsDelegate.removeIngridient = ^(NSIndexPath *indexPath) {

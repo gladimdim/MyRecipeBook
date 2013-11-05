@@ -56,6 +56,7 @@
 -(void) initNewFileWithDummyData {
     self.recipeBook = [[RecipeBook alloc] init];
     self.recipeBook.arrayOfFoodTypes = [NSMutableArray array];
+    [self setEditing:YES animated:YES];
 }
 
 -(void) setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -77,13 +78,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
--(void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    if (self.recipeBook.arrayOfFoodTypes.count == 0) {
-        [self setEditing:YES animated:YES];
-    }
 }
 
 - (void)didReceiveMemoryWarning

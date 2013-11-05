@@ -33,11 +33,5 @@
     return self;
 }
 
--(void) addIngridientWithName:(NSString *)name amount:(NSString *)amount {
-    Ingridient *ingr = [[Ingridient alloc] init];
-    ingr.nameIngridient = name;
-    ingr.amount = amount;
-    [self.arrayOfIngridients addObject:ingr];
-}
 
 @end

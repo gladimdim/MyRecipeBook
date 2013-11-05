@@ -13,7 +13,6 @@
 @property NSString *name;
 @property NSString *description;
 @property NSString *stepsToCook;
--(void) addIngridientWithName:(NSString *) name amount:(NSString *) amount;
 @property NSString *duration;
 @property NSNumber *portions;
 @property UIImage *image;

@@ -71,12 +71,12 @@
 +(UIColor *) colorForCategory:(INGR_COLOR)catColor {
     switch (catColor) {
         case mainCategory:
-            return [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.3];
+            return [UIColor colorWithRed:0.9333 green:0.9961 blue:0.7765 alpha:1.0];
         break;
         case secondaryCategory:
-            return [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.3];
+            return [UIColor colorWithRed:0.9725 green:0.9490 blue:0.9020 alpha:1.0];
         default:
-            return [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.3];
+            return [UIColor colorWithRed:0.9333 green:0.9961 blue:0.7765 alpha:1.0];
     }
 }
 @end
