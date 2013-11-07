@@ -28,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *btnAddSReminder;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldDuration;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldPortions;
+@property UIView *activeElement;
 - (IBAction)btnSharedPressed:(id)sender;
 @property MFMailComposeViewController *mail;
 @end
@@ -48,7 +49,7 @@
     [super viewDidLoad];
     self.eventStore = [[EKEventStore alloc] init];
     [self checkAccessToCalendars];
-    
+    self.scrollView.delegate = self;
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -65,23 +66,30 @@
         for( Ingridient *ing in self_weak.recipe.arrayOfIngridients) {
             NSLog(@"INgr: %@", ing.nameIngridient);
         }
-        NSMutableArray *arrayTemp = [NSMutableArray array];
-        arrayTemp[0] = self_weak.recipe.arrayOfIngridients[0];
-        for (int i = 1; i < self_weak.recipe.arrayOfIngridients.count; i++) {
-            Ingridient *ing = self_weak.recipe.arrayOfIngridients[i];
-            if ([ing.color isEqual:[Utilities colorForCategory:mainCategory]]) {
-                [arrayTemp insertObject:ing atIndex:i];
-                [self_weak.recipe.arrayOfIngridients removeObjectAtIndex:i];
-                i--;
-            }
-        }
+        
+        //we need to sort array by Ingridient's colors.
+        //But at first we need to remove dummy first element of array (which is used to show editable row in table).
         [self_weak.recipe.arrayOfIngridients removeObjectAtIndex:0];
-        [arrayTemp addObjectsFromArray:self_weak.recipe.arrayOfIngridients];
-        self_weak.recipe.arrayOfIngridients = arrayTemp;
+        [self_weak.recipe.arrayOfIngridients sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            Ingridient *ingr1 = (Ingridient *) obj1;
+            Ingridient *ingr2 = (Ingridient *) obj2;
+            if ([ingr1.color isEqual:ingr2.color]) {
+                return NSOrderedSame;
+            }
+            if ([ingr1.color isEqual:[Utilities colorForCategory:0]]) {
+                return NSOrderedAscending;
+            }
+            else {
+                return NSOrderedDescending;
+            }
+        }];
         
         for( Ingridient *ing in self_weak.recipe.arrayOfIngridients) {
-            NSLog(@"INgr: %@", ing.nameIngridient);
+            NSLog(@"INgr2: %@", ing.nameIngridient);
         }
+        
+        //do not forget to add dummy ingridient back
+        [self_weak.recipe.arrayOfIngridients insertObject:[[Ingridient alloc] init] atIndex:0];
         
         [self_weak.tableViewIngridients reloadData];
         [self_weak dataModelChanged];
@@ -99,6 +107,8 @@
     self.txtFieldPortions.text = [self.recipe.portions stringValue];
     self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.textViewStepsToCook.delegate = self;
     [self.tableViewIngridients reloadData];
 }
 
@@ -275,6 +285,16 @@
     //It cannot calculate X Center for table view and scrollview.
     [self.scrollView setContentOffset:CGPointMake(0, 0)];
     [self.mail dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.x == 0) {
+        [self.textViewStepsToCook resignFirstResponder];
+    }
+    else {
+        [self.textViewStepsToCook becomeFirstResponder];
+    }
+    NSLog(@"%@", NSStringFromCGPoint(scrollView.contentOffset));
 }
 
 @end
