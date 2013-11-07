@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldDuration;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldPortions;
 @property UIView *activeElement;
+@property CGRect originRectStepsToCook;
 - (IBAction)btnSharedPressed:(id)sender;
 @property MFMailComposeViewController *mail;
 @end
@@ -50,6 +51,33 @@
     self.eventStore = [[EKEventStore alloc] init];
     [self checkAccessToCalendars];
     self.scrollView.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    self.originRectStepsToCook = self.textViewStepsToCook.frame;
+    self.textViewStepsToCook.delegate = self;
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    [UIView beginAnimations:nil context:nil];
+    CGRect endRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect newRect = self.textViewStepsToCook.frame;
+    //Down size your text view
+    newRect.size.height -= endRect.size.height;
+    self.textViewStepsToCook.frame = newRect;
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    [UIView beginAnimations:nil context:nil];
+    self.textViewStepsToCook.frame = self.originRectStepsToCook;
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -107,8 +135,7 @@
     self.txtFieldPortions.text = [self.recipe.portions stringValue];
     self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    self.textViewStepsToCook.delegate = self;
+
     [self.tableViewIngridients reloadData];
 }
 
@@ -117,6 +144,8 @@
     if (self.editing) {
         [self setEditing:NO animated:NO];
     }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -172,6 +201,7 @@
         [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
         
         self.recipe.portions = self.txtFieldPortions.text ? [formatter numberFromString:self.txtFieldPortions.text] : [NSNumber numberWithInt:0];
+        [self.textViewStepsToCook resignFirstResponder];
         [self dataModelChanged];
     }
 }
@@ -291,10 +321,15 @@
     if (scrollView.contentOffset.x == 0) {
         [self.textViewStepsToCook resignFirstResponder];
     }
-    else {
+    /*else {
         [self.textViewStepsToCook becomeFirstResponder];
-    }
-    NSLog(@"%@", NSStringFromCGPoint(scrollView.contentOffset));
+    }*/
 }
 
+
+-(void) textViewDidBeginEditing:(UITextView *)textView {
+    if (!self.editing) {
+        [self setEditing:YES animated:YES];
+    }
+}
 @end

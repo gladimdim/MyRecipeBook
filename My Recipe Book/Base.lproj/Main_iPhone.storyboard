@@ -126,11 +126,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDc-bd-2VQ">
-                                        <rect key="frame" x="320" y="10" width="320" height="396"/>
+                                        <rect key="frame" x="320" y="10" width="320" height="366"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" priority="705" constant="396" id="e1G-BQ-KlJ"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" priority="705" constant="366" id="e1G-BQ-KlJ"/>
                                             <constraint firstAttribute="width" constant="320" id="wx0-7s-fv0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
