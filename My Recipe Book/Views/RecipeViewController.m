@@ -28,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *btnAddSReminder;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldDuration;
 @property (strong, nonatomic) IBOutlet UITextField *txtFieldPortions;
+@property BOOL textViewWithStepsPressed;
 @property UIView *activeElement;
 @property CGRect originRectStepsToCook;
 - (IBAction)btnSharedPressed:(id)sender;
@@ -51,33 +52,8 @@
     self.eventStore = [[EKEventStore alloc] init];
     [self checkAccessToCalendars];
     self.scrollView.delegate = self;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
     self.originRectStepsToCook = self.textViewStepsToCook.frame;
     self.textViewStepsToCook.delegate = self;
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    [UIView beginAnimations:nil context:nil];
-    CGRect endRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    CGRect newRect = self.textViewStepsToCook.frame;
-    //Down size your text view
-    newRect.size.height -= endRect.size.height;
-    self.textViewStepsToCook.frame = newRect;
-    [UIView commitAnimations];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification
-{
-    [UIView beginAnimations:nil context:nil];
-    self.textViewStepsToCook.frame = self.originRectStepsToCook;
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -91,9 +67,6 @@
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self_weak.recipe.arrayOfIngridients.count inSection:0];
         [self_weak.recipe.arrayOfIngridients insertObject:ingr atIndex:self_weak.recipe.arrayOfIngridients.count];
         [self_weak.tableViewIngridients insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        for( Ingridient *ing in self_weak.recipe.arrayOfIngridients) {
-            NSLog(@"INgr: %@", ing.nameIngridient);
-        }
         
         //we need to sort array by Ingridient's colors.
         //But at first we need to remove dummy first element of array (which is used to show editable row in table).
@@ -111,10 +84,6 @@
                 return NSOrderedDescending;
             }
         }];
-        
-        for( Ingridient *ing in self_weak.recipe.arrayOfIngridients) {
-            NSLog(@"INgr2: %@", ing.nameIngridient);
-        }
         
         //do not forget to add dummy ingridient back
         [self_weak.recipe.arrayOfIngridients insertObject:[[Ingridient alloc] init] atIndex:0];
@@ -137,6 +106,18 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     [self.tableViewIngridients reloadData];
+    
+    //register for keyboard notifications so we can resize textview
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -176,7 +157,7 @@
     [self.tableViewIngridientsDelegate setEditing:editing animated:animated];
     self.txtFieldPortions.enabled = editing;
     self.txtFieldDuration.enabled = editing;
-    
+    self.textViewStepsToCook.editable = editing;
     if (editing) {
         self.txtFieldDuration.borderStyle = UITextBorderStyleLine;
         self.txtFieldPortions.borderStyle = UITextBorderStyleLine;
@@ -317,19 +298,42 @@
     [self.mail dismissViewControllerAnimated:YES completion:nil];
 }
 
+
 -(void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.x == 0) {
+    NSLog(@"content offset: %@", NSStringFromCGPoint(scrollView.contentOffset));
+    if (scrollView.contentOffset.x == 0 && scrollView.contentOffset.y == 0) {
         [self.textViewStepsToCook resignFirstResponder];
     }
-    /*else {
-        [self.textViewStepsToCook becomeFirstResponder];
-    }*/
 }
-
 
 -(void) textViewDidBeginEditing:(UITextView *)textView {
     if (!self.editing) {
         [self setEditing:YES animated:YES];
     }
+    self.textViewWithStepsPressed = YES;
 }
+
+-(void) textViewDidEndEditing:(UITextView *)textView {
+    self.textViewWithStepsPressed = NO;
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    if (self.textViewWithStepsPressed) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.1];
+        CGRect endRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        CGRect newRect = self.textViewStepsToCook.frame;
+        //Down size your text view
+        newRect.size.height -= endRect.size.height;
+        self.textViewStepsToCook.frame = newRect;
+        [UIView commitAnimations];
+    }
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    self.textViewStepsToCook.frame = self.originRectStepsToCook;
+}
+
 @end

@@ -16,6 +16,4 @@
 @property Recipe *recipe;
 @property FoodTypesDocument *docFoodTypes;
 
-
-
 @end

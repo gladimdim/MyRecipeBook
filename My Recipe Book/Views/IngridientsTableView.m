@@ -39,6 +39,11 @@
     return self.recipe.arrayOfIngridients.count;
 }
 
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    Ingridient *ingridient = [self.recipe.arrayOfIngridients objectAtIndex:indexPath.row];
+    [cell setBackgroundColor:ingridient.color];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier = (self.editing && indexPath.row == 0) ? @"cellNewIngridient" : @"cellIngridient";
@@ -60,7 +65,7 @@
         cell.textLabel.text = ingridient.nameIngridient;
         NSString *detailText = ingridient.amount;
         cell.detailTextLabel.text = detailText;
-        [cell setBackgroundColor:ingridient.color];
+        
     }
 
     UIButton *button = (UIButton *) [cell viewWithTag:3];
