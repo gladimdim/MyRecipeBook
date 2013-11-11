@@ -229,6 +229,10 @@
 }
 
 - (IBAction)recipeReminderAddPressed:(id)sender {
+    if (self.editing) {
+        [self setEditing:NO animated:NO];
+    }
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
     EKEventEditViewController *viewController = [[EKEventEditViewController alloc] init];
     [self prepareEvent];
     viewController.event = self.event;
@@ -284,9 +288,11 @@
         [self.mail setSubject:NSLocalizedString(@"Recipe book", nil)];
         [self.mail setMessageBody:[Utilities composeEmailForRecipeBook:self.docFoodTypes.recipeBook withHTML:YES] isHTML:YES];
     }
-    else {
+    else if (buttonIndex == 1) {
         [self.mail setSubject:[NSString stringWithFormat:NSLocalizedString(@"Recipe for %@", nil), self.recipe.name]];
         [self.mail setMessageBody:[Utilities composeEmailForRecipe:self.recipe withHTML:YES] isHTML:YES];
+    } else {
+        return;
     }
     [self.navigationController presentViewController:self.mail animated:YES completion:nil];
 }
@@ -294,7 +300,7 @@
 -(void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     //scroll to beginning of scrollArea so app does not crash with blocking constraints (autolayout).
     //It cannot calculate X Center for table view and scrollview.
-    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    //[self.scrollView setContentOffset:CGPointMake(320, 0)];
     [self.mail dismissViewControllerAnimated:YES completion:nil];
 }
 
