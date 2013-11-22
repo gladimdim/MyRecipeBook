@@ -30,7 +30,7 @@
     self.statusLabel.textColor = [UIColor whiteColor];
     
     self.statusLabel.tag = 5553;
-    self.statusLabel.alpha = 0.6;
+    self.statusLabel.alpha = 2;
     [view addSubview:self.statusLabel];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDelegate:self];
