@@ -30,7 +30,7 @@
 "plw-H9-vsg.text" = "Title";
 
 /* Class = "IBUITextField"; placeholder = "Ingridient Name"; ObjectID = "tg5-Bg-JVK"; */
-"tg5-Bg-JVK.placeholder" = "Ингридиент";
+"tg5-Bg-JVK.placeholder" = "Ингредиент";
 
 /* Class = "IBUIButton"; normalTitle = "Share"; ObjectID = "FJ6-QX-Qrj"; */
 "FJ6-QX-Qrj.normalTitle" = "Поделится";
