@@ -33,5 +33,12 @@
     return self;
 }
 
++(Recipe *) recipeWithName:(NSString *)name stepsToCook:(NSString *)stepsToCook {
+    Recipe *recipe = [[Recipe alloc] init];
+    recipe.name = name;
+    recipe.stepsToCook = stepsToCook;
+    return recipe;
+}
+
 
 @end

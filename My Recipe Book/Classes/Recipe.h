@@ -16,5 +16,6 @@
 @property NSString *duration;
 @property NSNumber *portions;
 @property UIImage *image;
++(Recipe *) recipeWithName:(NSString *) name stepsToCook:(NSString *) stepsToCook;
 @end
 

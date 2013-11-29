@@ -58,20 +58,8 @@
 
 -(void) initNewFileWithDummyData {
     self.recipeBook = [[RecipeBook alloc] init];
+    [self.recipeBook generateDummyStructure];
     
-    FoodType *type1 = [[FoodType alloc] init];
-    type1.name = NSLocalizedString(@"Meat", nil);
-    type1.arrayOfRecipes = [NSMutableArray array];
-    
-    FoodType *type2 = [[FoodType alloc] init];
-    type2.name = NSLocalizedString(@"Soups", nil);
-    type2.arrayOfRecipes = [NSMutableArray array];
-    
-    FoodType *type3 = [[FoodType alloc] init];
-    type3.name = NSLocalizedString(@"Salads", nil);
-    type3.arrayOfRecipes = [NSMutableArray array];
-    
-    self.recipeBook.arrayOfFoodTypes = [NSMutableArray arrayWithObjects:type1, type2, type3, nil];
     [self dataModelChanged];
     [self.tableView reloadData];
     //[self setEditing:YES animated:YES];

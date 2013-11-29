@@ -12,5 +12,5 @@
 @interface RecipeBook : NSObject <NSCoding>
 @property NSMutableArray *arrayOfFoodTypes;
 -(void) addFoodTypeWithName:(NSString *) foodTypeName;
-/*-(void) generateDummyStructure;*/
+-(void) generateDummyStructure;
 @end
