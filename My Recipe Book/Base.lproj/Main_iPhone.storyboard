@@ -107,6 +107,12 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="OeF-FD-nc1">
+                                <rect key="frame" x="140" y="428" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="pageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtB-9g-5Vm">
                                 <rect key="frame" x="196" y="454" width="104" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -114,7 +120,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Mx3-cf-0nP"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="104" id="s0U-lu-bTZ"/>
                                 </constraints>
-                                <state key="normal" title="Add Reminder">
+                                <state key="normal" title="Reminder">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -258,8 +264,10 @@
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="FJ6-QX-Qrj" firstAttribute="height" secondItem="gtB-9g-5Vm" secondAttribute="height" id="4eM-A2-IpV"/>
+                            <constraint firstAttribute="centerX" secondItem="OeF-FD-nc1" secondAttribute="centerX" id="CO9-cE-JMM"/>
                             <constraint firstItem="xWJ-sN-hZ0" firstAttribute="leading" secondItem="pON-VZ-bSL" secondAttribute="leading" id="JNY-4e-wo9"/>
                             <constraint firstAttribute="trailing" secondItem="gtB-9g-5Vm" secondAttribute="trailing" constant="20" id="Rv7-kC-7h3"/>
+                            <constraint firstItem="OeF-FD-nc1" firstAttribute="top" secondItem="xWJ-sN-hZ0" secondAttribute="bottom" constant="-11" id="ZXW-8F-bND"/>
                             <constraint firstItem="FJ6-QX-Qrj" firstAttribute="leading" secondItem="pON-VZ-bSL" secondAttribute="leading" constant="15" id="a5N-Ca-1OE"/>
                             <constraint firstItem="gtB-9g-5Vm" firstAttribute="top" secondItem="xWJ-sN-hZ0" secondAttribute="bottom" constant="15" id="jXh-l3-DQv"/>
                             <constraint firstItem="xWJ-sN-hZ0" firstAttribute="top" secondItem="pON-VZ-bSL" secondAttribute="top" constant="43" id="mAR-XY-gb8"/>
@@ -271,6 +279,7 @@
                     <navigationItem key="navigationItem" id="Vr5-Xr-NDy"/>
                     <connections>
                         <outlet property="btnAddSReminder" destination="gtB-9g-5Vm" id="gvt-Zo-BeG"/>
+                        <outlet property="pageControl" destination="OeF-FD-nc1" id="Ad7-VL-dhr"/>
                         <outlet property="scrollView" destination="xWJ-sN-hZ0" id="pN5-oI-CBs"/>
                         <outlet property="tableViewIngridients" destination="yOy-Zr-qg2" id="zDQ-b0-ARJ"/>
                         <outlet property="textViewStepsToCook" destination="CDc-bd-2VQ" id="Rlh-va-Cmu"/>

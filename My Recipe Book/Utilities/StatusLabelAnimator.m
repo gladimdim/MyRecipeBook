@@ -44,7 +44,7 @@
 -(void) disposeLabelFromScreen:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:1.0];
-    [UIView setAnimationDelay:1.2];
+    [UIView setAnimationDelay:10.0];
     self.statusLabel.frame = CGRectMake(-300, self.winSize.height - 22, 300, 22);
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(removeLabel:finished:context:)];

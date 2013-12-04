@@ -33,6 +33,7 @@
 @property CGRect originRectStepsToCook;
 - (IBAction)btnSharedPressed:(id)sender;
 @property MFMailComposeViewController *mail;
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @end
 
 @implementation RecipeViewController
@@ -308,7 +309,11 @@
 -(void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSLog(@"content offset: %@", NSStringFromCGPoint(scrollView.contentOffset));
     if (scrollView.contentOffset.x == 0 && scrollView.contentOffset.y == 0) {
+        [self.pageControl setCurrentPage:0];
         [self.textViewStepsToCook resignFirstResponder];
+    }
+    else {
+        [self.pageControl setCurrentPage:1];
     }
 }
 
