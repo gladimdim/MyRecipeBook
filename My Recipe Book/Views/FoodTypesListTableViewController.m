@@ -10,6 +10,7 @@
 #import "RecipesListTableViewController.h"
 #import "FoodTypesDocument.h"
 #import "RecipeBook.h"
+#import "CloudManager.h"
 
 @interface FoodTypesListTableViewController () <UIAlertViewDelegate>
 @property RecipeBook *recipeBook;
@@ -29,18 +30,68 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (self.recipeBook == nil) {
+    /*if (self.recipeBook == nil) {
         [self initFoodTypes];
+    }*/
+    self.recipeBook = self.docFoodTypes.recipeBook;
+    [self.tableView reloadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentStateChanged:) name:UIDocumentStateChangedNotification object:self.docFoodTypes];
+}
+
+-(void) setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    if (editing) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Add", nil) style:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
     }
     else {
-        [self.tableView reloadData];
+        self.navigationItem.leftBarButtonItem = nil;
     }
 }
 
+-(void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    [[CloudManager sharedManager] initCloudAccessWithCompletion:^(BOOL available) {
+        NSURL *docURL = available ? [CloudManager sharedManager].iCloudURL : [[CloudManager sharedManager] localDocumentURL];
+        self.docFoodTypes = [[FoodTypesDocument alloc] initWithFileURL:docURL];
+        if (self.recipeBook == nil) {
+            [self initFoodTypes];
+        }
+        else {
+            [self.tableView reloadData];
+        }
+    }];
+
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void) documentStateChanged:(NSNotification *) notification {
+    self.recipeBook = self.docFoodTypes.recipeBook;
+    if (self.docFoodTypes.documentState == UIDocumentStateInConflict) {
+        [self.docFoodTypes resolve];
+    }
+    [self.tableView reloadData];
+}
+
+
 -(void) initFoodTypes {
-    NSURL *baseURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSURL *docURL = [NSURL URLWithString:[[baseURL absoluteString]  stringByAppendingString:@"foodTypes"]];
-    self.docFoodTypes = [[FoodTypesDocument alloc] initWithFileURL:docURL];
+    //    self.recipeBook = self.docFoodTypes.recipeBook;
     [self.docFoodTypes openWithCompletionHandler:^(BOOL success) {
         if (success) {
             NSLog(@"opened");
@@ -63,33 +114,6 @@
     [self dataModelChanged];
     [self.tableView reloadData];
     //[self setEditing:YES animated:YES];
-}
-
--(void) setEditing:(BOOL)editing animated:(BOOL)animated {
-    [super setEditing:editing animated:animated];
-    if (editing) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Add", nil) style:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
-    }
-    else {
-        self.navigationItem.leftBarButtonItem = nil;
-    }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -134,14 +158,15 @@
 
 -(void) dataModelChanged {
     self.docFoodTypes.recipeBook = self.recipeBook;
-    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+    [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
+   /* [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         if (success) {
             NSLog(@"Doc saved");
         }
         else {
             NSLog(@"Doc was not saved");
         }
-    }];
+    }];*/
     [self.tableView reloadData];
 }
 
@@ -152,6 +177,7 @@
 {
     FoodType *foodType = (FoodType *) [self.recipeBook.arrayOfFoodTypes objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     RecipesListTableViewController *recipeListVC = (RecipesListTableViewController *) [segue destinationViewController];
+    recipeListVC.indexOfFoodType = (NSUInteger) self.tableView.indexPathForSelectedRow.row;
     recipeListVC.foodType = foodType;
     recipeListVC.docFoodTypes = self.docFoodTypes;
 }

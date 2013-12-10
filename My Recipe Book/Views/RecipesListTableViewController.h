@@ -13,4 +13,5 @@
 @interface RecipesListTableViewController : UITableViewController
 @property FoodType *foodType;
 @property FoodTypesDocument *docFoodTypes;
+@property NSUInteger indexOfFoodType;
 @end

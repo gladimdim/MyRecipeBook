@@ -11,4 +11,5 @@
 
 @interface FoodTypesDocument : UIDocument
 @property (strong) RecipeBook *recipeBook;
+-(void) resolve;
 @end

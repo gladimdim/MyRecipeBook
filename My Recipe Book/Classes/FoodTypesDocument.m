@@ -20,4 +20,12 @@
 -(id) contentsForType:(NSString *)typeName error:(NSError *__autoreleasing *)outError {
     return [NSKeyedArchiver archivedDataWithRootObject:self.recipeBook];
 }
+
+-(void) resolve {
+    NSArray *array = [NSFileVersion unresolvedConflictVersionsOfItemAtURL:self.fileURL];
+    [NSFileVersion removeOtherVersionsOfItemAtURL:self.fileURL error:nil];
+    for (NSFileVersion *ver in array) {
+        ver.resolved = YES;
+    }
+}
 @end

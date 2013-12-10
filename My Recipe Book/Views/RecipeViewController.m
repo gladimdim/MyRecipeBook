@@ -15,8 +15,6 @@
 #import "StatusLabelAnimator.h"
 @import MessageUI;
 
-
-
 @interface RecipeViewController ()
 @property EKEventStore *eventStore;
 @property EKCalendar *calendar;
@@ -118,7 +116,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentStateChanged:) name:UIDocumentStateChangedNotification object:self.docFoodTypes];
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -188,6 +186,25 @@
     }
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void) documentStateChanged:(NSNotification *) notification {
+    self.recipe = [self.docFoodTypes.recipeBook findRecipeByName:self.recipe.name];
+    self.tableViewIngridientsDelegate.recipe = self.recipe;
+    self.txtFieldDuration.text = self.recipe.duration;
+    self.txtFieldPortions.text = [self.recipe.portions stringValue];
+    self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
+    [self.tableViewIngridients reloadData];
+}
+
+-(void) updateFields {
+    [self.tableViewIngridients reloadData];
+}
+
 -(void) requestAccess {
     [self.eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
         NSLog(@"Granted: %@", granted ? @"YES" : @"NO");
@@ -242,11 +259,6 @@
     viewController.editViewDelegate = self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 -(void) eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -257,14 +269,15 @@
 }
 
 -(void) dataModelChanged {
-    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+    [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
+/*    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         if (success) {
             NSLog(@"Saved file.");
         }
         else {
             NSLog(@"File was not saved.");
         }
-    }];
+    }];*/
     //[self.tableViewIngridients reloadData];
     self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
 }

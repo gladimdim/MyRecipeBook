@@ -10,7 +10,6 @@
 #import "Recipe.h"
 #import "RecipeViewController.h"
 @interface RecipesListTableViewController ()
-
 @end
 
 @implementation RecipesListTableViewController
@@ -38,12 +37,30 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationItem.title = self.foodType.name;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentStateChanged:) name:UIDocumentStateChangedNotification object:self.docFoodTypes];
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) documentStateChanged:(NSNotification *) notification {
+    //if our foodType was not deleted after iCloud update - reread foodType from the same index
+    //if there is not such element id - pop view to previous.
+    if (self.indexOfFoodType < [self.docFoodTypes.recipeBook.arrayOfFoodTypes count] ) {
+        self.foodType = (FoodType *) [self.docFoodTypes.recipeBook.arrayOfFoodTypes objectAtIndex:self.indexOfFoodType];
+    }
+    else {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    [self.tableView reloadData];
 }
 
 
@@ -108,6 +125,11 @@
 }
 
 -(void) dataModelChanged {
+    NSUInteger index = [self.docFoodTypes.recipeBook.arrayOfFoodTypes indexOfObject:self.foodType];
+    [self.docFoodTypes.recipeBook.arrayOfFoodTypes replaceObjectAtIndex:index withObject:self.foodType];
+    [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
+    NSLog(@"kuku: %i", [self.docFoodTypes.recipeBook.arrayOfFoodTypes indexOfObject:self.foodType]);
+    /*
     [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         if (success) {
             NSLog(@"Saved file.");
@@ -115,7 +137,7 @@
         else {
             NSLog(@"File was not saved.");
         }
-    }];
+    }];*/
     [self.tableView reloadData];
 }
 

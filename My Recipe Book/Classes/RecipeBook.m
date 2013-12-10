@@ -98,4 +98,16 @@
     self.arrayOfFoodTypes = [NSMutableArray arrayWithObjects:type1, type2, type3, nil];
 }
 
+-(Recipe *) findRecipeByName:(NSString *)recipeName {
+    for (int i = 0; i < [self.arrayOfFoodTypes count]; i++) {
+        FoodType *type = (FoodType *) [self.arrayOfFoodTypes objectAtIndex:i];
+        for (Recipe *rec in type.arrayOfRecipes) {
+            if ([rec.name isEqualToString:recipeName]) {
+                return rec;
+            }
+        }
+    }
+    return nil;
+}
+
 @end

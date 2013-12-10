@@ -18,6 +18,7 @@
 		F2C47A4817CE712900A42C4B /* FoodType.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C47A4717CE712900A42C4B /* FoodType.m */; };
 		F2C47A4B17CE7BDA00A42C4B /* RecipesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C47A4A17CE7BDA00A42C4B /* RecipesListTableViewController.m */; };
 		F2C47A4E17CFD77800A42C4B /* IngridientsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C47A4D17CFD77800A42C4B /* IngridientsTableView.m */; };
+		F2EF0ED41853D975004458F5 /* CloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EF0ED31853D975004458F5 /* CloudManager.m */; };
 		F2FEE14817B80762007771CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14717B80762007771CF /* Foundation.framework */; };
 		F2FEE14A17B80762007771CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14917B80762007771CF /* CoreGraphics.framework */; };
 		F2FEE14C17B80762007771CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14B17B80762007771CF /* UIKit.framework */; };
@@ -26,7 +27,6 @@
 		F2FEE15817B80762007771CF /* RBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FEE15717B80762007771CF /* RBAppDelegate.m */; };
 		F2FEE15B17B80762007771CF /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2FEE15917B80762007771CF /* Main_iPhone.storyboard */; };
 		F2FEE15E17B80762007771CF /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2FEE15C17B80762007771CF /* Main_iPad.storyboard */; };
-		F2FEE16117B80762007771CF /* RBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FEE16017B80762007771CF /* RBViewController.m */; };
 		F2FEE16317B80762007771CF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2FEE16217B80762007771CF /* Images.xcassets */; };
 		F2FEE16A17B80762007771CF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE16917B80762007771CF /* XCTest.framework */; };
 		F2FEE16B17B80762007771CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14717B80762007771CF /* Foundation.framework */; };
@@ -73,6 +73,9 @@
 		F2C47A4A17CE7BDA00A42C4B /* RecipesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipesListTableViewController.m; path = Views/RecipesListTableViewController.m; sourceTree = "<group>"; };
 		F2C47A4C17CFD77800A42C4B /* IngridientsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IngridientsTableView.h; path = Views/IngridientsTableView.h; sourceTree = "<group>"; };
 		F2C47A4D17CFD77800A42C4B /* IngridientsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IngridientsTableView.m; path = Views/IngridientsTableView.m; sourceTree = "<group>"; };
+		F2EF0ED11853217F004458F5 /* Book for Cook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Book for Cook.entitlements"; sourceTree = "<group>"; };
+		F2EF0ED21853D975004458F5 /* CloudManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudManager.h; path = Classes/CloudManager.h; sourceTree = "<group>"; };
+		F2EF0ED31853D975004458F5 /* CloudManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudManager.m; path = Classes/CloudManager.m; sourceTree = "<group>"; };
 		F2FEE14417B80762007771CF /* Book for Cook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Book for Cook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2FEE14717B80762007771CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F2FEE14917B80762007771CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -85,8 +88,6 @@
 		F2FEE15717B80762007771CF /* RBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBAppDelegate.m; sourceTree = "<group>"; };
 		F2FEE15A17B80762007771CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		F2FEE15D17B80762007771CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		F2FEE15F17B80762007771CF /* RBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBViewController.h; sourceTree = "<group>"; };
-		F2FEE16017B80762007771CF /* RBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBViewController.m; sourceTree = "<group>"; };
 		F2FEE16217B80762007771CF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F2FEE16817B80762007771CF /* My Recipe BookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My Recipe BookTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2FEE16917B80762007771CF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -136,6 +137,8 @@
 				F2C3E79917EE13AE001B6BEB /* RecipeBook.m */,
 				F292CC0F1815A69B0084276D /* Utilities.h */,
 				F292CC101815A69B0084276D /* Utilities.m */,
+				F2EF0ED21853D975004458F5 /* CloudManager.h */,
+				F2EF0ED31853D975004458F5 /* CloudManager.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 		F2FEE14D17B80762007771CF /* My Recipe Book */ = {
 			isa = PBXGroup;
 			children = (
+				F2EF0ED11853217F004458F5 /* Book for Cook.entitlements */,
 				F265AB78181EFF6B001B3EB8 /* Utilities */,
 				F25DF38C17C3F4C5000A27E6 /* Classes */,
 				F2FEE17F17B80D72007771CF /* Views */,
@@ -189,8 +193,6 @@
 				F2FEE15717B80762007771CF /* RBAppDelegate.m */,
 				F2FEE15917B80762007771CF /* Main_iPhone.storyboard */,
 				F2FEE15C17B80762007771CF /* Main_iPad.storyboard */,
-				F2FEE15F17B80762007771CF /* RBViewController.h */,
-				F2FEE16017B80762007771CF /* RBViewController.m */,
 				F2FEE16217B80762007771CF /* Images.xcassets */,
 				F2FEE14E17B80762007771CF /* Supporting Files */,
 			);
@@ -292,6 +294,11 @@
 				TargetAttributes = {
 					F2FEE14317B80762007771CF = {
 						DevelopmentTeam = 29UL2Y36R9;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					F2FEE16717B80762007771CF = {
 						TestTargetID = F2FEE14317B80762007771CF;
@@ -355,11 +362,11 @@
 				F24899B917BC1874009AACF7 /* RecipeViewController.m in Sources */,
 				F25DF38F17C3F583000A27E6 /* Ingridient.m in Sources */,
 				F2C47A4E17CFD77800A42C4B /* IngridientsTableView.m in Sources */,
+				F2EF0ED41853D975004458F5 /* CloudManager.m in Sources */,
 				F2FEE15417B80762007771CF /* main.m in Sources */,
 				F2C47A4B17CE7BDA00A42C4B /* RecipesListTableViewController.m in Sources */,
 				F265AB7B181EFF9D001B3EB8 /* StatusLabelAnimator.m in Sources */,
 				F292CC111815A69B0084276D /* Utilities.m in Sources */,
-				F2FEE16117B80762007771CF /* RBViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "My Recipe Book/Book for Cook.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -514,7 +522,7 @@
 				INFOPLIST_FILE = "My Recipe Book/My Recipe Book-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Book for Cook";
-				PROVISIONING_PROFILE = "1B310294-AC25-43A7-B631-98E941864E52";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -525,6 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "My Recipe Book/Book for Cook.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -532,7 +541,7 @@
 				INFOPLIST_FILE = "My Recipe Book/My Recipe Book-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Book for Cook";
-				PROVISIONING_PROFILE = "0EC53C70-7ED9-4813-AC84-F538525FB23A";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

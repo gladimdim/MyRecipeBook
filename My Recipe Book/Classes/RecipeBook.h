@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "FoodType.h"
+#import "Recipe.h"
 
 @interface RecipeBook : NSObject <NSCoding>
 @property NSMutableArray *arrayOfFoodTypes;
 -(void) addFoodTypeWithName:(NSString *) foodTypeName;
 -(void) generateDummyStructure;
+-(Recipe *) findRecipeByName:(NSString *) recipeName;
 @end
