@@ -31,7 +31,7 @@
 
 -(void) initCloudAccessWithCompletion:(void (^) (BOOL available)) completion {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        self.iCloudURL = [[[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"Documents" isDirectory:YES] URLByAppendingPathComponent:@"foodTypes"];
+        self.iCloudURL = [[[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"Documents" isDirectory:YES] URLByAppendingPathComponent:@"foodTypes2"];
         self.iCloudAvailable = !(self.iCloudURL == nil);
         if (self.iCloudURL != nil) {
             dispatch_async(dispatch_get_main_queue(), ^{

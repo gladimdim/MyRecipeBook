@@ -9,6 +9,7 @@
 #import "RecipesListTableViewController.h"
 #import "Recipe.h"
 #import "RecipeViewController.h"
+#import "Backuper.h"
 @interface RecipesListTableViewController ()
 @end
 
@@ -59,6 +60,9 @@
     }
     else {
         [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    if (self.docFoodTypes.documentState == UIDocumentStateInConflict) {
+        [self.docFoodTypes resolve];
     }
     [self.tableView reloadData];
 }
@@ -129,6 +133,7 @@
     [self.docFoodTypes.recipeBook.arrayOfFoodTypes replaceObjectAtIndex:index withObject:self.foodType];
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
     NSLog(@"kuku: %i", [self.docFoodTypes.recipeBook.arrayOfFoodTypes indexOfObject:self.foodType]);
+    [Backuper backUpFileToLocalDrive:self.docFoodTypes];
     /*
     [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         if (success) {

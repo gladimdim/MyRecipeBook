@@ -110,4 +110,13 @@
     return nil;
 }
 
+-(FoodType *) containsFoodTypeByName:(NSString *)foodTypeName {
+    for (FoodType *type in self.arrayOfFoodTypes) {
+        if ([type.name isEqualToString:foodTypeName]) {
+            return type;
+        }
+    }
+    return nil;
+}
+
 @end

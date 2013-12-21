@@ -11,6 +11,7 @@
 #import "FoodTypesDocument.h"
 #import "RecipeBook.h"
 #import "CloudManager.h"
+#import "Backuper.h"
 
 @interface FoodTypesListTableViewController () <UIAlertViewDelegate>
 @property RecipeBook *recipeBook;
@@ -50,24 +51,14 @@
 
 -(void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDocumentStateChangedNotification object:self.docFoodTypes];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    [[CloudManager sharedManager] initCloudAccessWithCompletion:^(BOOL available) {
-        NSURL *docURL = available ? [CloudManager sharedManager].iCloudURL : [[CloudManager sharedManager] localDocumentURL];
-        self.docFoodTypes = [[FoodTypesDocument alloc] initWithFileURL:docURL];
-        if (self.recipeBook == nil) {
-            [self initFoodTypes];
-        }
-        else {
-            [self.tableView reloadData];
-        }
-    }];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudSettingChanged:) name:NSUbiquityIdentityDidChangeNotification object:nil];
+    [self initFile];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -81,6 +72,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) iCloudSettingChanged:(NSNotification *) notification {
+    /*if (![self.navigationController.topViewController isKindOfClass:[FoodTypesListTableViewController class]]) {
+        [self.navigationController pushViewController:self animated:YES];
+    }*/
+    [self initFile];
+}
+
 -(void) documentStateChanged:(NSNotification *) notification {
     self.recipeBook = self.docFoodTypes.recipeBook;
     if (self.docFoodTypes.documentState == UIDocumentStateInConflict) {
@@ -89,6 +87,34 @@
     [self.tableView reloadData];
 }
 
+-(void) initFile {
+    [[CloudManager sharedManager] initCloudAccessWithCompletion:^(BOOL available) {
+        //check if local file exists when iCloud is on and iCloud is file is absend. If yes - overwrite iCloud file with local copy
+        NSURL *localURL = [[CloudManager sharedManager] localDocumentURL];
+        NSURL *iCloudURL = [CloudManager sharedManager].iCloudURL;
+        NSError *error;
+        //[[NSFileManager defaultManager] removeItemAtURL:iCloudURL error:&error];
+        if (available) {
+            BOOL iCloudFileExists = [[NSFileManager defaultManager] fileExistsAtPath:[iCloudURL path] isDirectory:NO];
+            BOOL localFileExists = [[NSFileManager defaultManager] fileExistsAtPath:[localURL path] isDirectory:NO];
+            if (localFileExists && !iCloudFileExists) {
+                NSError *error;
+                // [[NSFileManager defaultManager] copyItemAtURL:localURL toURL:iCloudURL error:&error];
+                [[NSFileManager defaultManager] setUbiquitous:YES itemAtURL:localURL destinationURL:iCloudURL error:&error];
+            }
+        }
+        
+        
+        NSURL *docURL = available ? [CloudManager sharedManager].iCloudURL : [[CloudManager sharedManager] localDocumentURL];
+        self.docFoodTypes = [[FoodTypesDocument alloc] initWithFileURL:docURL];
+        if (self.recipeBook == nil) {
+            [self initFoodTypes];
+        }
+        else {
+            [self.tableView reloadData];
+        }
+    }];
+}
 
 -(void) initFoodTypes {
     //    self.recipeBook = self.docFoodTypes.recipeBook;
@@ -159,6 +185,7 @@
 -(void) dataModelChanged {
     self.docFoodTypes.recipeBook = self.recipeBook;
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
+    [Backuper backUpFileToLocalDrive:self.docFoodTypes];
    /* [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         if (success) {
             NSLog(@"Doc saved");

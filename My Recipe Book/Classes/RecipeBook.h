@@ -15,4 +15,5 @@
 -(void) addFoodTypeWithName:(NSString *) foodTypeName;
 -(void) generateDummyStructure;
 -(Recipe *) findRecipeByName:(NSString *) recipeName;
+-(FoodType *) containsFoodTypeByName:(NSString *) foodTypeName;
 @end

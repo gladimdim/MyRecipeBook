@@ -13,6 +13,7 @@
 #import "Ingridient.h"
 #import "Utilities.h"
 #import "StatusLabelAnimator.h"
+#import "Backuper.h"
 @import MessageUI;
 
 @interface RecipeViewController ()
@@ -193,15 +194,19 @@
 }
 
 -(void) documentStateChanged:(NSNotification *) notification {
+    if (self.docFoodTypes.documentState == UIDocumentStateInConflict) {
+        [self.docFoodTypes resolve];
+    }
     self.recipe = [self.docFoodTypes.recipeBook findRecipeByName:self.recipe.name];
     self.tableViewIngridientsDelegate.recipe = self.recipe;
-    self.txtFieldDuration.text = self.recipe.duration;
-    self.txtFieldPortions.text = [self.recipe.portions stringValue];
-    self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
-    [self.tableViewIngridients reloadData];
+    
+    [self updateFields];
 }
 
 -(void) updateFields {
+    self.txtFieldDuration.text = self.recipe.duration;
+    self.txtFieldPortions.text = [self.recipe.portions stringValue];
+    self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
     [self.tableViewIngridients reloadData];
 }
 
@@ -270,6 +275,7 @@
 
 -(void) dataModelChanged {
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
+    [Backuper backUpFileToLocalDrive:self.docFoodTypes];
 /*    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         if (success) {
             NSLog(@"Saved file.");
