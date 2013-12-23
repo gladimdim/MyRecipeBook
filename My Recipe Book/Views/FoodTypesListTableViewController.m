@@ -16,6 +16,7 @@
 @interface FoodTypesListTableViewController () <UIAlertViewDelegate>
 @property RecipeBook *recipeBook;
 @property FoodTypesDocument *docFoodTypes;
+@property BOOL iCloudSettingChanged;
 @end
 
 @implementation FoodTypesListTableViewController
@@ -36,6 +37,7 @@
     }*/
     self.recipeBook = self.docFoodTypes.recipeBook;
     [self.tableView reloadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudSettingChanged:) name:NSUbiquityIdentityDidChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentStateChanged:) name:UIDocumentStateChangedNotification object:self.docFoodTypes];
 }
 
@@ -51,13 +53,13 @@
 
 -(void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDocumentStateChangedNotification object:self.docFoodTypes];
+   // [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDocumentStateChangedNotification object:self.docFoodTypes];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudSettingChanged:) name:NSUbiquityIdentityDidChangeNotification object:nil];
     [self initFile];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -76,6 +78,7 @@
     /*if (![self.navigationController.topViewController isKindOfClass:[FoodTypesListTableViewController class]]) {
         [self.navigationController pushViewController:self animated:YES];
     }*/
+    self.iCloudSettingChanged = YES;
     [self initFile];
 }
 
@@ -104,11 +107,11 @@
             }
         }
         
-        
         NSURL *docURL = available ? [CloudManager sharedManager].iCloudURL : [[CloudManager sharedManager] localDocumentURL];
         self.docFoodTypes = [[FoodTypesDocument alloc] initWithFileURL:docURL];
-        if (self.recipeBook == nil) {
+        if (self.recipeBook == nil || self.iCloudSettingChanged) {
             [self initFoodTypes];
+            self.iCloudSettingChanged = NO;
         }
         else {
             [self.tableView reloadData];
