@@ -148,7 +148,7 @@
 -(void) viewDidLayoutSubviews {
     CGRect screen = [[UIScreen mainScreen] bounds];
     CGFloat screenHeight= screen.size.height;
-    self.scrollView.contentSize = CGSizeMake(640, screenHeight == 568 ? 354 : 266);
+    self.scrollView.contentSize = CGSizeMake(960, screenHeight == 568 ? 354 : 266);
 }
 
 -(void) setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -331,8 +331,11 @@
         [self.pageControl setCurrentPage:0];
         [self.textViewStepsToCook resignFirstResponder];
     }
-    else {
+    else if (self.scrollView.contentOffset.x == 320 && scrollView.contentOffset.y ==0){
         [self.pageControl setCurrentPage:1];
+    }
+    else {
+        [self.pageControl setCurrentPage:2];
     }
 }
 
