@@ -11,9 +11,6 @@
 @interface CloudManager : NSObject
 +(CloudManager *) sharedManager;
 -(NSURL *) localDocumentURL;
--(void) moveFileToiCloud:(UIDocument *) fileToMove;
--(NSURL *) ubiquitousContainerURL;
--(NSURL *) ubiquitousDocumentsDirectoryURL;
 @property BOOL iCloudAvailable;
 @property NSURL *iCloudURL;
 -(void) initCloudAccessWithCompletion:(void (^) (BOOL available)) completion;

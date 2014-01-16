@@ -95,7 +95,6 @@
         //check if local file exists when iCloud is on and iCloud is file is absend. If yes - overwrite iCloud file with local copy
         NSURL *localURL = [[CloudManager sharedManager] localDocumentURL];
         NSURL *iCloudURL = [CloudManager sharedManager].iCloudURL;
-        NSError *error;
         //[[NSFileManager defaultManager] removeItemAtURL:iCloudURL error:&error];
         if (available) {
             BOOL iCloudFileExists = [[NSFileManager defaultManager] fileExistsAtPath:[iCloudURL path] isDirectory:NO];
