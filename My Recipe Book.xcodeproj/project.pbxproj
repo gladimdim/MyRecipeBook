@@ -19,6 +19,7 @@
 		F2C47A4817CE712900A42C4B /* FoodType.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C47A4717CE712900A42C4B /* FoodType.m */; };
 		F2C47A4B17CE7BDA00A42C4B /* RecipesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C47A4A17CE7BDA00A42C4B /* RecipesListTableViewController.m */; };
 		F2C47A4E17CFD77800A42C4B /* IngridientsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C47A4D17CFD77800A42C4B /* IngridientsTableView.m */; };
+		F2D95D92188A6ECB0032E803 /* ActivityTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D95D91188A6ECB0032E803 /* ActivityTableView.m */; };
 		F2EF0ED41853D975004458F5 /* CloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EF0ED31853D975004458F5 /* CloudManager.m */; };
 		F2FEE14817B80762007771CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14717B80762007771CF /* Foundation.framework */; };
 		F2FEE14A17B80762007771CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FEE14917B80762007771CF /* CoreGraphics.framework */; };
@@ -76,6 +77,8 @@
 		F2C47A4A17CE7BDA00A42C4B /* RecipesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipesListTableViewController.m; path = Views/RecipesListTableViewController.m; sourceTree = "<group>"; };
 		F2C47A4C17CFD77800A42C4B /* IngridientsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IngridientsTableView.h; path = Views/IngridientsTableView.h; sourceTree = "<group>"; };
 		F2C47A4D17CFD77800A42C4B /* IngridientsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IngridientsTableView.m; path = Views/IngridientsTableView.m; sourceTree = "<group>"; };
+		F2D95D90188A6ECB0032E803 /* ActivityTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityTableView.h; path = Views/ActivityTableView.h; sourceTree = "<group>"; };
+		F2D95D91188A6ECB0032E803 /* ActivityTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityTableView.m; path = Views/ActivityTableView.m; sourceTree = "<group>"; };
 		F2EF0ED11853217F004458F5 /* Book for Cook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Book for Cook.entitlements"; sourceTree = "<group>"; };
 		F2EF0ED21853D975004458F5 /* CloudManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudManager.h; path = Classes/CloudManager.h; sourceTree = "<group>"; };
 		F2EF0ED31853D975004458F5 /* CloudManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudManager.m; path = Classes/CloudManager.m; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 				F24899B817BC1874009AACF7 /* RecipeViewController.m */,
 				F2C47A4C17CFD77800A42C4B /* IngridientsTableView.h */,
 				F2C47A4D17CFD77800A42C4B /* IngridientsTableView.m */,
+				F2D95D90188A6ECB0032E803 /* ActivityTableView.h */,
+				F2D95D91188A6ECB0032E803 /* ActivityTableView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 				F2FEE15417B80762007771CF /* main.m in Sources */,
 				F2C47A4B17CE7BDA00A42C4B /* RecipesListTableViewController.m in Sources */,
 				F265AB7B181EFF9D001B3EB8 /* StatusLabelAnimator.m in Sources */,
+				F2D95D92188A6ECB0032E803 /* ActivityTableView.m in Sources */,
 				F292CC111815A69B0084276D /* Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

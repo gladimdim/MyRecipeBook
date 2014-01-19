@@ -14,6 +14,7 @@
 #import "Utilities.h"
 #import "StatusLabelAnimator.h"
 #import "Backuper.h"
+#import "ActivityTableView.h"
 @import MessageUI;
 
 @interface RecipeViewController ()
@@ -30,9 +31,10 @@
 @property BOOL textViewWithStepsPressed;
 @property UIView *activeElement;
 @property CGRect originRectStepsToCook;
-- (IBAction)btnSharedPressed:(id)sender;
 @property MFMailComposeViewController *mail;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (strong, nonatomic) IBOutlet UITableView *tableViewActivity;
+@property ActivityTableView *activityTableViewDelegateDatasource;
 @end
 
 @implementation RecipeViewController
@@ -107,6 +109,12 @@
 
     [self.tableViewIngridients reloadData];
     
+    //setup table view with different activities
+    self.activityTableViewDelegateDatasource = [[ActivityTableView alloc] init];
+    self.activityTableViewDelegateDatasource.actionDelegate = self;
+    self.tableViewActivity.delegate = self.activityTableViewDelegateDatasource;
+    self.tableViewActivity.dataSource = self.activityTableViewDelegateDatasource;
+    [self.tableViewActivity reloadData];
     //register for keyboard notifications so we can resize textview
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -248,22 +256,8 @@
         Ingridient *ingr = [self.recipe.arrayOfIngridients objectAtIndex:i];
         [notes appendString:[NSString stringWithFormat:@"%@ %@\n", ingr.nameIngridient, ingr.amount]];
     }
-    self.event.notes = notes;
+    self.event.notes = [self.recipe ingredientsArrayToString];
 }
-
-- (IBAction)recipeReminderAddPressed:(id)sender {
-    if (self.editing) {
-        [self setEditing:NO animated:NO];
-    }
-    [self.scrollView setContentOffset:CGPointMake(0, 0)];
-    EKEventEditViewController *viewController = [[EKEventEditViewController alloc] init];
-    [self prepareEvent];
-    viewController.event = self.event;
-    viewController.eventStore = self.eventStore;
-    [self presentViewController:viewController animated:YES completion:nil];
-    viewController.editViewDelegate = self;
-}
-
 
 -(void) eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -286,17 +280,6 @@
     }];*/
     //[self.tableViewIngridients reloadData];
     self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
-}
-
-- (IBAction)btnSharedPressed:(id)sender {
-    if ([MFMailComposeViewController canSendMail]) {
-        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Share", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Whole recipe book", nil), NSLocalizedString(@"Only this recipe", nil), nil];
-        [sheet showInView:self.view];
-    }
-    else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Info", nil) message:NSLocalizedString(@"Your device cannot send email", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }
 }
 
 -(void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -323,7 +306,6 @@
     //[self.scrollView setContentOffset:CGPointMake(320, 0)];
     [self.mail dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 -(void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSLog(@"content offset: %@", NSStringFromCGPoint(scrollView.contentOffset));
@@ -367,6 +349,47 @@
 - (void)keyboardWillHide:(NSNotification *)notification
 {
     self.textViewStepsToCook.frame = self.originRectStepsToCook;
+}
+
+#pragma mark buttons delegates
+-(void) showShareMenu {
+    [self.pageControl setCurrentPage:0];
+    if ([MFMailComposeViewController canSendMail]) {
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Share", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Whole recipe book", nil), NSLocalizedString(@"Only this recipe", nil), nil];
+        [sheet showInView:self.view];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Info", nil) message:NSLocalizedString(@"Your device cannot send email", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+-(void) showRemindMenu {
+    [self.pageControl setCurrentPage:0];
+    if (self.editing) {
+        [self setEditing:NO animated:NO];
+    }
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    EKEventEditViewController *viewController = [[EKEventEditViewController alloc] init];
+    [self prepareEvent];
+    viewController.event = self.event;
+    viewController.eventStore = self.eventStore;
+    [self presentViewController:viewController animated:YES completion:nil];
+    viewController.editViewDelegate = self;
+}
+
+-(void) showAskToCookMenu {
+    NSString *message = [NSString stringWithFormat:NSLocalizedString(@"I want to cook %@ for today. What do you think?", nil), self.recipe.name];
+    
+    UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[message] applicationActivities:nil];
+    [self presentViewController:activityView animated:YES completion:nil];
+}
+
+-(void) showAskToBuyIngredientsMenu {
+    NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Buy\n %@", nil), [self.recipe ingredientsArrayToString]];
+    
+    UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[message] applicationActivities:nil];
+    [self presentViewController:activityView animated:YES completion:nil];
 }
 
 @end

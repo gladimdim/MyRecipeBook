@@ -17,5 +17,6 @@
 @property NSNumber *portions;
 @property UIImage *image;
 +(Recipe *) recipeWithName:(NSString *) name stepsToCook:(NSString *) stepsToCook;
+-(NSString *) ingredientsArrayToString;
 @end
 

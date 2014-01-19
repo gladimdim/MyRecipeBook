@@ -79,4 +79,9 @@
             return [UIColor colorWithRed:0.9333 green:0.9961 blue:0.7765 alpha:1.0];
     }
 }
+
++(NSString *) shortDescriptionFromRecipe:(Recipe *)recipe {
+    return nil;
+}
+
 @end

@@ -15,5 +15,8 @@
 @interface RecipeViewController : UIViewController <EKEventEditViewDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate, UIScrollViewDelegate, UITextViewDelegate>
 @property Recipe *recipe;
 @property FoodTypesDocument *docFoodTypes;
-
+-(void) showShareMenu;
+-(void) showRemindMenu;
+-(void) showAskToCookMenu;
+-(void) showAskToBuyIngredientsMenu;
 @end
