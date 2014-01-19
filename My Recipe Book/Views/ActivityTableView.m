@@ -62,7 +62,6 @@
 #pragma mark - UITableView Delegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
         case 0:
             [self.actionDelegate showShareMenu];

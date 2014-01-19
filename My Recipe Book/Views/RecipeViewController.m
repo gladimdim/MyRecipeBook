@@ -354,6 +354,7 @@
 #pragma mark buttons delegates
 -(void) showShareMenu {
     [self.pageControl setCurrentPage:0];
+    [self.tableViewActivity deselectRowAtIndexPath:[self.tableViewActivity indexPathForSelectedRow] animated:YES];
     if ([MFMailComposeViewController canSendMail]) {
         UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Share", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Whole recipe book", nil), NSLocalizedString(@"Only this recipe", nil), nil];
         [sheet showInView:self.view];
@@ -366,6 +367,7 @@
 
 -(void) showRemindMenu {
     [self.pageControl setCurrentPage:0];
+    [self.tableViewActivity deselectRowAtIndexPath:[self.tableViewActivity indexPathForSelectedRow] animated:YES];
     if (self.editing) {
         [self setEditing:NO animated:NO];
     }
@@ -379,6 +381,7 @@
 }
 
 -(void) showAskToCookMenu {
+    [self.tableViewActivity deselectRowAtIndexPath:[self.tableViewActivity indexPathForSelectedRow] animated:YES];
     NSString *message = [NSString stringWithFormat:NSLocalizedString(@"I want to cook %@ for today. What do you think?", nil), self.recipe.name];
     
     UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[message] applicationActivities:nil];
@@ -386,6 +389,7 @@
 }
 
 -(void) showAskToBuyIngredientsMenu {
+    [self.tableViewActivity deselectRowAtIndexPath:[self.tableViewActivity indexPathForSelectedRow] animated:YES];
     NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Buy\n %@", nil), [self.recipe ingredientsArrayToString]];
     
     UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[message] applicationActivities:nil];
