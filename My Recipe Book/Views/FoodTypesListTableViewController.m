@@ -12,6 +12,7 @@
 #import "RecipeBook.h"
 #import "CloudManager.h"
 #import "Backuper.h"
+#import "RecipeHTMLParser.h"
 
 @interface FoodTypesListTableViewController () <UIAlertViewDelegate>
 @property RecipeBook *recipeBook;
@@ -163,8 +164,6 @@
     FoodType *foodType = (FoodType *) [self.recipeBook.arrayOfFoodTypes objectAtIndex:indexPath.row];
     cell.textLabel.text = foodType.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", foodType.arrayOfRecipes.count];
-    // Configure the cell...
-    
     return cell;
 }
 
@@ -188,14 +187,6 @@
     self.docFoodTypes.recipeBook = self.recipeBook;
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
     [Backuper backUpFileToLocalDrive:self.docFoodTypes];
-   /* [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-        if (success) {
-            NSLog(@"Doc saved");
-        }
-        else {
-            NSLog(@"Doc was not saved");
-        }
-    }];*/
     [self.tableView reloadData];
 }
 
@@ -233,7 +224,5 @@
         }
     }
 }
-
-
 
 @end

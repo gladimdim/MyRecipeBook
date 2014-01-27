@@ -89,11 +89,47 @@
                     <navigationItem key="navigationItem" id="FMT-XK-eY6"/>
                     <connections>
                         <segue destination="YMA-bv-NHj" kind="push" identifier="showRecipe" id="aXx-X6-4tX"/>
+                        <segue destination="JkM-Hk-fls" kind="push" identifier="showImportWebView" id="Kma-mb-KzD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbn-wD-8OB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="963" y="49"/>
+        </scene>
+        <!--Import Web View Controller-->
+        <scene sceneID="ykv-Ae-T3r">
+            <objects>
+                <viewController id="JkM-Hk-fls" customClass="ImportWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YeK-gI-E1F"/>
+                        <viewControllerLayoutGuide type="bottom" id="zxc-y5-1x0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xnd-nM-m6l">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xmR-oO-qqQ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OAz-wS-G78">
+                        <barButtonItem key="rightBarButtonItem" title="Import" id="gAZ-gs-Gmr">
+                            <connections>
+                                <action selector="btnImportPressed:" destination="JkM-Hk-fls" id="HVc-1F-jZj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="xmR-oO-qqQ" id="RjT-51-BB3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lKT-sK-eWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="963" y="721"/>
         </scene>
         <!--Recipe View Controller-->
         <scene sceneID="p6J-H6-2Kg">

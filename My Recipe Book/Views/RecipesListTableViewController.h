@@ -10,7 +10,7 @@
 #import "FoodType.h"
 #import "FoodTypesDocument.h"
 
-@interface RecipesListTableViewController : UITableViewController
+@interface RecipesListTableViewController : UITableViewController <UIActionSheetDelegate>
 @property FoodType *foodType;
 @property FoodTypesDocument *docFoodTypes;
 @property NSUInteger indexOfFoodType;

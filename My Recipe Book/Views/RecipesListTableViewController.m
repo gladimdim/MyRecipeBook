@@ -10,6 +10,7 @@
 #import "Recipe.h"
 #import "RecipeViewController.h"
 #import "Backuper.h"
+#import "ImportWebViewController.h"
 @interface RecipesListTableViewController ()
 @end
 
@@ -39,6 +40,7 @@
     [super viewWillAppear:animated];
     self.navigationItem.title = self.foodType.name;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentStateChanged:) name:UIDocumentStateChangedNotification object:self.docFoodTypes];
+    [self.tableView reloadData];
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -112,6 +114,11 @@
         recipeVC.recipe = recipe;
         recipeVC.docFoodTypes = self.docFoodTypes;
     }
+    else if ([segue.identifier isEqualToString:@"showImportWebView"]) {
+        ImportWebViewController *vc = (ImportWebViewController *) segue.destinationViewController;
+        vc.foodType = self.foodType;
+        vc.docFoodTypes = self.docFoodTypes;
+    }
 }
 
 // Override to support editing the table view.
@@ -134,23 +141,25 @@
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
     NSLog(@"kuku: %i", [self.docFoodTypes.recipeBook.arrayOfFoodTypes indexOfObject:self.foodType]);
     [Backuper backUpFileToLocalDrive:self.docFoodTypes];
-    /*
-    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-        if (success) {
-            NSLog(@"Saved file.");
-        }
-        else {
-            NSLog(@"File was not saved.");
-        }
-    }];*/
     [self.tableView reloadData];
 }
 
-#pragma mark - Table edit
+#pragma mark - Add button with actionsheet/alertview delegate
 -(void) addButtonPressed {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Recipe name", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:@"OK", nil];
-    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alertView show];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Create recipe", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Manually add recipe", nil), NSLocalizedString(@"Import from popular sites", nil), nil];
+    [sheet showInView:self.view];
+}
+
+#pragma mark - UIActionSheetDelegate
+-(void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [self performSegueWithIdentifier:@"showImportWebView" sender:self];
+    }
+    else if (buttonIndex == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Recipe name", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:@"OK", nil];
+        alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [alertView show];
+    }
 }
 
 #pragma mark - UIAlertView delegate methods
