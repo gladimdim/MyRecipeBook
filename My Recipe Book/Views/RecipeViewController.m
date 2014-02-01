@@ -308,7 +308,7 @@
 }
 
 -(void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSLog(@"content offset: %@", NSStringFromCGPoint(scrollView.contentOffset));
+//    NSLog(@"content offset: %@", NSStringFromCGPoint(scrollView.contentOffset));
     if (scrollView.contentOffset.x == 0 && scrollView.contentOffset.y == 0) {
         [self.pageControl setCurrentPage:0];
         [self.textViewStepsToCook resignFirstResponder];

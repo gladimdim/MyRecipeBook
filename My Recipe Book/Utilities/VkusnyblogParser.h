@@ -10,6 +10,5 @@
 #import "RecipeWrapperProtocol.h"
 
 @interface VkusnyblogParser : RecipeHTMLParser <RecipeWrapperProtocol>
-+(VkusnyblogParser *) parserWithRecipePath:(NSString *) sRecipePath;
-
++(VkusnyblogParser *) parserWithRecipePath:(NSURL *) urlRecipe;
 @end

@@ -11,6 +11,7 @@
 #import "Recipe.h"
 #import "RecipeBook.h"
 #import "Backuper.h"
+#import "StatusLabelAnimator.h"
 
 @interface ImportWebViewController ()
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
@@ -46,17 +47,27 @@
      <title>Test\
      </title>\
      <body>\
-     <p><a href='http://www.vkusnyblog.ru'>Вкусный блог</a>\
-     <p><a href='http://www.allrecipes.com'>allrecipes.com</a>\
+     <h1>\
+     <hr>\
+     <p align='center'><a href='http://www.allrecipes.com'>allrecipes.com</a>\
+     <hr>\
      </body>\
      </html>" baseURL:nil];
 }
 
 - (IBAction)btnImportPressed:(id)sender {
-    RecipeHTMLParser *parser = [RecipeHTMLParser parserWithRecipePath:[self.webView.request.URL absoluteString]];
-    NSLog(@"Title; %@", [parser getTitle]);
-    NSLog(@"Ingredients: %@", [parser getIngredients]);
+    RecipeHTMLParser *parser = [RecipeHTMLParser parserWithRecipePath:self.webView.request.URL];
+    NSString *title = [parser getTitle];
+    NSLog(@"Title; %@", title);
+    if (!title) {
+        StatusLabelAnimator *animator = [[StatusLabelAnimator alloc] init];
+        [animator showStatus:NSLocalizedString(@"Sorry, could not import recipe.", nil) inView:self.view];
+        return;
+    }
+  //  NSLog(@"Ingredients: %@", [parser getIngredients]);
     [self.foodType.arrayOfRecipes addObject:[parser recipe]];
+    StatusLabelAnimator *animator = [[StatusLabelAnimator alloc] init];
+    [animator showStatus:NSLocalizedString(@"Recipe added", nil) inView:self.view];
     [self dataModelChanged];
 }
 
@@ -64,7 +75,6 @@
     NSUInteger index = [self.docFoodTypes.recipeBook.arrayOfFoodTypes indexOfObject:self.foodType];
     [self.docFoodTypes.recipeBook.arrayOfFoodTypes replaceObjectAtIndex:index withObject:self.foodType];
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
-    NSLog(@"kuku: %i", [self.docFoodTypes.recipeBook.arrayOfFoodTypes indexOfObject:self.foodType]);
     [Backuper backUpFileToLocalDrive:self.docFoodTypes];
 }
 

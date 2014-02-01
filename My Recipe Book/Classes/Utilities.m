@@ -18,10 +18,10 @@
     [resultString appendString:[NSString stringWithFormat:NSLocalizedString(@"Recipe for %@", nil), recipe.name]];
     withHTML ? [resultString appendString:@"</h3>"] : nil;
     withHTML ? [resultString appendString:@"<h4>"] : nil;
-    [resultString appendString:[NSString stringWithFormat:NSLocalizedString(@"Prep time: %@", nil), recipe.duration]];
+    [resultString appendString:[NSString stringWithFormat:NSLocalizedString(@"Prep time: %@", nil), recipe.duration ? recipe.duration : @""]];
     withHTML ? [resultString appendString:@"</h4>"] : nil;
     withHTML ? [resultString appendString:@"<h4>"] : nil;
-    [resultString appendString:[NSString stringWithFormat:NSLocalizedString(@"Portions: %@", nil), [recipe.portions stringValue]]];
+    [resultString appendString:[NSString stringWithFormat:NSLocalizedString(@"Portions: %@", nil), recipe.portions ? [recipe.portions stringValue] : @""]];
     withHTML ? [resultString appendString:@"</h4>"] : nil;
 
     withHTML ? [resultString appendString:@"<p><h4>"] : [resultString appendString:@"\n"];

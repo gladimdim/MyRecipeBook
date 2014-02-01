@@ -10,5 +10,5 @@
 #import "RecipeWrapperProtocol.h"
 
 @interface RecipeHTMLParser : NSObject <RecipeWrapperProtocol>
-+(RecipeHTMLParser *) parserWithRecipePath:(NSString *) sRecipePath;
++(RecipeHTMLParser *) parserWithRecipePath:(NSURL *) urlRecipe;
 @end

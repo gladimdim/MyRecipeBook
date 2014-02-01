@@ -8,10 +8,20 @@
 
 #import "RecipeHTMLParser.h"
 #import "VkusnyblogParser.h"
+#import "AllRecipesParser.h"
 
 @implementation RecipeHTMLParser
-+(RecipeHTMLParser *) parserWithRecipePath:(NSString *)sRecipePath {
-    return [VkusnyblogParser parserWithRecipePath:sRecipePath];
++(RecipeHTMLParser *) parserWithRecipePath:(NSURL *)urlRecipe {
+    NSString *domainName = [urlRecipe host];
+    if ([domainName isEqualToString:@"www.vkusnyblog.ru"]) {
+        return [VkusnyblogParser parserWithRecipePath:urlRecipe];
+    }
+    else if ([domainName isEqualToString:@"m.allrecipes.com"]) {
+        return [AllRecipesParser parserWithRecipePath:urlRecipe];
+    }
+    else {
+        return nil;
+    }
 }
 
 @end

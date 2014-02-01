@@ -21,6 +21,7 @@
 		F25DF38F17C3F583000A27E6 /* Ingridient.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38E17C3F583000A27E6 /* Ingridient.m */; };
 		F265AB7B181EFF9D001B3EB8 /* StatusLabelAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F265AB7A181EFF9D001B3EB8 /* StatusLabelAnimator.m */; };
 		F27E1A821858FE8800B5C344 /* Backuper.m in Sources */ = {isa = PBXBuildFile; fileRef = F27E1A811858FE8800B5C344 /* Backuper.m */; };
+		F291A8D71896FCC6003466CF /* AllRecipesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F291A8D61896FCC6003466CF /* AllRecipesParser.m */; };
 		F292CC111815A69B0084276D /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F292CC101815A69B0084276D /* Utilities.m */; };
 		F29CBABB189581C50098BFB4 /* ImportWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29CBABA189581C50098BFB4 /* ImportWebViewController.m */; };
 		F2C3E79A17EE13AE001B6BEB /* RecipeBook.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E79917EE13AE001B6BEB /* RecipeBook.m */; };
@@ -87,6 +88,8 @@
 		F265AB7A181EFF9D001B3EB8 /* StatusLabelAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusLabelAnimator.m; path = Utilities/StatusLabelAnimator.m; sourceTree = "<group>"; };
 		F27E1A801858FE8800B5C344 /* Backuper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Backuper.h; path = Classes/Backuper.h; sourceTree = "<group>"; };
 		F27E1A811858FE8800B5C344 /* Backuper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Backuper.m; path = Classes/Backuper.m; sourceTree = "<group>"; };
+		F291A8D51896FCC6003466CF /* AllRecipesParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllRecipesParser.h; path = Utilities/AllRecipesParser.h; sourceTree = "<group>"; };
+		F291A8D61896FCC6003466CF /* AllRecipesParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllRecipesParser.m; path = Utilities/AllRecipesParser.m; sourceTree = "<group>"; };
 		F292CC0F1815A69B0084276D /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = Classes/Utilities.h; sourceTree = "<group>"; };
 		F292CC101815A69B0084276D /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilities.m; path = Classes/Utilities.m; sourceTree = "<group>"; };
 		F29CBAB9189581C50098BFB4 /* ImportWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImportWebViewController.h; path = Views/ImportWebViewController.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 				F21EB69A1894467500E6C385 /* RecipeHTMLParser.m */,
 				F21EB69C189447E900E6C385 /* VkusnyblogParser.h */,
 				F21EB69D189447E900E6C385 /* VkusnyblogParser.m */,
+				F291A8D51896FCC6003466CF /* AllRecipesParser.h */,
+				F291A8D61896FCC6003466CF /* AllRecipesParser.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				F29CBABB189581C50098BFB4 /* ImportWebViewController.m in Sources */,
 				F2C47A4E17CFD77800A42C4B /* IngridientsTableView.m in Sources */,
 				F2EF0ED41853D975004458F5 /* CloudManager.m in Sources */,
+				F291A8D71896FCC6003466CF /* AllRecipesParser.m in Sources */,
 				F240FDC1189440CA0082C61C /* TFHpple.m in Sources */,
 				F240FDC3189440CA0082C61C /* XPathQuery.m in Sources */,
 				F2FEE15417B80762007771CF /* main.m in Sources */,

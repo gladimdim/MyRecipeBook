@@ -13,5 +13,7 @@
 -(NSArray *) getIngredients;
 -(NSString *) getTitle;
 -(NSString *) getStepsToCook;
+-(NSString *) getPrepTime;
+-(NSNumber *) getPortions;
 -(Recipe *) recipe;
 @end

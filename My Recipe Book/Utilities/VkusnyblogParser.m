@@ -21,10 +21,10 @@
 
 @implementation VkusnyblogParser
 
-+(VkusnyblogParser *) parserWithRecipePath:(NSString *)sRecipePath {
++(VkusnyblogParser *) parserWithRecipePath:(NSURL *)urlRecipe {
     VkusnyblogParser *parser = [[VkusnyblogParser alloc] init];
-    parser.sRecipePath = sRecipePath;
-    parser.dHTML = [NSData dataWithContentsOfURL:[NSURL URLWithString:sRecipePath]];
+    parser.sRecipePath = [urlRecipe absoluteString];
+    parser.dHTML = [NSData dataWithContentsOfURL:urlRecipe];
     parser.doc = [[TFHpple alloc] initWithHTMLData:parser.dHTML];
     return parser;
 }
