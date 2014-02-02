@@ -316,7 +316,7 @@
     else if (self.scrollView.contentOffset.x == 320 && scrollView.contentOffset.y ==0){
         [self.pageControl setCurrentPage:1];
     }
-    else {
+    else if (self.scrollView.contentOffset.x == 640 && scrollView.contentOffset.y ==0) {
         [self.pageControl setCurrentPage:2];
     }
 }
