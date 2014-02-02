@@ -153,6 +153,7 @@
 #pragma mark - UIActionSheetDelegate
 -(void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
+        [self setEditing:NO];
         [self performSegueWithIdentifier:@"showImportWebView" sender:self];
     }
     else if (buttonIndex == 0) {

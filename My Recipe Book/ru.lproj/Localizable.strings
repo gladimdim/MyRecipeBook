@@ -73,6 +73,9 @@
 "Buy\n %@" = "Купи\n %@";
 "Sorry, could not import recipe." = "Рецепт не был распознан.";
 "Recipe added" = "Рецепт был добавлен";
+"Manually add recipe" = "Создать вручную";
+"Import from popular sites" = "Добавить с сайтов";
+"Create recipe"  = "Создать рецепт";
 
 
 

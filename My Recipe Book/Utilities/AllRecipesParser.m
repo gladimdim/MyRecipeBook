@@ -43,23 +43,48 @@
 
 -(NSArray *) getIngredients {
     NSArray *aIngredients =  [self.doc searchWithXPathQuery:@"//span[@class='recipe-ingred_txt added']"];
+    if (aIngredients.count > 0) {
+        NSMutableArray *ingrArray = [NSMutableArray array];
+        [ingrArray addObjectsFromArray:[self parseIngredientsFromElement:aIngredients]];
+        aIngredients = [self.doc searchWithXPathQuery:@"//span[@class='recipe-ingred_txt']"];
+        [ingrArray addObjectsFromArray:[self parseIngredientsFromElement:aIngredients]];
+        return ingrArray;
+    }
+    else {
+        return nil;
+    }
 
-    NSMutableArray *ingrArray = [NSMutableArray array];
-    [ingrArray addObjectsFromArray:[self parseIngredientsFromElement:aIngredients]];
-    aIngredients = [self.doc searchWithXPathQuery:@"//span[@class='recipe-ingred_txt']"];
-    [ingrArray addObjectsFromArray:[self parseIngredientsFromElement:aIngredients]];
-    return ingrArray;
 }
 
 -(NSArray *) parseIngredientsFromElement:(NSArray *) arrayOfElements {
     NSMutableArray *array = [NSMutableArray array];
     for (TFHppleElement *el in arrayOfElements) {
-        TFHppleElement *children = (TFHppleElement *) el.children[0];
-        if (children.isTextNode) {
-            Ingridient *ingr = [[Ingridient alloc] init];
-            ingr.nameIngridient = [children.content stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            ingr.color = [Utilities colorForCategory:mainCategory];
-            [array addObject:ingr];
+        if (el.children.count > 0) {
+            TFHppleElement *children = (TFHppleElement *) el.children[0];
+            if (children.isTextNode) {
+                Ingridient *ingr = [[Ingridient alloc] init];
+/******comment uncomment if you want ot parse ingredients with their amounts.
+ With allrecipes it does not look good on screen:
+ tablespoon butter 1. In origin it is 1 tablespoon butter.
+ *****/
+                /*NSString *sIngr = children.content;
+                NSString *sFirst = [sIngr substringToIndex:1];
+                if ([sFirst integerValue] != 0 || [sFirst isEqualToString:@"0"]) {
+                    NSArray *ar = [sIngr componentsSeparatedByString:@" "];
+                    if (ar.count > 0) {
+                        ingr.amount = ar[0];
+                        ingr.nameIngridient = [sIngr stringByReplacingOccurrencesOfString:ar[0] withString:@""];
+                    }
+                    else {
+                        ingr.nameIngridient = [children.content stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                    }
+                }
+                else {*/
+                ingr.nameIngridient = [children.content stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+//                }
+                ingr.color = [Utilities colorForCategory:mainCategory];
+                [array addObject:ingr];
+            }
         }
     }
     return array.count > 0 ? array : nil;
@@ -72,7 +97,13 @@
         TFHppleElement *ch = (TFHppleElement *) el.children[0];
         sReturn = ch.content;
     }
-    return [NSString stringWithFormat:@"%@m", sReturn];
+    NSArray *arrUnits = [self.doc searchWithXPathQuery:@"//span[@class='time'][3]/span[1]"];
+    NSString *timeUnits = nil;
+    for (TFHppleElement *el in arrUnits) {
+        TFHppleElement *ch = (TFHppleElement *) el.children[0];
+        timeUnits = ch.content;
+    }
+    return [NSString stringWithFormat:@"%@%@", sReturn, timeUnits];
 }
 
 -(NSString *) getStepsToCook {
@@ -80,8 +111,10 @@
     NSArray *arr = [self.doc searchWithXPathQuery:@"//section[@class='sail'][2]/ol/li/span"];
     if (arr.count > 0) {
         for (TFHppleElement *el in arr) {
-            TFHppleElement *ch = (TFHppleElement *) el.children[0];
-            sReturn = [NSString stringWithFormat:@"%@\n%@", sReturn, ch.content];
+            if (el.children.count > 0) {
+                TFHppleElement *ch = (TFHppleElement *) el.children[0];
+                sReturn = [NSString stringWithFormat:@"%@\n%@", sReturn, ch.content];
+            }
         }
         return sReturn;
     }
