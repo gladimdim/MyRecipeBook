@@ -7,14 +7,14 @@
 //
 
 #import "RecipeHTMLParser.h"
-#import "VkusnyblogParser.h"
+#import "Say7InfoParser.h"
 #import "AllRecipesParser.h"
 
 @implementation RecipeHTMLParser
 +(RecipeHTMLParser *) parserWithRecipePath:(NSURL *)urlRecipe {
     NSString *domainName = [urlRecipe host];
-    if ([domainName isEqualToString:@"www.vkusnyblog.ru"]) {
-        return [VkusnyblogParser parserWithRecipePath:urlRecipe];
+    if ([domainName isEqualToString:@"www.say7.info"]) {
+        return [Say7InfoParser parserWithRecipePath:urlRecipe];
     }
     else if ([domainName isEqualToString:@"m.allrecipes.com"]) {
         return [AllRecipesParser parserWithRecipePath:urlRecipe];

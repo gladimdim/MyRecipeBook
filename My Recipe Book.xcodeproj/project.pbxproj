@@ -21,6 +21,7 @@
 		F25DF38F17C3F583000A27E6 /* Ingridient.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38E17C3F583000A27E6 /* Ingridient.m */; };
 		F265AB7B181EFF9D001B3EB8 /* StatusLabelAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F265AB7A181EFF9D001B3EB8 /* StatusLabelAnimator.m */; };
 		F27E1A821858FE8800B5C344 /* Backuper.m in Sources */ = {isa = PBXBuildFile; fileRef = F27E1A811858FE8800B5C344 /* Backuper.m */; };
+		F283DD4118A6BA2C0019F877 /* Say7InfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F283DD4018A6BA2C0019F877 /* Say7InfoParser.m */; };
 		F291A8D71896FCC6003466CF /* AllRecipesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F291A8D61896FCC6003466CF /* AllRecipesParser.m */; };
 		F292CC111815A69B0084276D /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F292CC101815A69B0084276D /* Utilities.m */; };
 		F29CBABB189581C50098BFB4 /* ImportWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29CBABA189581C50098BFB4 /* ImportWebViewController.m */; };
@@ -88,6 +89,8 @@
 		F265AB7A181EFF9D001B3EB8 /* StatusLabelAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusLabelAnimator.m; path = Utilities/StatusLabelAnimator.m; sourceTree = "<group>"; };
 		F27E1A801858FE8800B5C344 /* Backuper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Backuper.h; path = Classes/Backuper.h; sourceTree = "<group>"; };
 		F27E1A811858FE8800B5C344 /* Backuper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Backuper.m; path = Classes/Backuper.m; sourceTree = "<group>"; };
+		F283DD3F18A6BA2B0019F877 /* Say7InfoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Say7InfoParser.h; path = Utilities/RecipeImporters/Say7InfoParser.h; sourceTree = "<group>"; };
+		F283DD4018A6BA2C0019F877 /* Say7InfoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Say7InfoParser.m; path = Utilities/RecipeImporters/Say7InfoParser.m; sourceTree = "<group>"; };
 		F291A8D51896FCC6003466CF /* AllRecipesParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllRecipesParser.h; path = Utilities/AllRecipesParser.h; sourceTree = "<group>"; };
 		F291A8D61896FCC6003466CF /* AllRecipesParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllRecipesParser.m; path = Utilities/AllRecipesParser.m; sourceTree = "<group>"; };
 		F292CC0F1815A69B0084276D /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = Classes/Utilities.h; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 		F265AB78181EFF6B001B3EB8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F283DD3E18A6BA040019F877 /* RecipeImporters */,
 				F265AB79181EFF9D001B3EB8 /* StatusLabelAnimator.h */,
 				F265AB7A181EFF9D001B3EB8 /* StatusLabelAnimator.m */,
 				F240FDC6189443040082C61C /* RecipeWrapperProtocol.h */,
@@ -204,6 +208,15 @@
 				F291A8D61896FCC6003466CF /* AllRecipesParser.m */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		F283DD3E18A6BA040019F877 /* RecipeImporters */ = {
+			isa = PBXGroup;
+			children = (
+				F283DD3F18A6BA2B0019F877 /* Say7InfoParser.h */,
+				F283DD4018A6BA2C0019F877 /* Say7InfoParser.m */,
+			);
+			name = RecipeImporters;
 			sourceTree = "<group>";
 		};
 		F2FEE13B17B80762007771CF = {
@@ -416,6 +429,7 @@
 				F21EB6981894463100E6C385 /* RecipeWrapperProtocol.h in Sources */,
 				F2C3E79A17EE13AE001B6BEB /* RecipeBook.m in Sources */,
 				F2FEE15817B80762007771CF /* RBAppDelegate.m in Sources */,
+				F283DD4118A6BA2C0019F877 /* Say7InfoParser.m in Sources */,
 				F2C47A4817CE712900A42C4B /* FoodType.m in Sources */,
 				F22066AA17DA6109004E4F72 /* FoodTypesDocument.m in Sources */,
 				F25DF38B17C3F4BE000A27E6 /* Recipe.m in Sources */,
@@ -524,7 +538,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dmytro Gladkyi (29UL2Y36R9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dmytro Gladkyi (ZZRDAH7X39)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -586,7 +600,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "My Recipe Book/Book for Cook.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dmytro Gladkyi (ZZRDAH7X39)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "My Recipe Book/My Recipe Book-Prefix.pch";
 				HEADER_SEARCH_PATHS = (

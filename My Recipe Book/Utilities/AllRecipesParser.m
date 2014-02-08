@@ -14,9 +14,6 @@
 #import "Utilities.h"
 
 @interface AllRecipesParser()
-@property NSData *dHTML;
-@property NSString *sRecipePath;
-@property TFHpple *doc;
 @end
 
 @implementation AllRecipesParser

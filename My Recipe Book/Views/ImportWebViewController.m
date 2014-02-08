@@ -50,6 +50,7 @@
      <h1>\
      <hr>\
      <p align='center'><a href='http://www.allrecipes.com'>allrecipes.com</a>\
+     <p align='center'><a href='http://say7.info'>www.say7info.com</a>\
      <hr>\
      </body>\
      </html>" baseURL:nil];

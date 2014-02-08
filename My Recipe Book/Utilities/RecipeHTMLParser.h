@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "RecipeWrapperProtocol.h"
+#import "TFHpple.h"
 
 @interface RecipeHTMLParser : NSObject <RecipeWrapperProtocol>
 +(RecipeHTMLParser *) parserWithRecipePath:(NSURL *) urlRecipe;
+@property NSData *dHTML;
+@property NSString *sRecipePath;
+@property TFHpple *doc;
 @end
