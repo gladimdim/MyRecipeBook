@@ -118,7 +118,7 @@
                                 </constraints>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjF-Fw-NzR">
-                                <rect key="frame" x="6" y="470" width="46" height="30"/>
+                                <rect key="frame" x="20" y="470" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" image="backButton.png">
@@ -137,7 +137,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="wgA-oQ-tgS" secondAttribute="trailing" constant="20" id="6I3-Ec-XNp"/>
                             <constraint firstItem="xmR-oO-qqQ" firstAttribute="leading" secondItem="Xnd-nM-m6l" secondAttribute="leading" id="9gE-3k-Eid"/>
-                            <constraint firstItem="wjF-Fw-NzR" firstAttribute="leading" secondItem="Xnd-nM-m6l" secondAttribute="leading" constant="6" id="Sxe-qn-uos"/>
+                            <constraint firstItem="wjF-Fw-NzR" firstAttribute="leading" secondItem="Xnd-nM-m6l" secondAttribute="leading" constant="20" symbolic="YES" id="Rdm-S1-ACx"/>
                             <constraint firstItem="xmR-oO-qqQ" firstAttribute="top" secondItem="Xnd-nM-m6l" secondAttribute="top" id="hJK-w5-tat"/>
                             <constraint firstAttribute="bottom" secondItem="wjF-Fw-NzR" secondAttribute="bottom" constant="4" id="pwd-pY-Vps"/>
                             <constraint firstAttribute="bottom" secondItem="wgA-oQ-tgS" secondAttribute="bottom" constant="10" id="vRs-5v-Kmz"/>

@@ -26,9 +26,9 @@ NSString *initialPage = @"<html>\
 <h2>\
 <hr>\
 <p align='center'><a href='http://www.allrecipes.com'>allrecipes.com</a> (en)\
-<p align='center'><a href='http://www.simplyrecipes.com/m/'>http://www.simplyrecipes.com</a> (en)\
+<p align='center'><a href='http://www.simplyrecipes.com/m/'>simplyrecipes.com</a> (en)\
 <hr>\
-<p align='center'><a href='http://say7.info'>www.say7.info</a> (ru)\
+<p align='center'><a href='http://say7.info'>say7.info</a> (ru)\
 <hr>\
 </body>\
 </html>";
@@ -59,7 +59,6 @@ NSString *initialPage = @"<html>\
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.webView loadHTMLString:initialPage baseURL:[[NSBundle mainBundle] bundleURL]];
-    //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mail.ru"]]];
     self.webView.delegate = self;
 
 }
