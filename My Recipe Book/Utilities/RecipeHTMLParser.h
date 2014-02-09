@@ -15,4 +15,5 @@
 @property NSData *dHTML;
 @property NSString *sRecipePath;
 @property TFHpple *doc;
+@property Recipe *recipe;
 @end

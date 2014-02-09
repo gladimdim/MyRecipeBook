@@ -108,13 +108,41 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xmR-oO-qqQ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmR-oO-qqQ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="iJ0-wr-Mtu"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="603" constant="468" id="rhs-1r-xgC"/>
+                                </constraints>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjF-Fw-NzR">
+                                <rect key="frame" x="6" y="470" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" image="backButton.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnBackPressed:" destination="JkM-Hk-fls" eventType="touchUpInside" id="KAk-NI-MUM"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wgA-oQ-tgS">
+                                <rect key="frame" x="280" y="474" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93771922831632648" green="0.93771922831632648" blue="0.93771922831632648" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wgA-oQ-tgS" secondAttribute="trailing" constant="20" id="6I3-Ec-XNp"/>
+                            <constraint firstItem="xmR-oO-qqQ" firstAttribute="leading" secondItem="Xnd-nM-m6l" secondAttribute="leading" id="9gE-3k-Eid"/>
+                            <constraint firstItem="wjF-Fw-NzR" firstAttribute="leading" secondItem="Xnd-nM-m6l" secondAttribute="leading" constant="6" id="Sxe-qn-uos"/>
+                            <constraint firstItem="xmR-oO-qqQ" firstAttribute="top" secondItem="Xnd-nM-m6l" secondAttribute="top" id="hJK-w5-tat"/>
+                            <constraint firstAttribute="bottom" secondItem="wjF-Fw-NzR" secondAttribute="bottom" constant="4" id="pwd-pY-Vps"/>
+                            <constraint firstAttribute="bottom" secondItem="wgA-oQ-tgS" secondAttribute="bottom" constant="10" id="vRs-5v-Kmz"/>
+                            <constraint firstAttribute="bottom" secondItem="xmR-oO-qqQ" secondAttribute="bottom" constant="36" id="wbX-9U-8jB"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OAz-wS-G78">
                         <barButtonItem key="rightBarButtonItem" title="Import" id="gAZ-gs-Gmr">
@@ -124,6 +152,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="wgA-oQ-tgS" id="XpN-oA-Wp3"/>
                         <outlet property="webView" destination="xmR-oO-qqQ" id="RjT-51-BB3"/>
                     </connections>
                 </viewController>
@@ -344,6 +373,9 @@
             <point key="canvasLocation" x="83" y="49"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backButton.png" width="12" height="20"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

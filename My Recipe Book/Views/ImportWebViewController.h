@@ -10,7 +10,7 @@
 #import "FoodType.h"
 #import "FoodTypesDocument.h"
 
-@interface ImportWebViewController : UIViewController
+@interface ImportWebViewController : UIViewController <UIWebViewDelegate>
 @property FoodType *foodType;
 @property FoodTypesDocument *docFoodTypes;
 @end

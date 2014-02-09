@@ -15,8 +15,23 @@
 
 @interface ImportWebViewController ()
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
+
+NSString *initialPage = @"<html>\
+<title>Test\
+</title>\
+<body>\
+<h2>\
+<hr>\
+<p align='center'><a href='http://www.allrecipes.com'>allrecipes.com</a> (en)\
+<p align='center'><a href='http://www.simplyrecipes.com/m/'>http://www.simplyrecipes.com</a> (en)\
+<hr>\
+<p align='center'><a href='http://say7.info'>www.say7.info</a> (ru)\
+<hr>\
+</body>\
+</html>";
 
 @implementation ImportWebViewController
 
@@ -43,17 +58,10 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.webView loadHTMLString:@"<html>\
-     <title>Test\
-     </title>\
-     <body>\
-     <h1>\
-     <hr>\
-     <p align='center'><a href='http://www.allrecipes.com'>allrecipes.com</a>\
-     <p align='center'><a href='http://say7.info'>www.say7info.com</a>\
-     <hr>\
-     </body>\
-     </html>" baseURL:nil];
+    [self.webView loadHTMLString:initialPage baseURL:[[NSBundle mainBundle] bundleURL]];
+    //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mail.ru"]]];
+    self.webView.delegate = self;
+
 }
 
 - (IBAction)btnImportPressed:(id)sender {
@@ -77,6 +85,26 @@
     [self.docFoodTypes.recipeBook.arrayOfFoodTypes replaceObjectAtIndex:index withObject:self.foodType];
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
     [Backuper backUpFileToLocalDrive:self.docFoodTypes];
+}
+
+- (IBAction)btnBackPressed:(id)sender {
+    if (self.webView.canGoBack) {
+        [self.webView goBack];
+    }
+    else {
+        [self.webView loadHTMLString:initialPage baseURL:[[NSBundle mainBundle] bundleURL]];
+    }
+}
+
+#pragma mark UIWebViewDelegate
+-(void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [self.activityIndicator stopAnimating];
+}
+-(void) webViewDidFinishLoad:(UIWebView *)webView {
+    [self.activityIndicator stopAnimating];
+}
+-(void) webViewDidStartLoad:(UIWebView *)webView {
+    [self.activityIndicator startAnimating];
 }
 
 @end

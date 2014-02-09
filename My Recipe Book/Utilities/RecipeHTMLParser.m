@@ -9,6 +9,7 @@
 #import "RecipeHTMLParser.h"
 #import "Say7InfoParser.h"
 #import "AllRecipesParser.h"
+#import "SimplyrecipesParser.h"
 
 @implementation RecipeHTMLParser
 +(RecipeHTMLParser *) parserWithRecipePath:(NSURL *)urlRecipe {
@@ -18,6 +19,9 @@
     }
     else if ([domainName isEqualToString:@"m.allrecipes.com"]) {
         return [AllRecipesParser parserWithRecipePath:urlRecipe];
+    }
+    else if ([domainName isEqualToString:@"www.simplyrecipes.com"]) {
+        return [SimplyrecipesParser parserWithRecipePath:urlRecipe];
     }
     else {
         return nil;

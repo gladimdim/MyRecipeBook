@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "Recipe.h"
+#import "TFHpple.h"
 
 @protocol RecipeWrapperProtocol <NSObject>
+@optional
 -(NSArray *) getIngredients;
 -(NSString *) getTitle;
 -(NSString *) getStepsToCook;
 -(NSString *) getPrepTime;
 -(NSNumber *) getPortions;
--(Recipe *) recipe;
 @end
