@@ -11,6 +11,7 @@
 #import "Recipe.h"
 
 @interface Utilities : NSObject
+#define IOS7_VERSION  (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
 +(NSString *) composeEmailForRecipe:(Recipe *) recipe withHTML:(BOOL) withHTML;
 +(NSString *) composeEmailForRecipeBook:(RecipeBook *) recipeBook withHTML:(BOOL) withHTML;
 typedef NS_ENUM(int, INGR_COLOR) {
@@ -18,4 +19,5 @@ typedef NS_ENUM(int, INGR_COLOR) {
     secondaryCategory = 1
 };
 +(UIColor *) colorForCategory:(INGR_COLOR) catColor;
++(UIFont *) fontForIngredientCell;
 @end

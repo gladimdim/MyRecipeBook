@@ -8,6 +8,7 @@
 
 #import "IngridientsTableView.h"
 #import "Ingridient.h"
+#import "Utilities.h"
 
 @interface IngridientsTableView ()
 @property UITextField *textFieldIngrName;
@@ -27,6 +28,22 @@
 }
 
 #pragma mark - Table view data source
+
+/*-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Ingridient *ingridient = [self.recipe.arrayOfIngridients objectAtIndex:indexPath.row];
+    //if row is for adding new ingredient or has no ingredient name.
+    if ((self.editing && indexPath.row == 0) || ingridient.nameIngridient == nil ) {
+        return 44;
+    }
+    // Configure the cell...
+    NSString *text = ingridient.nameIngridient;
+    //if there is amount value - decrease width for label
+    float fWidth = ingridient.amount ? 160 : 232;
+    CGSize constrains = CGSizeMake(fWidth, MAXFLOAT);
+    CGSize size = [text sizeWithFont:[Utilities fontForIngredientCell] constrainedToSize:constrains lineBreakMode:NSLineBreakByWordWrapping];
+    //NSLog(@"return size: %f", size.height + 30);
+    return size.height + 15;
+}*/
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -62,10 +79,22 @@
     else {
         Ingridient *ingridient = [self.recipe.arrayOfIngridients objectAtIndex:indexPath.row];
         // Configure the cell...
-        cell.textLabel.text = ingridient.nameIngridient;
+        UILabel *labelName = (UILabel *) [cell viewWithTag:1];
+        UILabel *labelAmount = (UILabel *) [cell viewWithTag:2];
+        /* labelName.font = [Utilities fontForIngredientCell];
+        labelName.lineBreakMode = NSLineBreakByWordWrapping;
+        labelName.textAlignment = NSTextAlignmentLeft;
+        labelName.numberOfLines = 0;
+        labelName.adjustsFontSizeToFitWidth = IOS7_VERSION ? YES : NO;*/
+        labelName.text = ingridient.nameIngridient;
         NSString *detailText = ingridient.amount;
-        cell.detailTextLabel.text = detailText;
-        
+        if (ingridient.amount) {
+            labelAmount.text = detailText;
+        }
+        else {
+            [labelAmount removeFromSuperview];
+        }
+        NSLog(@"Size label: %@", NSStringFromCGSize(labelName.frame.size));
     }
 
     UIButton *button = (UIButton *) [cell viewWithTag:3];

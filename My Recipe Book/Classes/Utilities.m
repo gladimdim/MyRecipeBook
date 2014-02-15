@@ -84,4 +84,8 @@
     return nil;
 }
 
++(UIFont *) fontForIngredientCell {
+    return [UIFont systemFontOfSize:17.0f];
+}
+
 @end
