@@ -20,6 +20,8 @@
 		F25DF38F17C3F583000A27E6 /* Ingridient.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DF38E17C3F583000A27E6 /* Ingridient.m */; };
 		F265AB7B181EFF9D001B3EB8 /* StatusLabelAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F265AB7A181EFF9D001B3EB8 /* StatusLabelAnimator.m */; };
 		F27E1A821858FE8800B5C344 /* Backuper.m in Sources */ = {isa = PBXBuildFile; fileRef = F27E1A811858FE8800B5C344 /* Backuper.m */; };
+		F27F68D018B0A71A00DFAB46 /* GoodCookParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F27F68CF18B0A71A00DFAB46 /* GoodCookParser.m */; };
+		F27F68D318B0D0FD00DFAB46 /* FoodNetworkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F27F68D218B0D0FD00DFAB46 /* FoodNetworkParser.m */; };
 		F283DD4118A6BA2C0019F877 /* Say7InfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F283DD4018A6BA2C0019F877 /* Say7InfoParser.m */; };
 		F283DD4518A766D00019F877 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F283DD4318A766D00019F877 /* backButton.png */; };
 		F283DD4618A766D00019F877 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F283DD4418A766D00019F877 /* backButton@2x.png */; };
@@ -91,6 +93,10 @@
 		F265AB7A181EFF9D001B3EB8 /* StatusLabelAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusLabelAnimator.m; path = Utilities/StatusLabelAnimator.m; sourceTree = "<group>"; };
 		F27E1A801858FE8800B5C344 /* Backuper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Backuper.h; path = Classes/Backuper.h; sourceTree = "<group>"; };
 		F27E1A811858FE8800B5C344 /* Backuper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Backuper.m; path = Classes/Backuper.m; sourceTree = "<group>"; };
+		F27F68CE18B0A71A00DFAB46 /* GoodCookParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoodCookParser.h; path = Utilities/RecipeImporters/GoodCookParser.h; sourceTree = "<group>"; };
+		F27F68CF18B0A71A00DFAB46 /* GoodCookParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoodCookParser.m; path = Utilities/RecipeImporters/GoodCookParser.m; sourceTree = "<group>"; };
+		F27F68D118B0D0FD00DFAB46 /* FoodNetworkParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodNetworkParser.h; path = Utilities/RecipeImporters/FoodNetworkParser.h; sourceTree = "<group>"; };
+		F27F68D218B0D0FD00DFAB46 /* FoodNetworkParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodNetworkParser.m; path = Utilities/RecipeImporters/FoodNetworkParser.m; sourceTree = "<group>"; };
 		F283DD3F18A6BA2B0019F877 /* Say7InfoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Say7InfoParser.h; path = Utilities/RecipeImporters/Say7InfoParser.h; sourceTree = "<group>"; };
 		F283DD4018A6BA2C0019F877 /* Say7InfoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Say7InfoParser.m; path = Utilities/RecipeImporters/Say7InfoParser.m; sourceTree = "<group>"; };
 		F283DD4318A766D00019F877 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backButton.png; path = Resources/backButton.png; sourceTree = "<group>"; };
@@ -223,6 +229,10 @@
 				F283DD4018A6BA2C0019F877 /* Say7InfoParser.m */,
 				F283DD4918A770370019F877 /* SimplyrecipesParser.h */,
 				F283DD4A18A770370019F877 /* SimplyrecipesParser.m */,
+				F27F68CE18B0A71A00DFAB46 /* GoodCookParser.h */,
+				F27F68CF18B0A71A00DFAB46 /* GoodCookParser.m */,
+				F27F68D118B0D0FD00DFAB46 /* FoodNetworkParser.h */,
+				F27F68D218B0D0FD00DFAB46 /* FoodNetworkParser.m */,
 			);
 			name = RecipeImporters;
 			sourceTree = "<group>";
@@ -462,9 +472,11 @@
 				F2C47A4E17CFD77800A42C4B /* IngridientsTableView.m in Sources */,
 				F2EF0ED41853D975004458F5 /* CloudManager.m in Sources */,
 				F291A8D71896FCC6003466CF /* AllRecipesParser.m in Sources */,
+				F27F68D318B0D0FD00DFAB46 /* FoodNetworkParser.m in Sources */,
 				F240FDC1189440CA0082C61C /* TFHpple.m in Sources */,
 				F240FDC3189440CA0082C61C /* XPathQuery.m in Sources */,
 				F2FEE15417B80762007771CF /* main.m in Sources */,
+				F27F68D018B0A71A00DFAB46 /* GoodCookParser.m in Sources */,
 				F2C47A4B17CE7BDA00A42C4B /* RecipesListTableViewController.m in Sources */,
 				F265AB7B181EFF9D001B3EB8 /* StatusLabelAnimator.m in Sources */,
 				F21EB69E189447E900E6C385 /* VkusnyblogParser.m in Sources */,

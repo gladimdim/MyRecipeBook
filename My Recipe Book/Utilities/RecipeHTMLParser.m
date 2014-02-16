@@ -10,6 +10,8 @@
 #import "Say7InfoParser.h"
 #import "AllRecipesParser.h"
 #import "SimplyrecipesParser.h"
+#import "GoodCookParser.h"
+#import "FoodNetworkParser.h"
 
 @implementation RecipeHTMLParser
 +(RecipeHTMLParser *) parserWithRecipePath:(NSURL *)urlRecipe {
@@ -22,6 +24,12 @@
     }
     else if ([domainName isEqualToString:@"www.simplyrecipes.com"]) {
         return [SimplyrecipesParser parserWithRecipePath:urlRecipe];
+    }
+    else if ([domainName isEqualToString:@"www.good-cook.ru"]) {
+        return [GoodCookParser parserWithRecipePath:urlRecipe];
+    }
+    else if ([domainName isEqualToString:@"www.foodnetwork.com"]) {
+        return [FoodNetworkParser parserWithRecipePath:urlRecipe];
     }
     else {
         return nil;

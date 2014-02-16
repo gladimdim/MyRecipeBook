@@ -91,10 +91,9 @@
         if (ingridient.amount) {
             labelAmount.text = detailText;
         }
-        else {
+       /* else {
             [labelAmount removeFromSuperview];
-        }
-        NSLog(@"Size label: %@", NSStringFromCGSize(labelName.frame.size));
+        }*/
     }
 
     UIButton *button = (UIButton *) [cell viewWithTag:3];
