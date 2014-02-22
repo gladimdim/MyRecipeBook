@@ -12,6 +12,7 @@
 #import "SimplyrecipesParser.h"
 #import "GoodCookParser.h"
 #import "FoodNetworkParser.h"
+#import "CarinaParser.h"
 
 @implementation RecipeHTMLParser
 +(RecipeHTMLParser *) parserWithRecipePath:(NSURL *)urlRecipe {
@@ -30,6 +31,9 @@
     }
     else if ([domainName isEqualToString:@"www.foodnetwork.com"]) {
         return [FoodNetworkParser parserWithRecipePath:urlRecipe];
+    }
+    else if ([domainName isEqualToString:@"www.carina-forum.com"]) {
+        return [CarinaParser parserWithRecipePath:urlRecipe];
     }
     else {
         return nil;

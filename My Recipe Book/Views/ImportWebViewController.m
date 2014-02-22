@@ -23,7 +23,7 @@ NSString *initialPage = @"<html>\
 <title>Test\
 </title>\
 <body>\
-<h2>\
+<h1>\
 <hr>\
 <p align='center'><a href='http://www.allrecipes.com'>allrecipes.com</a> (en)\
 <p align='center'><a href='http://www.simplyrecipes.com/m/'>simplyrecipes.com</a> (en)\
@@ -31,6 +31,7 @@ NSString *initialPage = @"<html>\
 <hr>\
 <p align='center'><a href='http://say7.info'>say7.info</a> (ru)\
 <p align='center'><a href='http://good-cook.ru'>good-cook.ru</a> (ru)\
+<p align='center'><a href='http://www.carina-forum.com'>carina-forum.com</a> (ru)\
 <hr>\
 </body>\
 </html>";
