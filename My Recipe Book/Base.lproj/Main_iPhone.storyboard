@@ -335,14 +335,14 @@
                                     <constraint firstAttribute="trailing" secondItem="yOy-Zr-qg2" secondAttribute="trailing" id="vlK-gN-dXm"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Portions:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5i-Ff-HZz">
-                                <rect key="frame" x="180" y="14" width="77" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Portions:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5i-Ff-HZz">
+                                <rect key="frame" x="180" y="14" width="69" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9e-ck-tEa">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9e-ck-tEa">
                                 <rect key="frame" x="102" y="14" width="63" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -351,7 +351,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kdG-KP-Beh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kdG-KP-Beh">
                                 <rect key="frame" x="265" y="14" width="35" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -376,6 +376,7 @@
                             <constraint firstItem="kdG-KP-Beh" firstAttribute="top" secondItem="pON-VZ-bSL" secondAttribute="top" constant="14" id="iQd-zD-ckC"/>
                             <constraint firstItem="xWJ-sN-hZ0" firstAttribute="top" secondItem="pON-VZ-bSL" secondAttribute="top" constant="43" id="mAR-XY-gb8"/>
                             <constraint firstItem="b9e-ck-tEa" firstAttribute="leading" secondItem="W4a-dg-viC" secondAttribute="trailing" constant="8" id="mQZ-IG-9QM"/>
+                            <constraint firstItem="kdG-KP-Beh" firstAttribute="leading" secondItem="e5i-Ff-HZz" secondAttribute="trailing" constant="16" id="pCz-kb-e7F"/>
                             <constraint firstItem="W4a-dg-viC" firstAttribute="leading" secondItem="pON-VZ-bSL" secondAttribute="leading" constant="15" id="pOs-4o-re1"/>
                             <constraint firstItem="e5i-Ff-HZz" firstAttribute="leading" secondItem="b9e-ck-tEa" secondAttribute="trailing" constant="15" id="qoc-Db-kQs"/>
                             <constraint firstItem="W4a-dg-viC" firstAttribute="top" secondItem="pON-VZ-bSL" secondAttribute="top" constant="14" id="sJi-es-TTU"/>

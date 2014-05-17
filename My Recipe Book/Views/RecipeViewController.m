@@ -103,9 +103,13 @@
     };
     
     self.tableViewIngridientsDelegate.rearrangeIngridient = ^(NSIndexPath *sourceIndexPath, NSIndexPath *destinationIndexPath) {
+        if (sourceIndexPath.row == 0) {
+            return;
+        }
+
         Ingridient *draggedIngridient = (Ingridient *) self_weak.recipe.arrayOfIngridients[sourceIndexPath.row];
         [self_weak.recipe.arrayOfIngridients removeObjectAtIndex:sourceIndexPath.row];
-        [self_weak.recipe.arrayOfIngridients insertObject:draggedIngridient atIndex:destinationIndexPath.row];
+        [self_weak.recipe.arrayOfIngridients insertObject:draggedIngridient atIndex:destinationIndexPath.row == 0 ? 1 : destinationIndexPath.row];
         
     };
     

@@ -127,9 +127,6 @@
 }
 
 -(void) tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    if (sourceIndexPath.row == 0 || destinationIndexPath.row == 0) {
-        return;
-    }
     self.rearrangeIngridient(sourceIndexPath, destinationIndexPath);
 }
 
