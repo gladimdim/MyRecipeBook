@@ -43,7 +43,7 @@
 -(NSString *) ingredientsArrayToString {
     NSMutableString *notes = [NSMutableString string];
     for (int i = 0; i < self.arrayOfIngridients.count; i++) {
-        Ingridient *ingr = [self.arrayOfIngridients objectAtIndex:i];
+        Ingridient *ingr = (self.arrayOfIngridients)[i];
         [notes appendString:[NSString stringWithFormat:@"%@ %@\n", ingr.nameIngridient, ingr.amount ? ingr.amount: @""]];
     }
     return notes;

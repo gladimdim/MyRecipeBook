@@ -58,7 +58,7 @@
     //if our foodType was not deleted after iCloud update - reread foodType from the same index
     //if there is not such element id - pop view to previous.
     if (self.indexOfFoodType < [self.docFoodTypes.recipeBook.arrayOfFoodTypes count] ) {
-        self.foodType = (FoodType *) [self.docFoodTypes.recipeBook.arrayOfFoodTypes objectAtIndex:self.indexOfFoodType];
+        self.foodType = (FoodType *) (self.docFoodTypes.recipeBook.arrayOfFoodTypes)[self.indexOfFoodType];
     }
     else {
         [self.navigationController popToRootViewControllerAnimated:YES];
@@ -97,7 +97,7 @@
 {
     static NSString *CellIdentifier = @"cellRecipe";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    Recipe *recipe = [self.foodType.arrayOfRecipes objectAtIndex:indexPath.row];
+    Recipe *recipe = (self.foodType.arrayOfRecipes)[indexPath.row];
     // Configure the cell...
     cell.textLabel.text = recipe.name;
     return cell;
@@ -109,7 +109,7 @@
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showRecipe"]) {
-        Recipe *recipe = (Recipe *) [self.foodType.arrayOfRecipes objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        Recipe *recipe = (Recipe *) (self.foodType.arrayOfRecipes)[[self.tableView indexPathForSelectedRow].row];
         RecipeViewController *recipeVC = (RecipeViewController *) segue.destinationViewController;
         recipeVC.recipe = recipe;
         recipeVC.docFoodTypes = self.docFoodTypes;
@@ -135,11 +135,17 @@
     }   
 }
 
+-(void) tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    Recipe *draggedRecipe = (Recipe *) self.foodType.arrayOfRecipes[sourceIndexPath.row];
+    [self.foodType.arrayOfRecipes removeObject:draggedRecipe];
+    [self.foodType.arrayOfRecipes insertObject:draggedRecipe atIndex:destinationIndexPath.row];
+    [self dataModelChanged];
+}
+
 -(void) dataModelChanged {
     NSUInteger index = [self.docFoodTypes.recipeBook.arrayOfFoodTypes indexOfObject:self.foodType];
-    [self.docFoodTypes.recipeBook.arrayOfFoodTypes replaceObjectAtIndex:index withObject:self.foodType];
+    (self.docFoodTypes.recipeBook.arrayOfFoodTypes)[index] = self.foodType;
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
-    NSLog(@"kuku: %i", [self.docFoodTypes.recipeBook.arrayOfFoodTypes indexOfObject:self.foodType]);
     [Backuper backUpFileToLocalDrive:self.docFoodTypes];
     [self.tableView reloadData];
 }

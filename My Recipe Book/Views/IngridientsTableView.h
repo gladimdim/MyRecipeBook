@@ -16,4 +16,5 @@
 @property (nonatomic, strong) void (^dataModelChanged) (BOOL);
 @property (nonatomic, strong) void (^addIngridient) (Ingridient *);
 @property (nonatomic, strong) void (^removeIngridient) (NSIndexPath *indexPath );
+@property (nonatomic, strong) void (^rearrangeIngridient) (NSIndexPath *sourcePath, NSIndexPath *destinatinoPath);
 @end

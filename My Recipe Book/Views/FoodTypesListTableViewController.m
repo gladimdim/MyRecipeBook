@@ -161,7 +161,7 @@
 {
     static NSString *CellIdentifier = @"cellFoodType";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    FoodType *foodType = (FoodType *) [self.recipeBook.arrayOfFoodTypes objectAtIndex:indexPath.row];
+    FoodType *foodType = (FoodType *) (self.recipeBook.arrayOfFoodTypes)[indexPath.row];
     cell.textLabel.text = foodType.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", foodType.arrayOfRecipes.count];
     return cell;
@@ -183,6 +183,14 @@
     }
 }
 
+-(void) tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    FoodType *sourceFoodType = (FoodType *) self.recipeBook.arrayOfFoodTypes[sourceIndexPath.row];
+    [self.recipeBook.arrayOfFoodTypes removeObjectAtIndex:sourceIndexPath.row];
+    [self.recipeBook.arrayOfFoodTypes insertObject:sourceFoodType atIndex:destinationIndexPath.row];
+    [self dataModelChanged];
+}
+
+
 -(void) dataModelChanged {
     self.docFoodTypes.recipeBook = self.recipeBook;
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
@@ -195,7 +203,7 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    FoodType *foodType = (FoodType *) [self.recipeBook.arrayOfFoodTypes objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    FoodType *foodType = (FoodType *) (self.recipeBook.arrayOfFoodTypes)[self.tableView.indexPathForSelectedRow.row];
     RecipesListTableViewController *recipeListVC = (RecipesListTableViewController *) [segue destinationViewController];
     recipeListVC.indexOfFoodType = (NSUInteger) self.tableView.indexPathForSelectedRow.row;
     recipeListVC.foodType = foodType;

@@ -638,7 +638,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "My Recipe Book/Book for Cook.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dmytro Gladkyi (ZZRDAH7X39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "My Recipe Book/My Recipe Book-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -648,6 +649,14 @@
 				);
 				INFOPLIST_FILE = "My Recipe Book/My Recipe Book-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/gladimdim/projects/My\\ Recipe\\ Book",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "Book for Cook";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -663,6 +672,7 @@
 				CODE_SIGN_ENTITLEMENTS = "My Recipe Book/Book for Cook.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "My Recipe Book/My Recipe Book-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -672,6 +682,14 @@
 				);
 				INFOPLIST_FILE = "My Recipe Book/My Recipe Book-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/gladimdim/projects/My\\ Recipe\\ Book",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "Book for Cook";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -695,6 +713,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "My Recipe BookTests/My Recipe BookTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/gladimdim/projects/My\\ Recipe\\ Book",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -713,6 +735,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "My Recipe Book/My Recipe Book-Prefix.pch";
 				INFOPLIST_FILE = "My Recipe BookTests/My Recipe BookTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/gladimdim/projects/My\\ Recipe\\ Book",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

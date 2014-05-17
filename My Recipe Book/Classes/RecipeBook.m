@@ -100,7 +100,7 @@
 
 -(Recipe *) findRecipeByName:(NSString *)recipeName {
     for (int i = 0; i < [self.arrayOfFoodTypes count]; i++) {
-        FoodType *type = (FoodType *) [self.arrayOfFoodTypes objectAtIndex:i];
+        FoodType *type = (FoodType *) (self.arrayOfFoodTypes)[i];
         for (Recipe *rec in type.arrayOfRecipes) {
             if ([rec.name isEqualToString:recipeName]) {
                 return rec;

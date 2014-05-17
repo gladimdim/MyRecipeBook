@@ -57,7 +57,7 @@
 }
 
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    Ingridient *ingridient = [self.recipe.arrayOfIngridients objectAtIndex:indexPath.row];
+    Ingridient *ingridient = (self.recipe.arrayOfIngridients)[indexPath.row];
     [cell setBackgroundColor:ingridient.color];
 }
 
@@ -67,6 +67,7 @@
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (self.editing && indexPath.row == 0) {
+        cell.showsReorderControl = NO;
         if (self.textFieldIngrName == nil) {
             self.textFieldIngrName = (UITextField *) [cell viewWithTag:1];
             self.textFieldIngrName.delegate = self;
@@ -77,7 +78,7 @@
         }
     }
     else {
-        Ingridient *ingridient = [self.recipe.arrayOfIngridients objectAtIndex:indexPath.row];
+        Ingridient *ingridient = (self.recipe.arrayOfIngridients)[indexPath.row];
         // Configure the cell...
         UILabel *labelName = (UILabel *) [cell viewWithTag:1];
         UILabel *labelAmount = (UILabel *) [cell viewWithTag:2];
@@ -123,6 +124,17 @@
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         [self addNewIngridient];
     }
+}
+
+-(void) tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    if (sourceIndexPath.row == 0 || destinationIndexPath.row == 0) {
+        return;
+    }
+    self.rearrangeIngridient(sourceIndexPath, destinationIndexPath);
+}
+
+-(BOOL) tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.row != 0;
 }
 
 #pragma mark - UITextField delegate

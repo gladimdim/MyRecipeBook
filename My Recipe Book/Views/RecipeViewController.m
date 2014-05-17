@@ -101,6 +101,15 @@
         }
 
     };
+    
+    self.tableViewIngridientsDelegate.rearrangeIngridient = ^(NSIndexPath *sourceIndexPath, NSIndexPath *destinationIndexPath) {
+        Ingridient *draggedIngridient = (Ingridient *) self_weak.recipe.arrayOfIngridients[sourceIndexPath.row];
+        [self_weak.recipe.arrayOfIngridients removeObjectAtIndex:sourceIndexPath.row];
+        [self_weak.recipe.arrayOfIngridients insertObject:draggedIngridient atIndex:destinationIndexPath.row];
+        
+    };
+    
+    
 
     self.txtFieldDuration.text = self.recipe.duration;
     self.txtFieldPortions.text = [self.recipe.portions stringValue];
@@ -189,7 +198,7 @@
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
         
-        self.recipe.portions = self.txtFieldPortions.text ? [formatter numberFromString:self.txtFieldPortions.text] : [NSNumber numberWithInt:0];
+        self.recipe.portions = self.txtFieldPortions.text ? [formatter numberFromString:self.txtFieldPortions.text] : @0;
         [self.textViewStepsToCook resignFirstResponder];
         [self dataModelChanged];
     }
@@ -253,7 +262,7 @@
     self.event.title = [NSString stringWithFormat:NSLocalizedString(@"Prepare %@", nil), self.recipe.name];
     NSMutableString *notes = [NSMutableString string];
     for (int i = 0; i < self.recipe.arrayOfIngridients.count; i++) {
-        Ingridient *ingr = [self.recipe.arrayOfIngridients objectAtIndex:i];
+        Ingridient *ingr = (self.recipe.arrayOfIngridients)[i];
         [notes appendString:[NSString stringWithFormat:@"%@ %@\n", ingr.nameIngridient, ingr.amount]];
     }
     self.event.notes = [self.recipe ingredientsArrayToString];

@@ -126,7 +126,7 @@
     if (arr.count > 0) {
         TFHppleElement *el = arr[0];
         NSDictionary *attr = el.attributes;
-        NSString *portions = [attr objectForKey:@"data-original"];
+        NSString *portions = attr[@"data-original"];
         if (portions) {
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             [formatter setNumberStyle:NSNumberFormatterDecimalStyle];

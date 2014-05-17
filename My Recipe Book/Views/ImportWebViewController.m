@@ -84,7 +84,7 @@ NSString *initialPage = @"<html>\
 
 -(void) dataModelChanged {
     NSUInteger index = [self.docFoodTypes.recipeBook.arrayOfFoodTypes indexOfObject:self.foodType];
-    [self.docFoodTypes.recipeBook.arrayOfFoodTypes replaceObjectAtIndex:index withObject:self.foodType];
+    (self.docFoodTypes.recipeBook.arrayOfFoodTypes)[index] = self.foodType;
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
     [Backuper backUpFileToLocalDrive:self.docFoodTypes];
 }
