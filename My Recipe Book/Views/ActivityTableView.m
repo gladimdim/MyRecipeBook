@@ -26,7 +26,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -50,6 +50,12 @@
             break;
         case 3:
             activityName = NSLocalizedString(@"Ask to buy ingredients", nil);
+            break;
+        case 4:
+            activityName = NSLocalizedString(@"Move to category", nil);
+            break;
+        case 5:
+            activityName = NSLocalizedString(@"Rename recipe", nil);
             break;
         default:
             break;
@@ -75,6 +81,8 @@
         case 3:
             [self.actionDelegate showAskToBuyIngredientsMenu];
             break;
+        case 4:
+            [self.actionDelegate showMoveView];
         default:
             break;
     }

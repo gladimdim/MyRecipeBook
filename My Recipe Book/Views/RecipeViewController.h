@@ -19,4 +19,5 @@
 -(void) showRemindMenu;
 -(void) showAskToCookMenu;
 -(void) showAskToBuyIngredientsMenu;
+-(void) showMoveView;
 @end

@@ -23,6 +23,7 @@
 		F27E1A821858FE8800B5C344 /* Backuper.m in Sources */ = {isa = PBXBuildFile; fileRef = F27E1A811858FE8800B5C344 /* Backuper.m */; };
 		F27F68D018B0A71A00DFAB46 /* GoodCookParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F27F68CF18B0A71A00DFAB46 /* GoodCookParser.m */; };
 		F27F68D318B0D0FD00DFAB46 /* FoodNetworkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F27F68D218B0D0FD00DFAB46 /* FoodNetworkParser.m */; };
+		F283CFA3192BDAE500501240 /* ActionSheetRenameDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F283CFA2192BDAE500501240 /* ActionSheetRenameDelegate.m */; };
 		F283DD4118A6BA2C0019F877 /* Say7InfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F283DD4018A6BA2C0019F877 /* Say7InfoParser.m */; };
 		F283DD4518A766D00019F877 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F283DD4318A766D00019F877 /* backButton.png */; };
 		F283DD4618A766D00019F877 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F283DD4418A766D00019F877 /* backButton@2x.png */; };
@@ -100,6 +101,8 @@
 		F27F68CF18B0A71A00DFAB46 /* GoodCookParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoodCookParser.m; path = Utilities/RecipeImporters/GoodCookParser.m; sourceTree = "<group>"; };
 		F27F68D118B0D0FD00DFAB46 /* FoodNetworkParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodNetworkParser.h; path = Utilities/RecipeImporters/FoodNetworkParser.h; sourceTree = "<group>"; };
 		F27F68D218B0D0FD00DFAB46 /* FoodNetworkParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodNetworkParser.m; path = Utilities/RecipeImporters/FoodNetworkParser.m; sourceTree = "<group>"; };
+		F283CFA1192BDAE500501240 /* ActionSheetRenameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionSheetRenameDelegate.h; path = Utilities/ActionSheetRenameDelegate.h; sourceTree = "<group>"; };
+		F283CFA2192BDAE500501240 /* ActionSheetRenameDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionSheetRenameDelegate.m; path = Utilities/ActionSheetRenameDelegate.m; sourceTree = "<group>"; };
 		F283DD3F18A6BA2B0019F877 /* Say7InfoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Say7InfoParser.h; path = Utilities/RecipeImporters/Say7InfoParser.h; sourceTree = "<group>"; };
 		F283DD4018A6BA2C0019F877 /* Say7InfoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Say7InfoParser.m; path = Utilities/RecipeImporters/Say7InfoParser.m; sourceTree = "<group>"; };
 		F283DD4318A766D00019F877 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backButton.png; path = Resources/backButton.png; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 				F21EB69D189447E900E6C385 /* VkusnyblogParser.m */,
 				F291A8D51896FCC6003466CF /* AllRecipesParser.h */,
 				F291A8D61896FCC6003466CF /* AllRecipesParser.m */,
+				F283CFA1192BDAE500501240 /* ActionSheetRenameDelegate.h */,
+				F283CFA2192BDAE500501240 /* ActionSheetRenameDelegate.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -487,6 +492,7 @@
 				F265AB7B181EFF9D001B3EB8 /* StatusLabelAnimator.m in Sources */,
 				F21EB69E189447E900E6C385 /* VkusnyblogParser.m in Sources */,
 				F2D95D92188A6ECB0032E803 /* ActivityTableView.m in Sources */,
+				F283CFA3192BDAE500501240 /* ActionSheetRenameDelegate.m in Sources */,
 				F292CC111815A69B0084276D /* Utilities.m in Sources */,
 				F21EB69B1894467500E6C385 /* RecipeHTMLParser.m in Sources */,
 			);

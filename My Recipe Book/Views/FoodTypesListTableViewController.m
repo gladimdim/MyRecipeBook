@@ -192,7 +192,7 @@
 
 
 -(void) dataModelChanged {
-    self.docFoodTypes.recipeBook = self.recipeBook;
+    //self.docFoodTypes.recipeBook = self.recipeBook;
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
     [Backuper backUpFileToLocalDrive:self.docFoodTypes];
     [self.tableView reloadData];

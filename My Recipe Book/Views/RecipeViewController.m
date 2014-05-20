@@ -15,6 +15,7 @@
 #import "StatusLabelAnimator.h"
 #import "Backuper.h"
 #import "ActivityTableView.h"
+#import "ActionSheetRenameDelegate.h"
 @import MessageUI;
 
 @interface RecipeViewController ()
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UITableView *tableViewActivity;
 @property ActivityTableView *activityTableViewDelegateDatasource;
+@property ActionSheetRenameDelegate *actionSheetRenameDelegate;
 @end
 
 @implementation RecipeViewController
@@ -407,6 +409,21 @@
     
     UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[message] applicationActivities:nil];
     [self presentViewController:activityView animated:YES completion:nil];
+}
+
+-(void) showMoveView {
+    [self.tableViewActivity deselectRowAtIndexPath:[self.tableViewActivity indexPathForSelectedRow] animated:YES];
+    
+    self.actionSheetRenameDelegate = [[ActionSheetRenameDelegate alloc] init];
+    self.actionSheetRenameDelegate.recipe = self.recipe;
+    self.actionSheetRenameDelegate.docFoodTypes = self.docFoodTypes;
+    
+    [self.pageControl setCurrentPage:0];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Move to category", nil) delegate:self.actionSheetRenameDelegate cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles: nil];
+    for (FoodType *type in self.docFoodTypes.recipeBook.arrayOfFoodTypes) {
+        [actionSheet addButtonWithTitle:type.name];
+    }
+    [actionSheet showInView:self.view];
 }
 
 @end

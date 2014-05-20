@@ -69,6 +69,9 @@
 "Add Reminder" = "Напомнить купить";
 "Ask to cook" = "Спросить что приготовить";
 "Ask to buy ingredients" = "Попросить купить ингредиенты";
+"Move to category" = "Переместить в группу";
+"Rename recipe" = "Переименовать рецепт";
+
 "I want to cook %@ for today. What do you think?" = "Я хочу приготовить %@. Как ты на это смотришь?";
 "Buy\n %@" = "Купи\n %@";
 "Sorry, could not import recipe." = "Рецепт не был распознан.";
