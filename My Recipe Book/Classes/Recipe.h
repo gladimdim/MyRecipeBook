@@ -11,7 +11,7 @@
 @interface Recipe : NSObject <NSCoding>
 @property NSMutableArray *arrayOfIngridients;
 @property NSString *name;
-@property NSString *description;
+@property NSString *desc;
 @property NSString *stepsToCook;
 @property NSString *duration;
 @property NSNumber *portions;

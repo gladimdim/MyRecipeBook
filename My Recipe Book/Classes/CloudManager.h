@@ -16,5 +16,4 @@
 -(void) initCloudAccessWithCompletion:(void (^) (BOOL available)) completion;
 -(BOOL) iCloudWasSwitchedOff;
 -(BOOL) iCloudWasSwitchedOn;
--(void) switchProviderForFile:(UIDocument *) doc;
 @end

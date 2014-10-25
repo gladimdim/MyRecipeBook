@@ -13,7 +13,7 @@
 -(void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.arrayOfIngridients forKey:@"arrayOfIngridients"];
     [aCoder encodeObject:self.name forKey:@"name"];
-    [aCoder encodeObject:self.description forKey:@"description"];
+    [aCoder encodeObject:self.desc forKey:@"description"];
     [aCoder encodeObject:self.stepsToCook forKey:@"stepsToCook"];
     [aCoder encodeObject:self.duration forKey:@"duration"];
     [aCoder encodeObject:self.portions forKey:@"portions"];
@@ -24,7 +24,7 @@
     if (self = [super init]) {
         self.arrayOfIngridients = [aDecoder decodeObjectForKey:@"arrayOfIngridients"];
         self.name = [aDecoder decodeObjectForKey:@"name"];
-        self.description = [aDecoder decodeObjectForKey:@"description"];
+        self.desc = [aDecoder decodeObjectForKey:@"description"];
         self.stepsToCook = [aDecoder decodeObjectForKey:@"stepsToCook"];
         self.duration = [aDecoder decodeObjectForKey:@"duration"];
         self.portions = [aDecoder decodeObjectForKey:@"portions"];
