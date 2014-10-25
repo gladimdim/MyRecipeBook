@@ -28,23 +28,6 @@
 }
 
 #pragma mark - Table view data source
-
-/*-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Ingridient *ingridient = [self.recipe.arrayOfIngridients objectAtIndex:indexPath.row];
-    //if row is for adding new ingredient or has no ingredient name.
-    if ((self.editing && indexPath.row == 0) || ingridient.nameIngridient == nil ) {
-        return 44;
-    }
-    // Configure the cell...
-    NSString *text = ingridient.nameIngridient;
-    //if there is amount value - decrease width for label
-    float fWidth = ingridient.amount ? 160 : 232;
-    CGSize constrains = CGSizeMake(fWidth, MAXFLOAT);
-    CGSize size = [text sizeWithFont:[Utilities fontForIngredientCell] constrainedToSize:constrains lineBreakMode:NSLineBreakByWordWrapping];
-    //NSLog(@"return size: %f", size.height + 30);
-    return size.height + 15;
-}*/
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;

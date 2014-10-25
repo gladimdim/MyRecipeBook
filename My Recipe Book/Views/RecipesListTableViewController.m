@@ -73,7 +73,7 @@
 -(void) setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     if (editing) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Add", nil) style:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
     }
     else {
         self.navigationItem.leftBarButtonItem = nil;
@@ -144,7 +144,7 @@
 
 -(void) dataModelChanged {
     NSUInteger index = [self.docFoodTypes.recipeBook.arrayOfFoodTypes indexOfObject:self.foodType];
-    (self.docFoodTypes.recipeBook.arrayOfFoodTypes)[index] = self.foodType;
+    self.docFoodTypes.recipeBook.arrayOfFoodTypes[index] = self.foodType;
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
     [Backuper backUpFileToLocalDrive:self.docFoodTypes];
     [self.tableView reloadData];

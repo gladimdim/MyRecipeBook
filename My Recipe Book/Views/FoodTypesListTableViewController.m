@@ -15,7 +15,7 @@
 #import "RecipeHTMLParser.h"
 
 @interface FoodTypesListTableViewController () <UIAlertViewDelegate>
-@property RecipeBook *recipeBook;
+///@property RecipeBook *recipeBook;
 @property FoodTypesDocument *docFoodTypes;
 @property BOOL iCloudSettingChanged;
 @end
@@ -36,16 +36,18 @@
     /*if (self.recipeBook == nil) {
         [self initFoodTypes];
     }*/
-    self.recipeBook = self.docFoodTypes.recipeBook;
+    ///self.recipeBook = self.docFoodTypes.recipeBook;
     [self.tableView reloadData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudSettingChanged:) name:NSUbiquityIdentityDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentStateChanged:) name:UIDocumentStateChangedNotification object:self.docFoodTypes];
+    if (self.docFoodTypes) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentStateChanged:) name:UIDocumentStateChangedNotification object:self.docFoodTypes];
+    }
 }
 
 -(void) setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     if (editing) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Add", nil) style:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
     }
     else {
         self.navigationItem.leftBarButtonItem = nil;
@@ -54,7 +56,7 @@
 
 -(void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-   // [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDocumentStateChangedNotification object:self.docFoodTypes];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDocumentStateChangedNotification object:self.docFoodTypes];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -76,18 +78,16 @@
 }
 
 -(void) iCloudSettingChanged:(NSNotification *) notification {
-    /*if (![self.navigationController.topViewController isKindOfClass:[FoodTypesListTableViewController class]]) {
-        [self.navigationController pushViewController:self animated:YES];
-    }*/
     self.iCloudSettingChanged = YES;
     [self initFile];
 }
 
 -(void) documentStateChanged:(NSNotification *) notification {
-    self.recipeBook = self.docFoodTypes.recipeBook;
     if (self.docFoodTypes.documentState == UIDocumentStateInConflict) {
         [self.docFoodTypes resolve];
+            NSLog(@"Document updated stat changed with conflicts");
     }
+    NSLog(@"Document updated stat changed");
     [self.tableView reloadData];
 }
 
@@ -96,10 +96,11 @@
         //check if local file exists when iCloud is on and iCloud is file is absend. If yes - overwrite iCloud file with local copy
         NSURL *localURL = [[CloudManager sharedManager] localDocumentURL];
         NSURL *iCloudURL = [CloudManager sharedManager].iCloudURL;
-        //[[NSFileManager defaultManager] removeItemAtURL:iCloudURL error:&error];
+
         if (available) {
-            BOOL iCloudFileExists = [[NSFileManager defaultManager] fileExistsAtPath:[iCloudURL path] isDirectory:NO];
-            BOOL localFileExists = [[NSFileManager defaultManager] fileExistsAtPath:[localURL path] isDirectory:NO];
+            BOOL isDir = NO;
+            BOOL iCloudFileExists = [[NSFileManager defaultManager] fileExistsAtPath:[iCloudURL path] isDirectory:&isDir];
+            BOOL localFileExists = [[NSFileManager defaultManager] fileExistsAtPath:[localURL path] isDirectory:&isDir];
             if (localFileExists && !iCloudFileExists) {
                 NSError *error;
                 // [[NSFileManager defaultManager] copyItemAtURL:localURL toURL:iCloudURL error:&error];
@@ -107,9 +108,10 @@
             }
         }
         
-        NSURL *docURL = available ? [CloudManager sharedManager].iCloudURL : [[CloudManager sharedManager] localDocumentURL];
+        NSURL *docURL = available ? iCloudURL : localURL;
         self.docFoodTypes = [[FoodTypesDocument alloc] initWithFileURL:docURL];
-        if (self.recipeBook == nil || self.iCloudSettingChanged) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentStateChanged:) name:UIDocumentStateChangedNotification object:self.docFoodTypes];
+        if (self.docFoodTypes.recipeBook == nil || self.iCloudSettingChanged) {
             [self initFoodTypes];
             self.iCloudSettingChanged = NO;
         }
@@ -120,12 +122,10 @@
 }
 
 -(void) initFoodTypes {
-    //    self.recipeBook = self.docFoodTypes.recipeBook;
     [self.docFoodTypes openWithCompletionHandler:^(BOOL success) {
         if (success) {
             NSLog(@"opened");
-            self.recipeBook = self.docFoodTypes.recipeBook;
-            if (self.recipeBook == nil) {
+            if (self.docFoodTypes.recipeBook == nil) {
                 [self initNewFileWithDummyData];
             }
             [self.tableView reloadData];
@@ -137,8 +137,8 @@
 }
 
 -(void) initNewFileWithDummyData {
-    self.recipeBook = [[RecipeBook alloc] init];
-    [self.recipeBook generateDummyStructure];
+    self.docFoodTypes.recipeBook = [[RecipeBook alloc] init];
+    [self.docFoodTypes.recipeBook generateDummyStructure];
     
     [self dataModelChanged];
     [self.tableView reloadData];
@@ -154,16 +154,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.recipeBook.arrayOfFoodTypes.count;
+    return self.docFoodTypes.recipeBook.arrayOfFoodTypes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cellFoodType";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    FoodType *foodType = (FoodType *) (self.recipeBook.arrayOfFoodTypes)[indexPath.row];
+    FoodType *foodType = (FoodType *) (self.docFoodTypes.recipeBook.arrayOfFoodTypes)[indexPath.row];
     cell.textLabel.text = foodType.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", foodType.arrayOfRecipes.count];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)foodType.arrayOfRecipes.count];
     return cell;
 }
 
@@ -177,16 +177,16 @@
 
 -(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.recipeBook.arrayOfFoodTypes removeObjectAtIndex:indexPath.row];
+        [self.docFoodTypes.recipeBook.arrayOfFoodTypes removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self dataModelChanged];
     }
 }
 
 -(void) tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    FoodType *sourceFoodType = (FoodType *) self.recipeBook.arrayOfFoodTypes[sourceIndexPath.row];
-    [self.recipeBook.arrayOfFoodTypes removeObjectAtIndex:sourceIndexPath.row];
-    [self.recipeBook.arrayOfFoodTypes insertObject:sourceFoodType atIndex:destinationIndexPath.row];
+    FoodType *sourceFoodType = (FoodType *) self.docFoodTypes.recipeBook.arrayOfFoodTypes[sourceIndexPath.row];
+    [self.docFoodTypes.recipeBook.arrayOfFoodTypes removeObjectAtIndex:sourceIndexPath.row];
+    [self.docFoodTypes.recipeBook.arrayOfFoodTypes insertObject:sourceFoodType atIndex:destinationIndexPath.row];
     [self dataModelChanged];
 }
 
@@ -203,7 +203,7 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    FoodType *foodType = (FoodType *) (self.recipeBook.arrayOfFoodTypes)[self.tableView.indexPathForSelectedRow.row];
+    FoodType *foodType = (FoodType *) (self.docFoodTypes.recipeBook.arrayOfFoodTypes)[self.tableView.indexPathForSelectedRow.row];
     RecipesListTableViewController *recipeListVC = (RecipesListTableViewController *) [segue destinationViewController];
     recipeListVC.indexOfFoodType = (NSUInteger) self.tableView.indexPathForSelectedRow.row;
     recipeListVC.foodType = foodType;
@@ -227,7 +227,7 @@
         NSString *typeName = [alertView textFieldAtIndex:0].text;
         if (typeName) {
             [self setEditing:NO animated:YES];
-            [self.recipeBook addFoodTypeWithName:typeName];
+            [self.docFoodTypes.recipeBook addFoodTypeWithName:typeName];
             [self dataModelChanged];
         }
     }

@@ -181,6 +181,7 @@
     self.txtFieldPortions.enabled = editing;
     self.txtFieldDuration.enabled = editing;
     self.textViewStepsToCook.editable = editing;
+    
     if (editing) {
         self.txtFieldDuration.borderStyle = UITextBorderStyleLine;
         self.txtFieldPortions.borderStyle = UITextBorderStyleLine;
@@ -208,6 +209,8 @@
         [self.textViewStepsToCook resignFirstResponder];
         [self dataModelChanged];
     }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -285,15 +288,15 @@
 -(void) dataModelChanged {
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
     [Backuper backUpFileToLocalDrive:self.docFoodTypes];
-/*    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         if (success) {
             NSLog(@"Saved file.");
         }
         else {
             NSLog(@"File was not saved.");
         }
-    }];*/
-    //[self.tableViewIngridients reloadData];
+    }];
+    [self.tableViewIngridients reloadData];
     self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
 }
 
