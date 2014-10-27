@@ -14,6 +14,4 @@
 @property BOOL iCloudAvailable;
 @property NSURL *iCloudURL;
 -(void) initCloudAccessWithCompletion:(void (^) (BOOL available)) completion;
--(BOOL) iCloudWasSwitchedOff;
--(BOOL) iCloudWasSwitchedOn;
 @end
