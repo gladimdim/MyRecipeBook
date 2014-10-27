@@ -15,7 +15,6 @@
 #import "RecipeHTMLParser.h"
 
 @interface FoodTypesListTableViewController () <UIAlertViewDelegate>
-///@property RecipeBook *recipeBook;
 @property FoodTypesDocument *docFoodTypes;
 @property BOOL iCloudSettingChanged;
 @end
@@ -33,10 +32,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    /*if (self.recipeBook == nil) {
-        [self initFoodTypes];
-    }*/
-    ///self.recipeBook = self.docFoodTypes.recipeBook;
+
     [self.tableView reloadData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudSettingChanged:) name:NSUbiquityIdentityDidChangeNotification object:nil];
     if (self.docFoodTypes) {
@@ -56,8 +52,7 @@
 
 -(void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDocumentStateChangedNotification object:self.docFoodTypes];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -192,7 +187,6 @@
 
 
 -(void) dataModelChanged {
-    //self.docFoodTypes.recipeBook = self.recipeBook;
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
     [Backuper backUpFileToLocalDrive:self.docFoodTypes];
     [self.tableView reloadData];

@@ -114,8 +114,6 @@
         [self_weak.recipe.arrayOfIngridients insertObject:draggedIngridient atIndex:destinationIndexPath.row == 0 ? 1 : destinationIndexPath.row];
         
     };
-    
-    
 
     self.txtFieldDuration.text = self.recipe.duration;
     self.txtFieldPortions.text = [self.recipe.portions stringValue];
@@ -209,8 +207,6 @@
         [self.textViewStepsToCook resignFirstResponder];
         [self dataModelChanged];
     }
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -288,14 +284,14 @@
 -(void) dataModelChanged {
     [self.docFoodTypes updateChangeCount:UIDocumentChangeDone];
     [Backuper backUpFileToLocalDrive:self.docFoodTypes];
-    [self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+    /*[self.docFoodTypes saveToURL:self.docFoodTypes.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         if (success) {
             NSLog(@"Saved file.");
         }
         else {
             NSLog(@"File was not saved.");
         }
-    }];
+    }];*/
     [self.tableViewIngridients reloadData];
     self.textViewStepsToCook.text = [self.recipe.stepsToCook isEqualToString:@""] || self.recipe.stepsToCook == nil? NSLocalizedString(@"Provide steps to cook.", nil) : self.recipe.stepsToCook;
 }
