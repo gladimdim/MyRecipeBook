@@ -82,7 +82,6 @@
         [self.docFoodTypes resolve];
             NSLog(@"Document updated stat changed with conflicts");
     }
-    NSLog(@"Document updated stat changed");
     [self.tableView reloadData];
 }
 
